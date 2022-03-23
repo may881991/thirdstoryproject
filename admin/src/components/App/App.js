@@ -1,5 +1,11 @@
 import React, { Component }from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 import LogIn from "../LogIn/Login";
+import Dashboard from '../Dashboard/Dashboard';
 
 function getToken(){
   const tokenString = sessionStorage.getItem('token');
@@ -29,11 +35,23 @@ class App extends Component{
     console.log(token)
     if(!token) {
       console.log("not token")
-      return <LogIn/>
+      return(
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LogIn />}> </Route>
+          </Routes>
+        </BrowserRouter>
+      );
+    }else{
+      return(
+          <BrowserRouter>
+          <Routes>
+            <Route path="/Dashboard" element={<Dashboard />}> </Route>
+          </Routes>
+        </BrowserRouter>
+      );
     }
-    return(
-      <LogIn/>
-    );
+
   }
 }
 
