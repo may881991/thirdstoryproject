@@ -8,3 +8,6 @@
 .nav-link{
     margin-right: 20px;
 }
+.btn.nav-link{
+  line-height: 1.3;
+}

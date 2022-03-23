@@ -23,11 +23,24 @@ code {
   --global-color-white: #ffffff;
   --global-color-pale-white: #9b9b9b; /*Please name the variant, I don't know*/
 }
+h1 {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 15px;
+}
+
+h1:after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  bottom: 0;
+  width: 100px;
+  border-bottom: 3px solid var(--global-color-main);
+}
 .btn{
   width: 120px;
   height: 40px;
   border-radius: 25px !important;
-  line-height: 1.3;
 }
 .btn-primary{
   background-color: var(--global-color-main) !important;
