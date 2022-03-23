@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&display=swap');
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +11,32 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+:root {
+  --global-font-family: 'Mulish', sans-serif;;
+  --global-text-color: #515151;
+  --global-color-main: #102E46;
+  --global-color-lightblue: #E9FBFF;
+  --global-color-header: #1A6FB5;
+  --global-color-white: #ffffff;
+  --global-color-pale-white: #9b9b9b; /*Please name the variant, I don't know*/
+}
+.btn{
+  width: 120px;
+  height: 40px;
+  border-radius: 25px !important;
+  line-height: 1.3;
+}
+.btn-primary{
+  background-color: var(--global-color-main) !important;
+  color: var(--global-color-white) !important;
+}
+.btn-outline-primary{
+  border-color: var(--global-color-main) !important;
+}
+.btn-outline-primary:hover {
+  background-color: var(--global-color-main) !important;
+  color: var(--global-color-white) !important;
 }
