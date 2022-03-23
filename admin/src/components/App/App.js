@@ -46,6 +46,7 @@ class App extends Component{
       return(
           <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Dashboard />}> </Route>
             <Route path="/Dashboard" element={<Dashboard />}> </Route>
           </Routes>
         </BrowserRouter>
