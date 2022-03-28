@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/thirdstoryproject/static/css/main.43a863e3.css",
-    "main.js": "/thirdstoryproject/static/js/main.a7c71f2c.js",
+    "main.css": "/thirdstoryproject/static/css/main.399e4170.css",
+    "main.js": "/thirdstoryproject/static/js/main.731836ff.js",
     "static/js/787.c4e7f8f9.chunk.js": "/thirdstoryproject/static/js/787.c4e7f8f9.chunk.js",
     "static/media/ourtraining.png": "/thirdstoryproject/static/media/ourtraining.0ec99a80cfd0c4434caa.png",
     "static/media/aboutus.png": "/thirdstoryproject/static/media/aboutus.92e6bf16c912e6bb245e.png",
@@ -20,7 +20,7 @@
     "static/media/book3.png": "/thirdstoryproject/static/media/book3.ca1c04f0261d8cc06269.png",
     "static/media/book-eng4.png": "/thirdstoryproject/static/media/book-eng4.2a9d4f1fc7a61ad99c6a.png",
     "static/media/book-eng1.png": "/thirdstoryproject/static/media/book-eng1.c76d2d10c36dc2b551f9.png",
-    "static/media/yamin.png": "/thirdstoryproject/static/media/yamin.cef94f42fae553219e8e.png",
+    "static/media/yamin.png": "/thirdstoryproject/static/media/yamin.3de61c13345583c7aa0c.png",
     "static/media/pulone.png": "/thirdstoryproject/static/media/pulone.a5a216d4a5c664aa1db8.png",
     "static/media/book1.png": "/thirdstoryproject/static/media/book1.8f5e2da835895ceb557f.png",
     "static/media/book5.png": "/thirdstoryproject/static/media/book5.600f37101e6a083d0210.png",
@@ -30,15 +30,16 @@
     "static/media/tree.png": "/thirdstoryproject/static/media/tree.7a3ba359f0d898c7ca14.png",
     "static/media/Logo.png": "/thirdstoryproject/static/media/Logo.9c628d78d4968306ef9f.png",
     "static/media/floor.png": "/thirdstoryproject/static/media/floor.bc3e1064ec21336904cd.png",
+    "static/media/Floor2.png": "/thirdstoryproject/static/media/Floor2.c940b6b50c73ec770413.png",
     "index.html": "/thirdstoryproject/index.html",
     "static/media/leftArr.svg": "/thirdstoryproject/static/media/leftArr.b6e23dfad7482a33bcfa.svg",
     "static/media/rightArr.svg": "/thirdstoryproject/static/media/rightArr.928a66a8d2e2c5ea17f2.svg",
-    "main.43a863e3.css.map": "/thirdstoryproject/static/css/main.43a863e3.css.map",
-    "main.a7c71f2c.js.map": "/thirdstoryproject/static/js/main.a7c71f2c.js.map",
+    "main.399e4170.css.map": "/thirdstoryproject/static/css/main.399e4170.css.map",
+    "main.731836ff.js.map": "/thirdstoryproject/static/js/main.731836ff.js.map",
     "787.c4e7f8f9.chunk.js.map": "/thirdstoryproject/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.43a863e3.css",
-    "static/js/main.a7c71f2c.js"
+    "static/css/main.399e4170.css",
+    "static/js/main.731836ff.js"
   ]
 }
