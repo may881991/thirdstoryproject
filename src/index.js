@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import BookLists from './components/BookLists/BookLists';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
+import './assets/fonts/MyanmarSansPro-Regular.ttf';
 import './index.css';
 
 ReactDOM.render(

@@ -1,22 +1,60 @@
 import React from 'react';
 import './BookLists.css';
 import NavBar from "../Nav/NavBar";
-import { Container, Row, Col ,Form ,Button } from "react-bootstrap";
+import Card from "../Card/Card";
+import { Container, Row, Col ,Form, ListGroup } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
-import Carousel from 'react-bootstrap/Carousel';
 import Footer from '../Footer/Footer';
 import treeImg from "../../assets/images/tree.png";
 import bgYamin from "../../assets/images/yamin.png";
 import book1Img from "../../assets/images/book1.png";
 import book2Img from "../../assets/images/book2.png";
 import book3Img from "../../assets/images/book3.png";
-import book4Img from "../../assets/images/book4.png";
-import book5Img from "../../assets/images/book5.png";
-import bookeng1Img from "../../assets/images/book-eng1.png";
-import bookeng2Img from "../../assets/images/book-eng2.png";
-import bookeng3Img from "../../assets/images/book-eng3.png";
-import bookeng4Img from "../../assets/images/book-eng4.png";
-import bookeng5Img from "../../assets/images/book-eng5.png";
+
+const data = [
+  {
+    title: "၀ါးပင်ငယ်ငယ် ချစ်စဖွယ်",
+    price: "2500 K",
+    rating: 4,
+    author: "မောင်နော်လာဒ်",
+    img: book1Img
+  },
+  {
+    title: "အိုအေစစ်လေး",
+    price: "2500 K",
+    rating: 4,
+    author: "ကံသာ",
+    img: book2Img
+  },
+  {
+    title: "၀တ်ရည်လပ်ကီး",
+    price: "2500 K",
+    rating: 5,
+    author: "သံလွင်မြင့်",
+    img: book3Img
+  },
+  {
+    title: "၀ါးပင်ငယ်ငယ် ချစ်စဖွယ်",
+    price: "2500 K",
+    rating: 4,
+    author: "မောင်နော်လာဒ်",
+    img: book1Img
+  },
+  {
+    title: "အိုအေစစ်လေး",
+    price: "2500 K",
+    rating: 4,
+    author: "ကံသာ",
+    img: book2Img
+  },
+  {
+    title: "၀တ်ရည်လပ်ကီး",
+    price: "2500 K",
+    rating: 5,
+    author: "သံလွင်မြင့်",
+    img: book3Img
+  }
+];
 
 function BookLists() {
     return(
@@ -40,119 +78,33 @@ function BookLists() {
                     </Col>
                 </Row>
             </Container>
-            <Container className='bookLists pt-5'>
-              <h4>Myanmar</h4>
-              <Carousel variant="dark" className='my-5' indicators={false}>
-                <Carousel.Item interval={20000}>
-                  <Row>
-                    <Col md={2} className="px-2">
-                      <img className="d-block w-100" src={book1Img} alt={book1Img} />
-                      <label>၀ါးပင်ငယ်ငယ် ချစ်စဖွယ်</label>
-                    </Col>
-                    <Col md={2} className="px-2">
-                      <img className="d-block w-100" src={book2Img} alt={book2Img} />
-                      <label>ပြင်ပရုပ်သွင်</label>
-                    </Col>
-                    <Col md={2} className="px-2">
-                      <img className="d-block w-100" src={book3Img} alt={book3Img} />
-                      <label>အိုအေစစ်လေး</label>
-                    </Col>
-                    <Col md={2} className="px-2">
-                      <img className="d-block w-100" src={book4Img} alt={book4Img} />
-                      <label>၀တ်ရည်လပ်ကီး</label>
-                    </Col>
-                    <Col md={2} className="px-2">
-                      <img className="d-block w-100" src={book5Img} alt={book5Img} />
-                      <label>ပီနိုကီယိုနဲ့ ယမင်း</label>
-                    </Col>
-                  </Row>
-                </Carousel.Item>
-                <Carousel.Item interval={20000}>
-                  <Row>
-                    <Col md={2} className="px-2">
-                      <img className="d-block w-100" src={book1Img} alt={book1Img} />
-                      <label>၀ါးပင်ငယ်ငယ် ချစ်စဖွယ်</label>
-                    </Col>
-                    <Col md={2} className="px-2">
-                      <img className="d-block w-100" src={book2Img} alt={book2Img} />
-                      <label>ပြင်ပရုပ်သွင်</label>
-                    </Col>
-                    <Col md={2} className="px-2">
-                      <img className="d-block w-100" src={book3Img} alt={book3Img} />
-                      <label>အိုအေစစ်လေး</label>
-                    </Col>
-                    <Col md={2} className="px-2">
-                      <img className="d-block w-100" src={book4Img} alt={book4Img} />
-                      <label>၀တ်ရည်လပ်ကီး</label>
-                    </Col>
-                    <Col md={2} className="px-2">
-                      <img className="d-block w-100" src={book5Img} alt={book5Img} />
-                      <label>ပီနိုကီယိုနဲ့ ယမင်း</label>
-                    </Col>
-                  </Row>
-                </Carousel.Item>
-              </Carousel>
-            </Container>
-            <Container className='bookLists'>
-              <h4>English</h4>
-              <Carousel variant="dark" className='py-5' indicators={false}>
-              <Carousel.Item interval={20000}>
-                <Row>
-                  <Col md={2} className="px-2">
-                    <img className="d-block w-100" src={bookeng1Img} alt={bookeng1Img} />
-                    <label>Foxy Jump</label>
-                  </Col>
-                  <Col md={2} className="px-2">
-                    <img className="d-block w-100" src={bookeng2Img} alt={bookeng2Img} />
-                    <label>Heart In A Box</label>
-                  </Col>
-                  <Col md={2} className="px-2">
-                    <img className="d-block w-100" src={bookeng3Img} alt={bookeng3Img} />
-                    <label>PSD Box Mockup</label>
-                  </Col>
-                  <Col md={2} className="px-2">
-                    <img className="d-block w-100" src={bookeng4Img} alt={bookeng4Img} />
-                    <label>Foxy Jump</label>
-                  </Col>
-                  <Col md={2} className="px-2">
-                    <img className="d-block w-100" src={bookeng5Img} alt={bookeng5Img} />
-                    <label>Fernando</label>
-                  </Col>
-                </Row>
-                </Carousel.Item>
-                <Carousel.Item interval={20000}>
-                <Row>
-                  
-                <Col md={2} className="px-2">
-                    <img className="d-block w-100" src={bookeng1Img} alt={bookeng1Img} />
-                    <label>Foxy Jump</label>
-                  </Col>
-                  <Col md={2} className="px-2">
-                    <img className="d-block w-100" src={bookeng2Img} alt={bookeng2Img} />
-                    <label>Heart In A Box</label>
-                  </Col>
-                  <Col md={2} className="px-2">
-                    <img className="d-block w-100" src={bookeng3Img} alt={bookeng3Img} />
-                    <label>PSD Box Mockup</label>
-                  </Col>
-                  <Col md={2} className="px-2">
-                    <img className="d-block w-100" src={bookeng4Img} alt={bookeng4Img} />
-                    <label>Foxy Jump</label>
-                  </Col>
-                  <Col md={2} className="px-2">
-                    <img className="d-block w-100" src={bookeng5Img} alt={bookeng5Img} />
-                    <label>Fernando</label>
-                  </Col>
-                  </Row>
-                </Carousel.Item>
-              </Carousel>
-            </Container>
-            <div className='d-flex justify-content-center pb-5'>
-              <Button className="btn btn-primary seeAllBtn" href="#">
-                      See All Books
-                </Button>
-            </div>
-
+            <Container className='bookItems'>
+              <Row>
+                <Col md={2}>
+                  <h5>Categories</h5>
+                  <ListGroup>
+                    <ListGroup.Item>Burmese</ListGroup.Item>
+                    <ListGroup.Item>English</ListGroup.Item>
+                    <ListGroup.Item>Other Myanmar Language</ListGroup.Item>
+                    <ListGroup.Item>Other Items</ListGroup.Item>
+                  </ListGroup>
+                </Col>
+                <Col md={10} className="row">
+                  {data.map((card, i) => {
+                      return (
+                        <Card
+                          key={i}
+                          img={card.img}
+                          title={card.title}
+                          price={card.price}
+                          rating={card.rating}
+                          author={card.author}
+                        />
+                      );
+                    })}
+                </Col>
+              </Row>
+        </Container>
         <Footer />
         </Container>
     );
