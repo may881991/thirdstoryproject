@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/thirdstoryproject/static/css/main.672af060.css",
-    "main.js": "/thirdstoryproject/static/js/main.55186410.js",
+    "main.js": "/thirdstoryproject/static/js/main.5ba55c96.js",
     "static/js/787.c4e7f8f9.chunk.js": "/thirdstoryproject/static/js/787.c4e7f8f9.chunk.js",
     "static/media/ourtraining.png": "/thirdstoryproject/static/media/ourtraining.0ec99a80cfd0c4434caa.png",
     "static/media/aboutus.png": "/thirdstoryproject/static/media/aboutus.92e6bf16c912e6bb245e.png",
@@ -34,11 +34,11 @@
     "static/media/leftArr.svg": "/thirdstoryproject/static/media/leftArr.b6e23dfad7482a33bcfa.svg",
     "static/media/rightArr.svg": "/thirdstoryproject/static/media/rightArr.928a66a8d2e2c5ea17f2.svg",
     "main.672af060.css.map": "/thirdstoryproject/static/css/main.672af060.css.map",
-    "main.55186410.js.map": "/thirdstoryproject/static/js/main.55186410.js.map",
+    "main.5ba55c96.js.map": "/thirdstoryproject/static/js/main.5ba55c96.js.map",
     "787.c4e7f8f9.chunk.js.map": "/thirdstoryproject/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.672af060.css",
-    "static/js/main.55186410.js"
+    "static/js/main.5ba55c96.js"
   ]
 }
