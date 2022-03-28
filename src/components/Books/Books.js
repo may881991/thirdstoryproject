@@ -2,7 +2,6 @@ import React from 'react';
 import './Books.css';
 import { Container, Row, Col ,Form ,Button } from "react-bootstrap";
 import Carousel from 'react-bootstrap/Carousel';
-import * as Icon from 'react-bootstrap-icons';
 import treeImg from "../../assets/images/tree.png";
 import puloneImg from "../../assets/images/pulone.png";
 import book1Img from "../../assets/images/book1.png";
@@ -28,7 +27,6 @@ function Books() {
                 <p className="p-3">Our books are written by Myanmar authors and illustrated by Myanmar illustrators for a Myanmar audience.  They are first and foremost entertaining and fun to read, but they also have important messages addressing peace, tolerance, diversity, girl empowerment, environment, disability rights and child rights. </p>
                 <Form id='search' className='p-1 col-md-10 mx-auto'>
                       <Form.Control type="email" placeholder="Explore More Books" className='text-center'/>
-                      <Icon.Search />
                 </Form>
                 </Col>
                 <Col md={2} className="py-3">

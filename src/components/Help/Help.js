@@ -1,6 +1,5 @@
 import React from 'react';
 import './Help.css';
-import * as Icon from 'react-bootstrap-icons';
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import jayImg from "../../assets/images/jayjay.png";
 import helpImg1 from "../../assets/images/help1.png";
@@ -22,7 +21,7 @@ function Help() {
                         Some quick example text to build on the card title and make up the bulk of
                         the card's content.
                         </Card.Text>
-                        <Card.Link href="#">Read More <Icon.ArrowRight /></Card.Link>
+                        <Card.Link href="#">Read More</Card.Link>
                     </Card.Body>
                     </Card>
                 </Col>
@@ -35,7 +34,7 @@ function Help() {
                         Some quick example text to build on the card title and make up the bulk of
                         the card's content.
                         </Card.Text>
-                        <Card.Link href="#">Read More <Icon.ArrowRight /></Card.Link>
+                        <Card.Link href="#">Read More </Card.Link>
                     </Card.Body>
                     </Card>
                 </Col>
@@ -48,7 +47,7 @@ function Help() {
                         Some quick example text to build on the card title and make up the bulk of
                         the card's content.
                         </Card.Text>
-                        <Card.Link href="#">Read More <Icon.ArrowRight /></Card.Link>
+                        <Card.Link href="#">Read More </Card.Link>
                     </Card.Body>
                     </Card>
                 </Col>
