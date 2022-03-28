@@ -11,10 +11,6 @@
 .aboutUs{
     position: relative;
 }
-.bannerText p{
-    line-height: 1.8;
-    color: var(--global-text-color);
-}
 .bgItem1{
     position: absolute;
     width: 270px;
@@ -26,6 +22,9 @@
     position: absolute;
     right: 0;
     top: 350px;
+}
+.aboutUs .row{
+    padding: 3rem 0;
 }
 .aboutUs h2{
     color: var(--global-color-header);
@@ -61,11 +60,14 @@
     .carousel-item .col-md-2 label{
         font-size: 0.75rem;
     }
-    .bgItem1 {
+    .bgItem1,.bgItem2{
         width: 150px;
         height: auto;
     }
     .row .col-md-12{
-        padding: 2rem 4rem;
+        padding: 2rem;
+    }
+    .aboutUs .row{
+        padding: 0;
     }
 }

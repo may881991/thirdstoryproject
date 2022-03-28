@@ -15,27 +15,27 @@ function Customers() {
                 <Carousel className='my-5'>
                     <Carousel.Item interval={20000}>
                     <Row>
-                        <Col md={4} className="px-5">
-                            <img src={customer1Img} alt={customer1Img} />
+                        <Col xs={10} md={4}>
+                            <img src={customer1Img} alt={customer1Img} className="img-fluid" />
                         </Col>
-                        <Col md={4} className="px-5">
-                            <img src={customer2Img} alt={customer2Img} />
+                        <Col xs={10} md={4}>
+                            <img src={customer2Img} alt={customer2Img} className="img-fluid" />
                         </Col>
-                        <Col md={4} className="px-5">
-                            <img src={customer3Img} alt={customer3Img} />
+                        <Col xs={10} md={4}>
+                            <img src={customer3Img} alt={customer3Img} className="img-fluid" />
                         </Col>
                     </Row>
                     </Carousel.Item>
                     <Carousel.Item interval={20000}>
                     <Row>
-                        <Col md={4} className="px-5">
-                            <img src={customer1Img} alt={customer1Img} />
+                        <Col xs={10} md={4}>
+                            <img src={customer1Img} alt={customer1Img} className="img-fluid" />
                         </Col>
-                        <Col md={4} className="px-5">
-                            <img src={customer2Img} alt={customer2Img} />
+                        <Col xs={10} md={4}>
+                            <img src={customer2Img} alt={customer2Img} className="img-fluid" />
                         </Col>
-                        <Col md={4} className="px-5">
-                            <img src={customer3Img} alt={customer3Img} />
+                        <Col xs={10} md={4}>
+                            <img src={customer3Img} alt={customer3Img} className="img-fluid" />
                         </Col>
                     </Row>
                     </Carousel.Item>

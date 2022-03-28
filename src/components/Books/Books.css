@@ -1,4 +1,11 @@
-
+.bannerText{
+    padding: 1rem 3rem;
+}
+.bannerText p{
+    line-height: 1.8;
+    color: var(--global-text-color);
+    padding: 2rem;
+}
 #search{
     background-color: var(--global-color-white);
     border-radius: 2rem;
@@ -54,4 +61,39 @@
     height: 50px;
     font-size: 1.15rem;
     line-height: 1.8;
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+    .carousel-item .col-md-2:first-child {
+        margin-left: 1rem !important;
+    }
+    .bookLists h4 {
+        margin-left: 3rem;
+    }
+    .carousel-item .col-md-2 label{
+        font-size: 0.85rem;
+    }
+    .carousel-control-next, .carousel-control-prev{
+        width: 10% !important;
+    }
+    .bannerText{
+        padding: 1rem;
+    }
+    .bannerText p{
+        padding: 0;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 480px) {
+    .carousel-item .col-md-2:first-child {
+        margin-left: 3rem !important;
+    }
+    .carousel-item .col-md-2{
+        margin-bottom: 1rem;
+        margin-left: 3rem !important;
+    }
+    .col-md-2 .w-100,.carousel-item .col-md-2 label {
+        width: 60%!important;
+    }
 }

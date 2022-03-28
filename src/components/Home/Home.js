@@ -38,7 +38,7 @@ function Home() {
           <Container className=' py-5'>
             <Row className='py-5'>
               <Col lg={6} md={12}>
-                {<img src={aboutImg} alt={aboutImg}/> }
+                {<img src={aboutImg} alt={aboutImg} className="img-fluid" />}
               </Col>
               <Col lg={6} md={12} className="textBox">
                   <h2>About Us</h2>
@@ -58,7 +58,7 @@ function Home() {
                     </a>
               </Col>
               <Col lg={6} md={12} className="textBox">
-                {<img src={trainingImg} alt={trainingImg} /> }
+                {<img src={trainingImg} alt={trainingImg} className="img-fluid"  /> }
               </Col>
             </Row>
           </Container>
