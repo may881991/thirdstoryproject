@@ -9,6 +9,7 @@
 }
 .nav-link{
     margin-right: 20px;
+    font-family: var(--global-font-family);
 }
 .btn.nav-link{
   line-height: 1.3;
