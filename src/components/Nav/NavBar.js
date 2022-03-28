@@ -21,7 +21,7 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto nav-items align-items-center justify-content-end">
             <Nav.Link className={`space ${addActiveClass("/home")}`} href="/"> Home </Nav.Link>
-            <Nav.Link className={`space-one ${addActiveClass("/courses")}`} href="/courses" > Stories </Nav.Link>
+            <Nav.Link className={`space-one ${addActiveClass("/stories")}`} href="/stories" > Stories </Nav.Link>
             <Nav.Link className={`space-two ${addActiveClass("/activities")}`} href="/activities" > Activities</Nav.Link>
             <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" > About Us</Nav.Link>
             <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link>

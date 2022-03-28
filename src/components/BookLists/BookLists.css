@@ -1,3 +1,21 @@
+.container-fluid.banner{
+    margin-top: 9rem !important;
+    background: url("../../assets/images/Floor2.png") no-repeat center bottom;
+    position: relative;
+}
+.banner .row{
+    padding-bottom: 7rem;
+}
+.bannerImg1{
+    position: absolute;
+    bottom: 0.5rem;
+    left: 5rem;
+}
+.bannerImg2{
+    position: absolute;
+    bottom: 1rem;
+    right: 5rem;
+}
 .bannerText{
     padding: 1rem 3rem;
 }
