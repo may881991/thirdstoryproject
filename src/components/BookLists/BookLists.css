@@ -60,3 +60,34 @@
     padding: 1rem 0;
     background: none;
 }
+.pagination{
+    justify-content: center;
+    margin: 4rem 0 !important;
+}
+li.page-item {
+    margin: 0 10px;
+}
+.page-link{
+    width: 50px;
+    height: 50px;
+    border-radius: 6px !important;
+    text-align: center;
+    line-height: 2;
+}
+.page-item.active .page-link{
+    background-color: #5A98F2 !important;
+}
+a.page-link{
+    border-color: #BDBDBD;
+    color: #BDBDBD;
+}
+.bgItem6{
+    position: absolute;
+    left: 4px;
+    top: 130%;
+}
+.bgItem7{
+    position: absolute;
+    right: 0;
+    top: 145%;
+}

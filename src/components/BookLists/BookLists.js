@@ -2,11 +2,12 @@ import React from 'react';
 import './BookLists.css';
 import NavBar from "../Nav/NavBar";
 import Card from "../Card/Card";
-import { Container, Row, Col ,Form, ListGroup } from "react-bootstrap";
+import { Container, Row, Col ,Form, ListGroup,Pagination } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import Footer from '../Footer/Footer';
 import treeImg from "../../assets/images/tree.png";
-import sidebarBg from "../../assets/images/sidebar-bg.png";
+import squirrelImg from "../../assets/images/Squirrel1.png";
+import rabbitImg from "../../assets/images/Rabbit1.png";
 import bgYamin from "../../assets/images/yamin.png";
 import book1Img from "../../assets/images/book1.png";
 import book2Img from "../../assets/images/book2.png";
@@ -57,6 +58,16 @@ const data = [
   }
 ];
 
+let active = 2;
+let items = [];
+for (let number = 1; number <= 5; number++) {
+  items.push(
+    <Pagination.Item key={number} active={number === active}>
+      {number}
+    </Pagination.Item>,
+  );
+}
+
 function BookLists() {
     return(
         <Container fluid className='sidebarBg'>
@@ -79,6 +90,7 @@ function BookLists() {
                     </Col>
                 </Row>
             </Container>
+            {<img src={squirrelImg} alt={squirrelImg} className="bgItem6" />}
             <Container className='bookItems'>
               <Row>
                 <Col md={2}>
@@ -104,9 +116,15 @@ function BookLists() {
                         />
                       );
                     })}
+                    <Pagination>
+                      <Pagination.Prev />
+                      {items}
+                      <Pagination.Next />
+                    </Pagination>
                 </Col>
               </Row>
         </Container>
+        {<img src={rabbitImg} alt={rabbitImg} className="bgItem7" />}
         <Footer />
         </Container>
     );
