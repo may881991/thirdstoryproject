@@ -3,6 +3,9 @@
     background: url("../../assets/images/Floor2.png") no-repeat center bottom;
     position: relative;
 }
+.sidebarBg{
+    background: url("../../assets/images/sidebar-bg.png") no-repeat;
+}
 .banner .row{
     padding-bottom: 7rem;
 }
@@ -22,15 +25,26 @@
 .bookItems h5{
     font-weight: 600;
 }
+.bookItems hr{
+    color: var(--global-color-header);
+    opacity: 1;
+    height: 2px;
+    width: 70%;
+    margin: 1rem 0 0;
+}
 .bookItems .card{
     border: none;
     margin-bottom: 3rem;
     align-items: center;
+    background: none;
+}
+.bookItems .card-body:hover{
+    background-color: var(--global-color-lightblue);
 }
 .bookItems .card-body{
     box-shadow: #0000003d 0px 3px 8px;
     margin-bottom: 1.5rem;
-    min-width: 320px;
+    width: 100%;
     font-family: "Myanmar Sans Pro", sans-serif;
 }
 .bookItems .card-title{
@@ -39,9 +53,10 @@
     padding: 1em 0 0;
 }
 .bookItems .card-img-top{
-    min-width: 280px;
+    width: 100%;
 }
 .bookItems .list-group-item{
     border: none;
     padding: 1rem 0;
+    background: none;
 }

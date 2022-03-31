@@ -6,6 +6,7 @@ import { Container, Row, Col ,Form, ListGroup } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import Footer from '../Footer/Footer';
 import treeImg from "../../assets/images/tree.png";
+import sidebarBg from "../../assets/images/sidebar-bg.png";
 import bgYamin from "../../assets/images/yamin.png";
 import book1Img from "../../assets/images/book1.png";
 import book2Img from "../../assets/images/book2.png";
@@ -58,7 +59,7 @@ const data = [
 
 function BookLists() {
     return(
-        <Container fluid>
+        <Container fluid className='sidebarBg'>
         <NavBar bg="light"/>
             <Container fluid className='banner'>
                 <Row>
@@ -82,6 +83,7 @@ function BookLists() {
               <Row>
                 <Col md={2}>
                   <h5>Categories</h5>
+                  <hr/>
                   <ListGroup>
                     <ListGroup.Item>Burmese</ListGroup.Item>
                     <ListGroup.Item>English</ListGroup.Item>
