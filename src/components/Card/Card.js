@@ -5,9 +5,7 @@ import "./Card.css";
 
 function Cardlayout(props){
   return (
-    <Card
-      className="col-md-4"
-    >
+    <Card className="col-md-4">
       <Card.Body className="">
         <Card.Img variant="top" src={props.img} />
         <Card.Title className="">
