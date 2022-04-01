@@ -123,7 +123,7 @@ function BookLists() {
                     </Pagination>
                 </Col>
               </Row>
-        </Container>
+            </Container>
         {<img src={rabbitImg} alt={rabbitImg} className="bgItem7" />}
         <Footer />
         </Container>

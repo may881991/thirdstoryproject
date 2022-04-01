@@ -4,6 +4,15 @@ import { BsCart3 } from "react-icons/bs";
 import "./Card.css";
 
 function Cardlayout(props){
+  const checkAuthor = props.author;
+  let addIcon,buyNow;
+  if(checkAuthor == undefined){
+    addIcon =  null;
+    buyNow =  null;
+  }else{
+    addIcon =  <BsCart3 />;
+    buyNow = <Button className="buyBtn" variant="outline-primary"> Buy Now! </Button>;
+  }
   return (
     <Card className="col-md-4">
       <Card.Body className="">
@@ -12,12 +21,14 @@ function Cardlayout(props){
           {props.title}
           <span className="age-group">{props.price}</span>
         </Card.Title>
-          <Card.Link href="#">{props.author}</Card.Link>
-          <Card.Link href="#" className='float-end'><BsCart3 /></Card.Link>
+        <Card.Text>
+        {props.desc}
+        <label className='dateText'>{props.date}</label>
+        </Card.Text>
+        <Card.Link href="#">{props.author}</Card.Link>
+        <Card.Link href="#" className='float-end'>{addIcon}</Card.Link>
       </Card.Body>
-      <Button className="buyBtn" variant="outline-primary">
-        Buy Now!
-      </Button>
+      {buyNow}
     </Card>
   );
 }

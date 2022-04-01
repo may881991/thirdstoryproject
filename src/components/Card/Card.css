@@ -5,3 +5,9 @@
     width: 24px;
     height: 24px;
 }
+.dateText{
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding-top: 5px;
+}

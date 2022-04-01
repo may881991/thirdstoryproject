@@ -22,10 +22,10 @@
     bottom: 1rem;
     right: 5rem;
 }
-.bookItems h5{
+.bookItems h5,.activitiesLists h5{
     font-weight: 600;
 }
-.bookItems hr{
+.bookItems hr,.activitiesLists hr{
     color: var(--global-color-header);
     opacity: 1;
     height: 2px;
@@ -55,7 +55,7 @@
 .bookItems .card-img-top{
     width: 100%;
 }
-.bookItems .list-group-item{
+.bookItems .list-group-item,.activitiesLists .list-group-item{
     border: none;
     padding: 1rem 0;
     background: none;
