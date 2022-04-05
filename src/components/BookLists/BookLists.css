@@ -45,7 +45,7 @@
     box-shadow: #0000003d 0px 3px 8px;
     margin-bottom: 1.5rem;
     width: 100%;
-    font-family: "Myanmar Sans Pro", sans-serif;
+    font-family: var(--global-font-family-mn);
 }
 .bookItems .card-title{
     display: flex;

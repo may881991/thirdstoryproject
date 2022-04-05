@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './components/Home/Home';
 import BookLists from './components/BookLists/BookLists';
 import Activities from './components/Activities/Activities';
+import BookDetails from './components/BookDetails/BookDetails';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './assets/fonts/MyanmarSansPro-Regular.ttf';
@@ -16,6 +17,7 @@ ReactDOM.render(
           <Route path="*" element={<Home />} />
           <Route path="/stories" element={<BookLists />} />
           <Route path="/activities" element={<Activities />} />
+          <Route path="/bookDetails" element={<BookDetails />} />
         </Routes>
     </BrowserRouter>
   </React.StrictMode>,

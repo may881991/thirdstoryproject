@@ -12,49 +12,99 @@ import bgYamin from "../../assets/images/yamin.png";
 import book1Img from "../../assets/images/book1.png";
 import book2Img from "../../assets/images/book2.png";
 import book3Img from "../../assets/images/book3.png";
+import book4Img from "../../assets/images/book4.png";
+import book5Img from "../../assets/images/book5.png";
 
 const data = [
   {
     title: "၀ါးပင်ငယ်ငယ် ချစ်စဖွယ်",
     price: "2500 K",
+    creator : "ကာကြီး",
     rating: 4,
     author: "မောင်နော်လာဒ်",
-    img: book1Img
+    img: book1Img,
+    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
+  },
+  {
+    title: "ပြင်ပရုပ်သွင်",
+    price: "3000 K",
+    creator : "ဖေသစ်တည်",
+    rating: 4,
+    author: "သံလွင်မြင့်",
+    img: book2Img,
+    bookUrl : "https://www.clickdimensions.com/links/TestPDFfile.pdf"
   },
   {
     title: "အိုအေစစ်လေး",
     price: "2500 K",
+    creator : "သတိုးဆွေ",
     rating: 4,
     author: "ကံသာ",
-    img: book2Img
+    img: book3Img,
+    bookUrl : "https://www.clickdimensions.com/links/TestPDFfile.pdf"
   },
   {
     title: "၀တ်ရည်လပ်ကီး",
     price: "2500 K",
+    creator : "စိုင်းခမ်းလိန်",
     rating: 5,
     author: "သံလွင်မြင့်",
-    img: book3Img
+    img: book4Img,
+    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
+  },
+  {
+    title: "ပီနိုကီယိုနဲ့ ယမင်း",
+    price: "2500 K",
+    creator : "၀လုံး",
+    rating: 5,
+    author: "သံလွင်မြင့်",
+    img: book5Img,
+    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
   },
   {
     title: "၀ါးပင်ငယ်ငယ် ချစ်စဖွယ်",
     price: "2500 K",
+    creator : "ကာကြီး",
     rating: 4,
     author: "မောင်နော်လာဒ်",
-    img: book1Img
+    img: book1Img,
+    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
+  },
+  {
+    title: "ပြင်ပရုပ်သွင်",
+    price: "2500 K",
+    illustrator : "ဖေသစ်တည်",
+    rating: 4,
+    author: "သံလွင်မြင့်",
+    img: book2Img,
+    bookUrl : "https://www.clickdimensions.com/links/TestPDFfile.pdf"
   },
   {
     title: "အိုအေစစ်လေး",
     price: "2500 K",
+    illustrator : "သတိုးဆွေ",
     rating: 4,
     author: "ကံသာ",
-    img: book2Img
+    img: book3Img,
+    bookUrl : "https://www.clickdimensions.com/links/TestPDFfile.pdf"
   },
   {
     title: "၀တ်ရည်လပ်ကီး",
     price: "2500 K",
+    illustrator : "စိုင်းခမ်းလိန်",
     rating: 5,
     author: "သံလွင်မြင့်",
-    img: book3Img
+    img: book4Img,
+    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
+  },
+  {
+    title: "ပီနိုကီယိုနဲ့ ယမင်း",
+    price: "2500 K",
+    creator : "၀လုံး",
+    rating: 5,
+    author: "သံလွင်မြင့်",
+    img: book5Img,
+    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
   }
 ];
 
@@ -79,7 +129,7 @@ function BookLists() {
                     </Col>
                     <Col md={8} className="text-center bannerText">
                     <h2>Our Book Lists</h2>
-                    <p>Our books are written by Myanmar authors and illustrated by Myanmar illustrators for a Myanmar audience.  They are first and foremost entertaining and fun to read, but they also have important messages addressing peace, tolerance, diversity, girl empowerment, environment, disability rights and child rights. </p>
+                    <p>Our books are written by Myanmar authors and illustrated by Myanmar creators for a Myanmar audience.  They are first and foremost entertaining and fun to read, but they also have important messages addressing peace, tolerance, diversity, girl empowerment, environment, disability rights and child rights. </p>
                     <Form id='search' className='p-1 col-md-10 mx-auto'>
                         <Form.Control type="email" placeholder="Search book titles and keywords" className='text-center'/>
                         <BsSearch />
@@ -113,6 +163,8 @@ function BookLists() {
                           price={card.price}
                           rating={card.rating}
                           author={card.author}
+                          url={card.bookUrl}
+                          designer={card.creator}
                         />
                       );
                     })}

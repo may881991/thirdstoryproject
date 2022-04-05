@@ -1,20 +1,32 @@
 import React from 'react';
 import { Card, Button } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom'
 import { BsCart3 } from "react-icons/bs";
 import "./Card.css";
 
+
 function Cardlayout(props){
+
   const checkAuthor = props.author;
+  const navigate = useNavigate();
+
   let addIcon,buyNow;
-  if(checkAuthor == undefined){
+  if(checkAuthor === undefined){
     addIcon =  null;
     buyNow =  null;
   }else{
     addIcon =  <BsCart3 />;
     buyNow = <Button className="buyBtn" variant="outline-primary"> Buy Now! </Button>;
   }
+
+  function bookView(){
+    console.log("bookView " + props);
+    localStorage.setItem("bookData",JSON.stringify(props));
+    navigate('/bookDetails')
+  }
+
   return (
-    <Card className="col-md-4">
+    <Card className="col-md-4" onClick={bookView}>
       <Card.Body className="">
         <Card.Img variant="top" src={props.img} />
         <Card.Title className="">

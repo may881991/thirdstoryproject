@@ -21,6 +21,7 @@ code {
 
 :root {
   --global-font-family: 'Mulish', sans-serif;
+  --global-font-family-mn : "Myanmar Sans Pro", sans-serif;
   --global-font-size: 1.125rem;
   --global-text-color: #515151;
   --global-color-main: #102E46;
