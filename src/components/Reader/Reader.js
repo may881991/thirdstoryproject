@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button, Dropdown} from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
+import { BsChevronLeft, BsChevronRight , BsArrowDownShort} from "react-icons/bs";
 import logo from "../../assets/images/Logo.png";
 import profileImg from "../../assets/images/person.png";
-import { BsChevronLeft, BsChevronRight , BsArrowDownShort} from "react-icons/bs";
 import pdfUrl from "../../assets/books/No-Nonsense Buddhism for Beginners.pdf";
 import "./Reader.css";
 
@@ -25,9 +26,6 @@ export default class ReaderView extends Component {
         let bookInfo = localStorage.getItem('bookData');
         bookInfo = JSON.parse(bookInfo);
 
-        function goBack(props){
-            this.props.navigate('/bookDetails');
-        }
         return(
             <Container fluid className='Reader'>
                 <nav className='d-flex justify-content-center pt-3'>
@@ -37,7 +35,7 @@ export default class ReaderView extends Component {
                     <Col md={10} className="offset-md-1">
                         <Row>
                             <Col>
-                                <button onClick={goBack} className="backBtn"><BsChevronLeft/></button> <label> {bookInfo.title} </label>
+                                <Link to="/bookDetails"><button className="backBtn"><BsChevronLeft/></button></Link> <label> {bookInfo.title} </label>
                             </Col>
                             <Col className='text-center'>
                                 <Button className="btn btn-primary downloadBtn" href="#">

@@ -46,6 +46,7 @@ h1, h2{
   padding-bottom: 15px;
   font-family: var(--global-font-family);
   font-weight: 700;
+  color: var(--global-color-main);
 }
 
 h1:after {
