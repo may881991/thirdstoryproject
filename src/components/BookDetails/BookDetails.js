@@ -13,11 +13,15 @@ function BookDetails(){
     const navigate = useNavigate();
     let bookInfo = localStorage.getItem('bookData');
     bookInfo = JSON.parse(bookInfo);
-    let price = parseInt(bookInfo.price);
     console.log(bookInfo)
+    let price = parseInt(bookInfo.price);
     function goBack(){
       localStorage.removeItem("bookData");
       navigate('/stories')
+    }
+
+    function readBook(){
+      navigate('/read')
     }
 
     return(
@@ -39,7 +43,7 @@ function BookDetails(){
                         <p><label>Author : </label> {bookInfo.author}  </p>
                         <p><label>Illustrator : </label> {bookInfo.designer}  </p>
                         <p><label>Price : </label> {price} kyats</p>
-                        <Button variant="outline-primary"> <BsBook /> Read </Button>
+                        <Button variant="outline-primary" onClick={readBook}> <BsBook /> Read </Button>
                         <Button variant="primary">  Add To Card <BsCartPlusFill /> </Button>
                       </Col>
                     </Row>

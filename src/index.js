@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import BookLists from './components/BookLists/BookLists';
 import Activities from './components/Activities/Activities';
 import BookDetails from './components/BookDetails/BookDetails';
+import ReadBook from './components/Reader/Reader';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './assets/fonts/MyanmarSansPro-Regular.ttf';
@@ -18,6 +19,7 @@ ReactDOM.render(
           <Route path="/stories" element={<BookLists />} />
           <Route path="/activities" element={<Activities />} />
           <Route path="/bookDetails" element={<BookDetails />} />
+          <Route path="/read" element={<ReadBook />} />
         </Routes>
     </BrowserRouter>
   </React.StrictMode>,
