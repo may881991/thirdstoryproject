@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/thirdstoryproject/static/css/main.9ced1f31.css",
-    "main.js": "/thirdstoryproject/static/js/main.511f6f52.js",
+    "main.js": "/thirdstoryproject/static/js/main.ab3ee0af.js",
     "static/js/787.c4e7f8f9.chunk.js": "/thirdstoryproject/static/js/787.c4e7f8f9.chunk.js",
     "static/media/No-Nonsense Buddhism for Beginners.pdf": "/thirdstoryproject/static/media/No-Nonsense Buddhism for Beginners.ae2f993396be54256f2b.pdf",
     "pdf.worker.js": "/thirdstoryproject/e7e915313973ba1d49f9bb2a1998626e.js",
@@ -56,11 +56,11 @@
     "static/media/leftArr.svg": "/thirdstoryproject/static/media/leftArr.b6e23dfad7482a33bcfa.svg",
     "static/media/rightArr.svg": "/thirdstoryproject/static/media/rightArr.928a66a8d2e2c5ea17f2.svg",
     "main.9ced1f31.css.map": "/thirdstoryproject/static/css/main.9ced1f31.css.map",
-    "main.511f6f52.js.map": "/thirdstoryproject/static/js/main.511f6f52.js.map",
+    "main.ab3ee0af.js.map": "/thirdstoryproject/static/js/main.ab3ee0af.js.map",
     "787.c4e7f8f9.chunk.js.map": "/thirdstoryproject/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9ced1f31.css",
-    "static/js/main.511f6f52.js"
+    "static/js/main.ab3ee0af.js"
   ]
 }
