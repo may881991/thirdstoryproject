@@ -1,12 +1,37 @@
-import React from 'react';
+import React , { useState }from 'react';
 import NavBar from "../Nav/NavBar";
 import Footer from '../Footer/Footer';
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button , Offcanvas} from "react-bootstrap";
 import { useNavigate } from 'react-router-dom'
-import { BsArrowLeft, BsBook, BsCartPlusFill } from "react-icons/bs";
+import { BsArrowLeft, BsBook, BsCartPlusFill , BsCart3} from "react-icons/bs";
 import meesuImg from "../../assets/images/meesu.png";
 import natImg from "../../assets/images/Natpauksi.png";
 import "./BookDetails.css";
+
+function OffCanvasaddTo({ name, ...props }) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow} className="me-2">
+        {name} <BsCartPlusFill />
+      </Button>
+      <Offcanvas show={show} onHide={handleClose} {...props}>
+        <Offcanvas.Header closeButton>
+          <BsCart3 />
+          <Offcanvas.Title>Your Books</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          Some text as placeholder. In real life you can have the elements you
+          have chosen. Like, text, images, lists, etc.
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
+  );
+}
 
 function BookDetails(){
     document.body.classList.add('bookDetail');
@@ -44,7 +69,9 @@ function BookDetails(){
                         <p><label>Illustrator : </label> {bookInfo.designer}  </p>
                         <p><label>Price : </label> {price} kyats</p>
                         <Button variant="outline-primary" onClick={readBook}> <BsBook /> Read </Button>
-                        <Button variant="primary">  Add To Card <BsCartPlusFill /> </Button>
+                        {['end'].map((placement, idx) => (
+                          <OffCanvasaddTo key={idx} placement={placement} name={"Add To Card"} /> 
+                        ))}
                       </Col>
                     </Row>
                 </Col>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { Container, Row, Col } from "react-bootstrap";
+import { BsInstagram , BsYoutube, BsFacebook } from "react-icons/bs";
 import footerLogo from "../../assets/images/f-logo.png";
 import boxItem from "../../assets/images/bgBox.png";
 
@@ -38,6 +39,11 @@ function Footer() {
                         <label>thirdstorychildrenbooks@gmail.com</label>
                         <label>No. 86, 52 Street, Middle Block, </label>
                         <label>Yangon, Myanmar (Burma)</label>
+                        <div>
+                            <a href=''> <BsYoutube /></a>
+                            <a href=''> <BsInstagram /></a>
+                            <a href=''> <BsFacebook /></a>
+                        </div>
                     </Col>
                 </Row>
             </Container>

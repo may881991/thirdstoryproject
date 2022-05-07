@@ -71,7 +71,7 @@ h2:after {
   height: 40px;
   border-radius: 25px !important;
 }
-.btn-primary{
+.btn-primary,.offcanvas-end{
   background-color: var(--global-color-main) !important;
   color: var(--global-color-white) !important;
 }
@@ -85,4 +85,5 @@ h2:after {
 }
 .container-fluid{
   margin: 0 !important;
+  padding: 0 !important;
 }
