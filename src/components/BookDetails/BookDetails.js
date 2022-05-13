@@ -1,36 +1,74 @@
 import React , { useState }from 'react';
 import NavBar from "../Nav/NavBar";
 import Footer from '../Footer/Footer';
-import { Container, Row, Col, Button , Offcanvas} from "react-bootstrap";
+import ListsView from "../Lists/Lists";
+import { Container, Row, Col, Button , Offcanvas, ListGroup, OffcanvasTitle} from "react-bootstrap";
 import { useNavigate } from 'react-router-dom'
 import { BsArrowLeft, BsBook, BsCartPlusFill , BsCart3} from "react-icons/bs";
 import meesuImg from "../../assets/images/meesu.png";
 import natImg from "../../assets/images/Natpauksi.png";
 import "./BookDetails.css";
-
+    let data = localStorage.getItem('bookData') ?  null : JSON.parse(localStorage.getItem("addToCart"));
 function OffCanvasaddTo({ name, ...props }) {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow} className="me-2">
-        {name} <BsCartPlusFill />
-      </Button>
-      <Offcanvas show={show} onHide={handleClose} {...props}>
-        <Offcanvas.Header closeButton>
-          <BsCart3 />
-          <Offcanvas.Title>Your Books</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
-        </Offcanvas.Body>
-      </Offcanvas>
-    </>
-  );
+  let booksArr = [];
+  let getBookLists;
+  const addToCart= () => {
+    console.log(data)
+    setShow(true);
+    let bookInfo = localStorage.getItem('bookData');
+    getBookLists = JSON.parse(localStorage.getItem("addToCart"));
+    if(getBookLists != null){
+      getBookLists.push(bookInfo);
+      data = getBookLists;
+      localStorage.setItem('addToCart', JSON.stringify(getBookLists));
+    }else{
+      booksArr.push(bookInfo);
+      localStorage.setItem('addToCart', JSON.stringify(booksArr));
+    }
+    return data;
+  }
+  if(data != null){
+    return (
+      <>
+        <Button variant="primary" onClick={addToCart} className="me-2">
+          {name} <BsCartPlusFill />
+        </Button>
+        <Offcanvas show={show} onHide={handleClose} {...props}>
+          <Offcanvas.Header closeButton>
+            <label><BsCart3 />  <span>{data.length}</span></label>
+            <Offcanvas.Title>Your Books</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+          <ListGroup className='addToLists'>
+            {data.map((book, i) => {
+              let bookdata = JSON.parse(book);
+              return (
+                <ListsView
+                  key={i}
+                  count={i}
+                  title={bookdata.title}
+                  price={bookdata.price}
+                />
+              );
+            })}
+            </ListGroup>
+          <OffcanvasTitle>SubTotal : </OffcanvasTitle>
+          </Offcanvas.Body>
+        </Offcanvas>
+      </>
+    );
+  }else{
+    console.log(data)
+    return (
+      <>
+          <Button variant="primary" onClick={addToCart} className="me-2">
+            {name} <BsCartPlusFill />
+          </Button>
+      </>
+    );
+  }
 }
 
 function BookDetails(){
@@ -38,7 +76,7 @@ function BookDetails(){
     const navigate = useNavigate();
     let bookInfo = localStorage.getItem('bookData');
     bookInfo = JSON.parse(bookInfo);
-    console.log(bookInfo)
+    data = [localStorage.getItem('bookData')];
     let price = parseInt(bookInfo.price);
     function goBack(){
       localStorage.removeItem("bookData");

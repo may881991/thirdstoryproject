@@ -5,7 +5,6 @@ import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import { BsChevronLeft, BsChevronRight , BsArrowDownShort} from "react-icons/bs";
 import logo from "../../assets/images/Logo.png";
 import profileImg from "../../assets/images/person.png";
-import pdfUrl from "../../assets/books/No-Nonsense Buddhism for Beginners.pdf";
 import "./Reader.css";
 
 export default class ReaderView extends Component {
@@ -25,7 +24,7 @@ export default class ReaderView extends Component {
         const { pageNumber, numPages } = this.state;
         let bookInfo = localStorage.getItem('bookData');
         bookInfo = JSON.parse(bookInfo);
-
+        console.log(bookInfo.url)
         return(
             <Container fluid className='Reader'>
                 <nav className='d-flex justify-content-center pt-3'>
@@ -62,7 +61,7 @@ export default class ReaderView extends Component {
                         <BsChevronLeft onClick={this.goToPrevPage}/>
                     </Col>
                     <Col md={10}>
-                        <Document file={pdfUrl} onLoadSuccess={this.onDocumentLoadSuccess} width={500}>
+                        <Document file={bookInfo.url} onLoadSuccess={this.onDocumentLoadSuccess} width={500}>
                             <Page pageNumber={pageNumber} />
                             <Page pageNumber={pageNumber+1} />
                         </Document>
