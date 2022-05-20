@@ -57,3 +57,7 @@
 .offcanvas-end{
     font-family: var(--global-font-family);
 }
+.offcanvas-title label{
+    text-align: right;
+    width: 58%;
+}

@@ -8,27 +8,62 @@ import { BsArrowLeft, BsBook, BsCartPlusFill , BsCart3} from "react-icons/bs";
 import meesuImg from "../../assets/images/meesu.png";
 import natImg from "../../assets/images/Natpauksi.png";
 import "./BookDetails.css";
-    let data = localStorage.getItem('bookData') ?  null : JSON.parse(localStorage.getItem("addToCart"));
+
+let subTotal = 0;
+let data = localStorage.getItem('addToCart');
+if(data == null){
+  data = [];
+}else{
+  data = JSON.parse(localStorage.getItem('addToCart'));
+}
+console.log(data)
+let checkBookName;
+let bookArr = [];
 function OffCanvasaddTo({ name, ...props }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  let booksArr = [];
-  let getBookLists;
+
   const addToCart= () => {
-    console.log(data)
     setShow(true);
     let bookInfo = localStorage.getItem('bookData');
-    getBookLists = JSON.parse(localStorage.getItem("addToCart"));
-    if(getBookLists != null){
-      getBookLists.push(bookInfo);
-      data = getBookLists;
-      localStorage.setItem('addToCart', JSON.stringify(getBookLists));
-    }else{
-      booksArr.push(bookInfo);
-      localStorage.setItem('addToCart', JSON.stringify(booksArr));
+    let bookInfoObj = JSON.parse(bookInfo);
+    bookInfoObj.count = 1;
+    console.log(bookInfoObj)
+    let getBookName = bookInfoObj.title;
+    let getPrice = bookInfoObj.price;
+    bookInfoObj.subTotal = parseInt(getPrice);
+    subTotal += parseInt(getPrice);
+    checkBookName = bookArr.includes(getBookName);
+    bookArr.push(getBookName);
+    console.log(bookArr)
+    const bookCounts = {};
+    for (const num of bookArr) {
+      bookCounts[num] = bookCounts[num] ? bookCounts[num] + 1 : 1;
     }
-    return data;
+    console.log(checkBookName)
+    if(data != null && checkBookName == false){
+      data.push(bookInfoObj);
+      localStorage.setItem('addToCart', JSON.stringify(data));
+      return data;
+    }else{
+      console.log(bookCounts);
+      let updateData = [];
+      data.map(obj => {
+        if(obj.title == getBookName){
+          obj.count = bookCounts[getBookName];
+          obj.subTotal += parseInt(getPrice);
+          updateData.push(obj)
+        }else{
+          updateData.push(obj)
+        }
+      })
+      localStorage.setItem('addToCart', JSON.stringify(updateData));
+      data = updateData;
+      console.log(data)
+      return data;
+    }
   }
+
   if(data != null){
     return (
       <>
@@ -43,18 +78,19 @@ function OffCanvasaddTo({ name, ...props }) {
           <Offcanvas.Body>
           <ListGroup className='addToLists'>
             {data.map((book, i) => {
-              let bookdata = JSON.parse(book);
+              console.log(book)
               return (
                 <ListsView
                   key={i}
-                  count={i}
-                  title={bookdata.title}
-                  price={bookdata.price}
+                  num={i}
+                  count={book.count}
+                  title={book.title}
+                  price={book.subTotal}
                 />
               );
             })}
             </ListGroup>
-          <OffcanvasTitle>SubTotal : </OffcanvasTitle>
+          <OffcanvasTitle>SubTotal : <label>{subTotal} K</label></OffcanvasTitle>
           </Offcanvas.Body>
         </Offcanvas>
       </>
@@ -76,7 +112,6 @@ function BookDetails(){
     const navigate = useNavigate();
     let bookInfo = localStorage.getItem('bookData');
     bookInfo = JSON.parse(bookInfo);
-    data = [localStorage.getItem('bookData')];
     let price = parseInt(bookInfo.price);
     function goBack(){
       localStorage.removeItem("bookData");

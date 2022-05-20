@@ -14,6 +14,8 @@ import book2Img from "../../assets/images/book2.png";
 import book3Img from "../../assets/images/book3.png";
 import book4Img from "../../assets/images/book4.png";
 import book5Img from "../../assets/images/book5.png";
+import pdfUrl1 from "../../assets/books/No-Nonsense Buddhism for Beginners.pdf";
+import pdfUrl2 from "../../assets/books/colourful-darkness1.pdf";
 
 const data = [
   {
@@ -23,7 +25,7 @@ const data = [
     rating: 4,
     author: "မောင်နော်လာဒ်",
     img: book1Img,
-    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
+    bookUrl : pdfUrl1
   },
   {
     title: "ပြင်ပရုပ်သွင်",
@@ -32,7 +34,7 @@ const data = [
     rating: 4,
     author: "သံလွင်မြင့်",
     img: book2Img,
-    bookUrl : "https://www.clickdimensions.com/links/TestPDFfile.pdf"
+    bookUrl : pdfUrl2
   },
   {
     title: "အိုအေစစ်လေး",
@@ -41,7 +43,7 @@ const data = [
     rating: 4,
     author: "ကံသာ",
     img: book3Img,
-    bookUrl : "https://www.clickdimensions.com/links/TestPDFfile.pdf"
+    bookUrl : pdfUrl1
   },
   {
     title: "၀တ်ရည်လပ်ကီး",
@@ -50,7 +52,7 @@ const data = [
     rating: 5,
     author: "သံလွင်မြင့်",
     img: book4Img,
-    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
+    bookUrl : pdfUrl2
   },
   {
     title: "ပီနိုကီယိုနဲ့ ယမင်း",
@@ -59,7 +61,7 @@ const data = [
     rating: 5,
     author: "သံလွင်မြင့်",
     img: book5Img,
-    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
+    bookUrl : pdfUrl1
   },
   {
     title: "၀ါးပင်ငယ်ငယ် ချစ်စဖွယ်",
@@ -68,7 +70,7 @@ const data = [
     rating: 4,
     author: "မောင်နော်လာဒ်",
     img: book1Img,
-    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
+    bookUrl : pdfUrl2
   },
   {
     title: "ပြင်ပရုပ်သွင်",
@@ -77,7 +79,7 @@ const data = [
     rating: 4,
     author: "သံလွင်မြင့်",
     img: book2Img,
-    bookUrl : "https://www.clickdimensions.com/links/TestPDFfile.pdf"
+    bookUrl : pdfUrl1
   },
   {
     title: "အိုအေစစ်လေး",
@@ -86,7 +88,7 @@ const data = [
     rating: 4,
     author: "ကံသာ",
     img: book3Img,
-    bookUrl : "https://www.clickdimensions.com/links/TestPDFfile.pdf"
+    bookUrl : pdfUrl2
   },
   {
     title: "၀တ်ရည်လပ်ကီး",
@@ -95,7 +97,7 @@ const data = [
     rating: 5,
     author: "သံလွင်မြင့်",
     img: book4Img,
-    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
+    bookUrl : pdfUrl1
   },
   {
     title: "ပီနိုကီယိုနဲ့ ယမင်း",
@@ -104,7 +106,7 @@ const data = [
     rating: 5,
     author: "သံလွင်မြင့်",
     img: book5Img,
-    bookUrl : "http://www.africau.edu/images/default/sample.pdf"
+    bookUrl : pdfUrl2
   }
 ];
 

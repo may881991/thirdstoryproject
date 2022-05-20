@@ -20,7 +20,6 @@ function Cardlayout(props){
   }
 
   function bookView(){
-    console.log("bookView " + props);
     localStorage.setItem("bookData",JSON.stringify(props));
     navigate('/bookDetails')
   }
