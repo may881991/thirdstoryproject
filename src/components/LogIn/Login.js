@@ -3,10 +3,10 @@ import { auth, signInWithEmailAndPassword, signInWithGoogle } from "../../fireba
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Container , Form, Button, Row, Col} from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
-import NavBar from "../Nav/NavBar";
 import './Login.css';
 import logo from "./../../assets/images/Logo.png";
 import logInImg1 from "./../../assets/images/SweZin1.png";
+import googleImg from "./../../assets/images/google-icon.png";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -22,16 +22,13 @@ export default function Login() {
     }, [user, loading]);
     return (
         <Container fluid>
-            <Container>
-                <NavBar bg="light"/>
-            </Container>
             <Container fluid>
                 <Row>
                     <Col className="loginBg">
                         <img alt={logo} src={logo} className="logo"/>
                         <img alt={logInImg1} src={logInImg1}/>
-                        <Button variant="light" type="submit" onClick={signInWithGoogle}>
-                            Sign Up with Google
+                        <Button variant="light" type="submit" onClick={signInWithGoogle} className="position-absolute">
+                            <img alt={googleImg} src={googleImg}/> Sign In with Google
                         </Button>
                     </Col>
                     <Col className='d-flex'>

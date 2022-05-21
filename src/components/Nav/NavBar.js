@@ -1,5 +1,5 @@
 import React from 'react';
-import { auth } from "../../firebase";
+import { auth , logout} from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
@@ -10,7 +10,6 @@ import profileImg from "../../assets/images/person.png";
 function NavBar() {
   const [user] = useAuthState(auth);
   let location = useLocation();
-
   const addActiveClass = (path) => {
     return location.pathname.includes(path) ? "button" : "";
   };
@@ -37,8 +36,8 @@ function NavBar() {
                       {user.email}
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Account Details</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Log Out</Dropdown.Item>
+                          <Dropdown.Item href="#">Account Details</Dropdown.Item>
+                          <Dropdown.Item href="#" onClick={logout}>Log Out</Dropdown.Item>
                       </Dropdown.Menu>
                   </Dropdown>
               </div>
