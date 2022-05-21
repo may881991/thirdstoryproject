@@ -12,6 +12,7 @@ import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './assets/fonts/MyanmarSansPro-Regular.ttf';
 import './index.css';
+import SignUp from './components/SignUp/SignUp';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,6 +25,7 @@ ReactDOM.render(
           <Route path="/read" element={<ReadBook />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/login" element={<LogIn />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
     </BrowserRouter>
   </React.StrictMode>,
