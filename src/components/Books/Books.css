@@ -65,17 +65,6 @@
     font-size: 1.15rem;
     line-height: 1.8;
 }
- /* Card styles */
- .card{
-    background-color: #fff;
-    height: auto;
-    width: auto;
-    overflow: hidden;
-    margin: 12px;
-    border-radius: 5px;
-    box-shadow: 9px 17px 45px -29px
-                rgba(0, 0, 0, 0.2);
-}
 
 /* Card image loading */
 .card__image img {

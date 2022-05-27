@@ -61,33 +61,35 @@ const Books = () => {
     );
   }else{
     return(
-      <Container className='bookLists py-5'>
-        <Row>
-          <Col md={2} className="px-2 ml-5">
-                <div class="card__image loading"></div>
-                <div class="card__title loading"></div>
-          </Col>
-          <Col md={2} className="px-2">
-                <div class="card__image loading"></div>
-                <div class="card__title loading"></div>
-          </Col>
-          <Col md={2} className="px-2">
-                <div class="card__image loading"></div>
-                <div class="card__title loading"></div>
-          </Col>
-          <Col md={2} className="px-2">
-                <div class="card__image loading"></div>
-                <div class="card__title loading"></div>
-          </Col>
-          <Col md={2} className="px-2">
-                <div class="card__image loading"></div>
-                <div class="card__title loading"></div>
-          </Col>
-          <Col md={2} className="px-2">
-                <div class="card__image loading"></div>
-                <div class="card__title loading"></div>
-          </Col>
-        </Row>
+      <Container fluid className="ourBooks paddingZero">
+        <Container className='bookLists py-5'>
+          <Row>
+            <Col md={2} className="px-2 ml-5">
+                  <div class="card__image loading"></div>
+                  <div class="card__title loading"></div>
+            </Col>
+            <Col md={2} className="px-2">
+                  <div class="card__image loading"></div>
+                  <div class="card__title loading"></div>
+            </Col>
+            <Col md={2} className="px-2">
+                  <div class="card__image loading"></div>
+                  <div class="card__title loading"></div>
+            </Col>
+            <Col md={2} className="px-2">
+                  <div class="card__image loading"></div>
+                  <div class="card__title loading"></div>
+            </Col>
+            <Col md={2} className="px-2">
+                  <div class="card__image loading"></div>
+                  <div class="card__title loading"></div>
+            </Col>
+            <Col md={2} className="px-2">
+                  <div class="card__image loading"></div>
+                  <div class="card__title loading"></div>
+            </Col>
+          </Row>
+        </Container>
       </Container>
     )
   }
