@@ -8,7 +8,7 @@ import profileImg from "../../assets/images/person.png";
 import "./Reader.css";
 
 export default class ReaderView extends Component {
-    state = { numPages: null, pageNumber: 1 };
+    state = { numPages: null, pageNumber: 0 };
 
 	onDocumentLoadSuccess = ({ numPages }) => {
         console.log(numPages)
@@ -24,7 +24,7 @@ export default class ReaderView extends Component {
         const { pageNumber, numPages } = this.state;
         let bookInfo = localStorage.getItem('bookData');
         bookInfo = JSON.parse(bookInfo);
-        console.log(bookInfo.url)
+        console.log(numPages)
         return(
             <Container fluid className='Reader'>
                 <nav className='d-flex justify-content-center pt-3'>
@@ -62,7 +62,6 @@ export default class ReaderView extends Component {
                     </Col>
                     <Col md={10}>
                         <Document file={bookInfo.url} onLoadSuccess={this.onDocumentLoadSuccess} width={500}>
-                            <Page pageNumber={pageNumber} />
                             <Page pageNumber={pageNumber+1} />
                         </Document>
                     </Col>
@@ -72,7 +71,7 @@ export default class ReaderView extends Component {
                 </Row>
 
                 <p className='pageNum'>
-                    Page {pageNumber + 1} of {numPages}
+                    Page {pageNumber+1} of {numPages}
                 </p>
             </Container>
         );

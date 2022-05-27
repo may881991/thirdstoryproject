@@ -1,3 +1,6 @@
+.container-fluid.paddingZero{
+    padding: 0 !important;
+}
 .home{
     background: url("../../assets/images/floor.png") no-repeat right 123%;
     padding-top: 12rem;

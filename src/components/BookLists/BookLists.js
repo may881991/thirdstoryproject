@@ -14,8 +14,8 @@ import book2Img from "../../assets/images/book2.png";
 import book3Img from "../../assets/images/book3.png";
 import book4Img from "../../assets/images/book4.png";
 import book5Img from "../../assets/images/book5.png";
-import pdfUrl1 from "../../assets/books/No-Nonsense Buddhism for Beginners.pdf";
-import pdfUrl2 from "../../assets/books/colourful-darkness1.pdf";
+import pdfUrl1 from "../../assets/books/Book1.pdf";
+import pdfUrl2 from "../../assets/books/Book2.pdf";
 
 const data = [
   {
@@ -122,7 +122,7 @@ for (let number = 1; number <= 5; number++) {
 
 function BookLists() {
     return(
-        <Container fluid className='sidebarBg'>
+        <Container fluid className='sidebarBg paddingZero'>
         <NavBar bg="light"/>
             <Container fluid className='banner'>
                 <Row>

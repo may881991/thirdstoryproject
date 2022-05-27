@@ -1,8 +1,10 @@
 import React from 'react';
-import { auth , logout} from "../../firebase";
+import { auth , logout, GetUser} from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
 import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
+import {BsCart3} from "react-icons/bs";
 import "./NavBar.css";
 import logo from "../../assets/images/Logo.png";
 import profileImg from "../../assets/images/person.png";
@@ -14,7 +16,6 @@ function NavBar() {
     return location.pathname.includes(path) ? "button" : "";
   };
   if(user){
-    console.log(user.email)
     return (
       <Navbar expand="lg" className="fixed-top shadow-sm">
         <Container className="nav-container">
@@ -29,8 +30,9 @@ function NavBar() {
               <Nav.Link className={`space-two ${addActiveClass("/activities")}`} href="/activities" > Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" > About Us</Nav.Link>
               <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link>
-              <div className='d-flex justify-content-end'>
-                  <img alt={profileImg} src={profileImg}/>
+              <div className='d-flex justify-content-end profile'>
+                  <BsCart3 /> 
+                  <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
                       <Dropdown.Toggle id="dropdown-basic">
                       {user.email}

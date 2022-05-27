@@ -14,7 +14,7 @@ import trainingImg from "../../assets/images/ourtraining.png";
 
 function Home() {
   return (
-    <Container fluid>
+    <Container fluid className='paddingZero'>
         <Container>
           <NavBar bg="light"/>
         </Container>

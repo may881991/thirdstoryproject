@@ -29,17 +29,30 @@ const signInWithGoogle = async () => {
       });
     }
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    console.error(err.message);
   }
 };
+
+const getUserData = async () => {
+  try{
+    const userdb = collection(db, "books");
+    const getData =  await getDocs(userdb);
+    console.log(getData)
+    getData.forEach((data) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(data.data());
+    });
+  }catch(err){
+    console.error(err.message)
+  }
+}
+
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
     console.log(res)
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    console.error(err.message);
   }
 };
 const registerWithEmailAndPassword = async (displayName, email, password) => {
@@ -49,22 +62,21 @@ const registerWithEmailAndPassword = async (displayName, email, password) => {
     const user = res.user;
     await addDoc(collection(db, "users"), {
       uid: user.uid,
-      displayName: user.displayName,
+      name: displayName,
       authProvider: "local",
       email,
     });
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    console.error(err.message);
   }
 };
+
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
     alert("Password reset link sent!");
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    console.error(err.message);
   }
 };
 const logout = () => {
@@ -79,4 +91,5 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
+  getUserData,
 };

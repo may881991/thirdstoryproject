@@ -21,8 +21,7 @@
     border-radius: 5px;
 }
 .react-pdf__Page{
-    display: inline-block;
-    width: 50%;
+    display: flex;
 }
 .react-pdf__Page canvas{
     width: 100% !important;
