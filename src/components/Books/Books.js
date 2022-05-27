@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { getDocs, collection} from "firebase/firestore";
 import { db } from '../../firebase.js';
 import './Books.css';
-import { Container, Row, Col ,Form ,Button } from "react-bootstrap";
-import { BsSearch } from "react-icons/bs";
+import { Container, Row, Col  } from "react-bootstrap";
 import Carousel from 'react-bootstrap/Carousel';
-import treeImg from "../../assets/images/tree.png";
-import puloneImg from "../../assets/images/pulone.png";
 
 const Books = () => {
   const [bookdata , setData] = useState([]);
@@ -27,59 +24,77 @@ const Books = () => {
       }
   }
   console.log(bookdata)
-  return (
-    <Container fluid className="ourBooks paddingZero">
-      <Row className='mx-auto container'>
-          <Col md={2} className="py-3">
-            {<img src={treeImg} alt={treeImg} className="img-fluid"/> }
-          </Col>
-          <Col md={8} className="text-center bannerText">
-          <h2>Our Books</h2>
-          <p>Our books are written by Myanmar authors and illustrated by Myanmar illustrators for a Myanmar audience.  They are first and foremost entertaining and fun to read, but they also have important messages addressing peace, tolerance, diversity, girl empowerment, environment, disability rights and child rights. </p>
-          <Form id='search' className='p-1 col-md-10 mx-auto'>
-                <Form.Control type="email" placeholder="Explore More Books" className='text-center'/>
-                <BsSearch />
-          </Form>
-          </Col>
-          <Col md={2} className="py-3">
-            {<img src={puloneImg} alt={puloneImg} className="img-fluid"/> }
-          </Col>
-      </Row>
-      <Container className='bookLists pt-5'>
-        <h4>Myanmar</h4>
-        <Carousel variant="dark" className='my-5' indicators={false}>
-          <Carousel.Item interval={20000}>
-            <Row>
-              {bookdata.map((data) => (
-                  <BookFrame 
-                  title={data.title} 
-                  imgUrl={data.bookCover}/>
-                ))
-              }
-            </Row>
-          </Carousel.Item>
-        </Carousel>
+  if(bookdata.length != 0){
+    return (
+      <Container fluid className="ourBooks paddingZero">
+        <Container className='bookLists pt-5'>
+          <h4>Myanmar</h4>
+          <Carousel variant="dark" className='my-5' indicators={false}>
+            <Carousel.Item interval={20000}>
+              <Row>
+                {bookdata.map((data) => (
+                    <BookFrame 
+                    title={data.title} 
+                    imgUrl={data.bookCover}/>
+                  ))
+                }
+              </Row>
+            </Carousel.Item>
+          </Carousel>
+        </Container>
+        <Container className='bookLists pb-5'>
+          <h4>Bilingual (M/E)</h4>
+          <Carousel variant="dark" className='my-5' indicators={false}>
+            <Carousel.Item interval={20000}>
+              <Row>
+                {bookdata.map((data) => (
+                    <BookFrame 
+                    title={data.title} 
+                    imgUrl={data.bookCover}/>
+                  ))
+                }
+              </Row>
+            </Carousel.Item>
+          </Carousel>
+        </Container>
       </Container>
-      <Container className='bookLists pb-5'>
-        <h4>Bilingual (M/E)</h4>
-        <Carousel variant="dark" className='my-5' indicators={false}>
-          <Carousel.Item interval={20000}>
-            <Row>
-              {bookdata.map((data) => (
-                  <BookFrame 
-                  title={data.title} 
-                  imgUrl={data.bookCover}/>
-                ))
-              }
-            </Row>
-          </Carousel.Item>
-        </Carousel>
+    );
+  }else{
+    return(
+      <Container className='bookLists py-5'>
+        <Row>
+          <Col md={2} className="px-2 ml-5">
+                <div class="card__image loading"></div>
+                <div class="card__title loading"></div>
+          </Col>
+          <Col md={2} className="px-2">
+                <div class="card__image loading"></div>
+                <div class="card__title loading"></div>
+          </Col>
+          <Col md={2} className="px-2">
+                <div class="card__image loading"></div>
+                <div class="card__title loading"></div>
+          </Col>
+          <Col md={2} className="px-2">
+                <div class="card__image loading"></div>
+                <div class="card__title loading"></div>
+          </Col>
+          <Col md={2} className="px-2">
+                <div class="card__image loading"></div>
+                <div class="card__title loading"></div>
+          </Col>
+          <Col md={2} className="px-2">
+                <div class="card__image loading"></div>
+                <div class="card__title loading"></div>
+          </Col>
+        </Row>
       </Container>
-    </Container>
-  );
+    )
+  }
 }
 
 const BookFrame = ({title , imgUrl}) => {
+  console.log(title)
   const coverUrl = require('../../assets/images/' + imgUrl);
   return (
       <Col md={2} className="px-2">

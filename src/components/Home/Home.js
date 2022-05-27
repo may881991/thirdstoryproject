@@ -5,12 +5,15 @@ import Books from '../Books/Books';
 import Customers from '../Customers/Customers';
 import Help from '../Help/Help';
 import Footer from '../Footer/Footer';
-import { Container, Row, Col ,Button } from "react-bootstrap";
+import { Container, Row, Col ,Button, Form} from "react-bootstrap";
+import { BsSearch } from "react-icons/bs";
 import bannerImg from "../../assets/images/banner-img1.png";
 import bgWYLK from "../../assets/images/WYLK1.png";
 import bgYamin from "../../assets/images/yamin.png";
 import aboutImg from "../../assets/images/aboutus.png";
 import trainingImg from "../../assets/images/ourtraining.png";
+import treeImg from "../../assets/images/tree.png";
+import puloneImg from "../../assets/images/pulone.png";
 
 function Home() {
   return (
@@ -31,6 +34,25 @@ function Home() {
                   {<img src={bannerImg} alt={bannerImg}  className="img-fluid"/> }
                 </Col>
             </Row>
+        </section> 
+
+        <section fluid className="ourBooks paddingZero">
+        <Row className='mx-auto container'>
+            <Col md={2} className="py-3">
+              {<img src={treeImg} alt={treeImg} className="img-fluid"/> }
+            </Col>
+            <Col md={8} className="text-center bannerText">
+            <h2>Our Books</h2>
+            <p>Our books are written by Myanmar authors and illustrated by Myanmar illustrators for a Myanmar audience.  They are first and foremost entertaining and fun to read, but they also have important messages addressing peace, tolerance, diversity, girl empowerment, environment, disability rights and child rights. </p>
+            <Form id='search' className='p-1 col-md-10 mx-auto'>
+                  <Form.Control type="email" placeholder="Explore More Books" className='text-center'/>
+                  <BsSearch />
+            </Form>
+            </Col>
+            <Col md={2} className="py-3">
+              {<img src={puloneImg} alt={puloneImg} className="img-fluid"/> }
+            </Col>
+        </Row>
         </section>
         <Books />
         <Container fluid className="aboutUs">
