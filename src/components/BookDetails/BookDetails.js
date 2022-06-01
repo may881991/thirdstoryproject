@@ -111,6 +111,7 @@ function BookDetails(){
     document.body.classList.add('bookDetail');
     const navigate = useNavigate();
     let bookInfo = localStorage.getItem('bookData');
+    console.log(bookInfo)
     bookInfo = JSON.parse(bookInfo);
     let price = parseInt(bookInfo.price);
     function goBack(){
@@ -134,12 +135,12 @@ function BookDetails(){
                     <Button variant="link" onClick={goBack}> <BsArrowLeft />Back</Button>
                     <Row>
                       <Col md={4}>
-                        {<img src={bookInfo.img} alt={"BookCover"} className="img-fluid"/> }
+                        {<img src={bookInfo.bookCover} alt={"BookCover"} className="img-fluid"/> }
                       </Col>
-                      <Col md={6} className="offset-md-1">
+                      <Col md={6} className="offset-md-1 pt-5">
                         <h5>{bookInfo.title}</h5>
                         <p><label>Author : </label> {bookInfo.author}  </p>
-                        <p><label>Illustrator : </label> {bookInfo.designer}  </p>
+                        <p><label>Illustrator : </label> {bookInfo.illustrator}  </p>
                         <p><label>Price : </label> {price} kyats</p>
                         <Button variant="outline-primary" onClick={readBook}> <BsBook /> Read </Button>
                         {['end'].map((placement, idx) => (

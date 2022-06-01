@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, Button } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import { BsCart3 } from "react-icons/bs";
 import "./Card.css";
 
 
 function Cardlayout(props){
-
+ 
   const checkAuthor = props.author;
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ function Cardlayout(props){
   return (
     <Card className="col-md-4" onClick={bookView}>
       <Card.Body className="">
-        <Card.Img variant="top" src={props.img} />
+        <Card.Img variant="top" src={props.bookCover} />
         <Card.Title className="">
           {props.title}
           <span className="age-group">{props.price}</span>

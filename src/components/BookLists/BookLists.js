@@ -1,126 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './BookLists.css';
 import NavBar from "../Nav/NavBar";
 import Card from "../Card/Card";
 import { Container, Row, Col ,Form, ListGroup,Pagination } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
+import { db } from '../../firebase.js';
+import { getDocs, collection} from "firebase/firestore";
 import Footer from '../Footer/Footer';
 import treeImg from "../../assets/images/tree.png";
 import squirrelImg from "../../assets/images/Squirrel1.png";
 import rabbitImg from "../../assets/images/Rabbit1.png";
 import bgYamin from "../../assets/images/yamin.png";
-import book1Img from "../../assets/images/book1.png";
-import book2Img from "../../assets/images/book2.png";
-import book3Img from "../../assets/images/book3.png";
-import book4Img from "../../assets/images/book4.png";
-import book5Img from "../../assets/images/book5.png";
-import pdfUrl1 from "../../assets/books/Book1.pdf";
-import pdfUrl2 from "../../assets/books/Book2.pdf";
-
-const data = [
-  {
-    title: "၀ါးပင်ငယ်ငယ် ချစ်စဖွယ်",
-    price: "2500 K",
-    creator : "ကာကြီး",
-    rating: 4,
-    author: "မောင်နော်လာဒ်",
-    img: book1Img,
-    bookUrl : pdfUrl1
-  },
-  {
-    title: "ပြင်ပရုပ်သွင်",
-    price: "3000 K",
-    creator : "ဖေသစ်တည်",
-    rating: 4,
-    author: "သံလွင်မြင့်",
-    img: book2Img,
-    bookUrl : pdfUrl2
-  },
-  {
-    title: "အိုအေစစ်လေး",
-    price: "2500 K",
-    creator : "သတိုးဆွေ",
-    rating: 4,
-    author: "ကံသာ",
-    img: book3Img,
-    bookUrl : pdfUrl1
-  },
-  {
-    title: "၀တ်ရည်လပ်ကီး",
-    price: "2500 K",
-    creator : "စိုင်းခမ်းလိန်",
-    rating: 5,
-    author: "သံလွင်မြင့်",
-    img: book4Img,
-    bookUrl : pdfUrl2
-  },
-  {
-    title: "ပီနိုကီယိုနဲ့ ယမင်း",
-    price: "2500 K",
-    creator : "၀လုံး",
-    rating: 5,
-    author: "သံလွင်မြင့်",
-    img: book5Img,
-    bookUrl : pdfUrl1
-  },
-  {
-    title: "၀ါးပင်ငယ်ငယ် ချစ်စဖွယ်",
-    price: "2500 K",
-    creator : "ကာကြီး",
-    rating: 4,
-    author: "မောင်နော်လာဒ်",
-    img: book1Img,
-    bookUrl : pdfUrl2
-  },
-  {
-    title: "ပြင်ပရုပ်သွင်",
-    price: "2500 K",
-    illustrator : "ဖေသစ်တည်",
-    rating: 4,
-    author: "သံလွင်မြင့်",
-    img: book2Img,
-    bookUrl : pdfUrl1
-  },
-  {
-    title: "အိုအေစစ်လေး",
-    price: "2500 K",
-    illustrator : "သတိုးဆွေ",
-    rating: 4,
-    author: "ကံသာ",
-    img: book3Img,
-    bookUrl : pdfUrl2
-  },
-  {
-    title: "၀တ်ရည်လပ်ကီး",
-    price: "2500 K",
-    illustrator : "စိုင်းခမ်းလိန်",
-    rating: 5,
-    author: "သံလွင်မြင့်",
-    img: book4Img,
-    bookUrl : pdfUrl1
-  },
-  {
-    title: "ပီနိုကီယိုနဲ့ ယမင်း",
-    price: "2500 K",
-    creator : "၀လုံး",
-    rating: 5,
-    author: "သံလွင်မြင့်",
-    img: book5Img,
-    bookUrl : pdfUrl2
-  }
-];
-
-let active = 2;
-let items = [];
-for (let number = 1; number <= 5; number++) {
-  items.push(
-    <Pagination.Item key={number} active={number === active}>
-      {number}
-    </Pagination.Item>,
-  );
-}
 
 function BookLists() {
+  const [bookdata , setData] = useState([]);
+  window.addEventListener('load', () => {
+    getBookData();
+  });
+  let active = 2;
+  let items = [];
+  for (let number = 1; number <= bookdata.length; number++) {
+    items.push(
+      <Pagination.Item key={number} active={number === active}>
+        {number}
+      </Pagination.Item>,
+    );
+  }
+
+  const getBookData = async ()=>{
+      try{
+        const userdb = collection(db, "books");
+        const getData =  await getDocs(userdb);
+        console.log(getData)
+        getData.forEach((ele) => {
+          var data = ele.data();
+          setData(arr => [...arr , data]);
+        });
+      }catch(err){
+        console.error(err.message)
+      }
+  }
+  console.log(bookdata)
+  if(bookdata !== null){
     return(
         <Container fluid className='sidebarBg paddingZero'>
         <NavBar bg="light"/>
@@ -156,17 +77,17 @@ function BookLists() {
                   </ListGroup>
                 </Col>
                 <Col md={10} className="row">
-                  {data.map((card, i) => {
+                  {bookdata.map((card, i) => {
+                    const coverUrl = require('../../assets/images/' + card.bookCover);
                       return (
                         <Card
                           key={i}
-                          img={card.img}
+                          bookCover={coverUrl}
                           title={card.title}
                           price={card.price}
-                          rating={card.rating}
                           author={card.author}
-                          url={card.bookUrl}
-                          designer={card.creator}
+                          bookUrl={card.bookUrl}
+                          illustrator={card.illustrator}
                         />
                       );
                     })}
@@ -182,6 +103,72 @@ function BookLists() {
         <Footer />
         </Container>
     );
+  }else{
+    <Container fluid className='sidebarBg paddingZero'>
+        <NavBar bg="light"/>
+            <Container fluid className='banner'>
+                <Row>
+                    <Col md={2} className="py-3">
+                    {<img src={treeImg} alt={treeImg} className="bannerImg1 img-fluid"/> }
+                    </Col>
+                    <Col md={8} className="text-center bannerText">
+                    <h2>Our Book Lists</h2>
+                    <p>Our books are written by Myanmar authors and illustrated by Myanmar creators for a Myanmar audience.  They are first and foremost entertaining and fun to read, but they also have important messages addressing peace, tolerance, diversity, girl empowerment, environment, disability rights and child rights. </p>
+                    <Form id='search' className='p-1 col-md-10 mx-auto'>
+                        <Form.Control type="email" placeholder="Search book titles and keywords" className='text-center'/>
+                        <BsSearch />
+                    </Form>
+                    </Col>
+                    <Col md={2} className="py-3">
+                    {<img src={bgYamin} alt={bgYamin} className="bannerImg2 img-fluid"/> }
+                    </Col>
+                </Row>
+            </Container>
+            {<img src={squirrelImg} alt={squirrelImg} className="bgItem6" />}
+            <Container className='bookItems'>
+              <Row>
+                <Col md={2}>
+                  <h5>Categories</h5>
+                  <hr/>
+                  <ListGroup>
+                    <ListGroup.Item>Burmese</ListGroup.Item>
+                    <ListGroup.Item>English</ListGroup.Item>
+                    <ListGroup.Item>Other Myanmar Language</ListGroup.Item>
+                    <ListGroup.Item>Other Items</ListGroup.Item>
+                  </ListGroup>
+                </Col>
+                <Col md={10} className="row">
+                    <Col md={4} className="px-2 ml-5">
+                          <div class="card__image loading"></div>
+                          <div class="card__title loading"></div>
+                    </Col>
+                    <Col md={4} className="px-2">
+                          <div class="card__image loading"></div>
+                          <div class="card__title loading"></div>
+                    </Col>
+                    <Col md={4} className="px-2">
+                          <div class="card__image loading"></div>
+                          <div class="card__title loading"></div>
+                    </Col>
+                    <Col md={4} className="px-2">
+                          <div class="card__image loading"></div>
+                          <div class="card__title loading"></div>
+                    </Col>
+                    <Col md={4} className="px-2">
+                          <div class="card__image loading"></div>
+                          <div class="card__title loading"></div>
+                    </Col>
+                    <Col md={4} className="px-2">
+                          <div class="card__image loading"></div>
+                          <div class="card__title loading"></div>
+                    </Col>
+                </Col>
+              </Row>
+            </Container>
+        {<img src={rabbitImg} alt={rabbitImg} className="bgItem7" />}
+        <Footer />
+        </Container>
+  }
 }
 
 export default BookLists;

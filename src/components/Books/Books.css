@@ -42,7 +42,7 @@
 }
 .carousel-item .col-md-2{
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
-    height: 285px;
+    height: 330px;
     margin-right: 10px;
     cursor: pointer;
 }

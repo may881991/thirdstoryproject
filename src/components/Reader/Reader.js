@@ -8,23 +8,28 @@ import profileImg from "../../assets/images/person.png";
 import "./Reader.css";
 
 export default class ReaderView extends Component {
-    state = { numPages: null, pageNumber: 0 };
+    state = { numPages: null, pageNumber: 0 , };
 
 	onDocumentLoadSuccess = ({ numPages }) => {
-        console.log(numPages)
 		this.setState({ numPages });
 	};
 
 	goToPrevPage = () =>
 		this.setState((state) => ({ pageNumber: state.pageNumber - 1 }));
-	goToNextPage = () =>
+	goToNextPage = () => {
 		this.setState((state) => ({ pageNumber: state.pageNumber + 1 }));
+        console.log(this.state.pageNumber)
+        if(this.state.pageNumber > 3){
+            console.log(this.state.pageNumber)
+        }
+    }
     
     render() {
         const { pageNumber, numPages } = this.state;
         let bookInfo = localStorage.getItem('bookData');
         bookInfo = JSON.parse(bookInfo);
-        console.log(numPages)
+        const pdfUrl = require('../../assets/books/' + bookInfo.bookUrl);
+        console.log(pdfUrl)
         return(
             <Container fluid className='Reader'>
                 <nav className='d-flex justify-content-center pt-3'>
@@ -61,7 +66,7 @@ export default class ReaderView extends Component {
                         <BsChevronLeft onClick={this.goToPrevPage}/>
                     </Col>
                     <Col md={10}>
-                        <Document file={bookInfo.url} onLoadSuccess={this.onDocumentLoadSuccess} width={500}>
+                        <Document file={pdfUrl} onLoadSuccess={this.onDocumentLoadSuccess} width={500}>
                             <Page pageNumber={pageNumber+1} />
                         </Document>
                     </Col>

@@ -35,13 +35,24 @@ const signInWithGoogle = async () => {
 
 const getUserData = async () => {
   try{
-    const userdb = collection(db, "books");
+    const userdb = collection(db, "users");
     const getData =  await getDocs(userdb);
     console.log(getData)
     getData.forEach((data) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(data.data());
     });
+  }catch(err){
+    console.error(err.message)
+  }
+}
+
+const getBookData = async ()=>{
+  try{
+    const bookDb = collection(db, "books");
+    const getData =  await getDocs(bookDb);
+    console.log(getData)
+    return getData;
   }catch(err){
     console.error(err.message)
   }
@@ -92,4 +103,5 @@ export {
   sendPasswordReset,
   logout,
   getUserData,
+  getBookData,
 };
