@@ -124,7 +124,7 @@ function BookDetails(){
     }
 
     return(
-        <Container fluid>
+        <Container fluid className='paddingZero'>
             <NavBar bg="light"/>
             <Container fluid className='banner'>
             <Row className='mx-auto container'>

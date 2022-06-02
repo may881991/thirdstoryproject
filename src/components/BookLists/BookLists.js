@@ -13,10 +13,13 @@ import rabbitImg from "../../assets/images/Rabbit1.png";
 import bgYamin from "../../assets/images/yamin.png";
 
 function BookLists() {
-  const [bookdata , setData] = useState([]);
-  window.addEventListener('load', () => {
+  let data = localStorage.getItem('bookLists');
+  let [bookdata , setData] = useState([]);
+  if(data == null){
     getBookData();
-  });
+  }else{
+    bookdata = JSON.parse(data)
+  }
   let active = 2;
   let items = [];
   for (let number = 1; number <= bookdata.length; number++) {
@@ -31,7 +34,6 @@ function BookLists() {
       try{
         const userdb = collection(db, "books");
         const getData =  await getDocs(userdb);
-        console.log(getData)
         getData.forEach((ele) => {
           var data = ele.data();
           setData(arr => [...arr , data]);
@@ -139,28 +141,28 @@ function BookLists() {
                 </Col>
                 <Col md={10} className="row">
                     <Col md={4} className="px-2 ml-5">
-                          <div class="card__image loading"></div>
-                          <div class="card__title loading"></div>
+                          <div className="card__image loading"></div>
+                          <div className="card__title loading"></div>
                     </Col>
                     <Col md={4} className="px-2">
-                          <div class="card__image loading"></div>
-                          <div class="card__title loading"></div>
+                          <div className="card__image loading"></div>
+                          <div className="card__title loading"></div>
                     </Col>
                     <Col md={4} className="px-2">
-                          <div class="card__image loading"></div>
-                          <div class="card__title loading"></div>
+                          <div className="card__image loading"></div>
+                          <div className="card__title loading"></div>
                     </Col>
                     <Col md={4} className="px-2">
-                          <div class="card__image loading"></div>
-                          <div class="card__title loading"></div>
+                          <div className="card__image loading"></div>
+                          <div className="card__title loading"></div>
                     </Col>
                     <Col md={4} className="px-2">
-                          <div class="card__image loading"></div>
-                          <div class="card__title loading"></div>
+                          <div className="card__image loading"></div>
+                          <div className="card__title loading"></div>
                     </Col>
                     <Col md={4} className="px-2">
-                          <div class="card__image loading"></div>
-                          <div class="card__title loading"></div>
+                          <div className="card__image loading"></div>
+                          <div className="card__title loading"></div>
                     </Col>
                 </Col>
               </Row>

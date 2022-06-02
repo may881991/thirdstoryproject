@@ -1,7 +1,6 @@
-import React from 'react';
-import { auth , logout, GetUser} from "../../firebase";
+import React, { useState } from 'react';
+import { auth , logout, getUserData} from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth } from "firebase/auth";
 import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import {BsCart3} from "react-icons/bs";
@@ -11,11 +10,26 @@ import profileImg from "../../assets/images/person.png";
 
 function NavBar() {
   const [user] = useAuthState(auth);
+  const [userInfo] = useState({});
   let location = useLocation();
+  const userData = async ()=> {
+    try{
+      const result = await getUserData(user);
+      result.forEach((data) => {
+        // console.log(data.data())
+        return userInfo = data.data();
+      });
+    }catch(err){
+      console.error(err.message)
+    }
+  }
   const addActiveClass = (path) => {
     return location.pathname.includes(path) ? "button" : "";
   };
+
   if(user){
+    userData()
+    console.log(userInfo);
     return (
       <Navbar expand="lg" className="fixed-top shadow-sm">
         <Container className="nav-container">

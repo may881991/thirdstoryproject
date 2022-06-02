@@ -33,15 +33,12 @@ const signInWithGoogle = async () => {
   }
 };
 
-const getUserData = async () => {
+const getUserData = async (user) => {
+  console.log(user.uid)
   try{
-    const userdb = collection(db, "users");
+    const userdb = query(collection(db, "users"), where("uid", "==", user.uid));
     const getData =  await getDocs(userdb);
-    console.log(getData)
-    getData.forEach((data) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(data.data());
-    });
+    return getData;
   }catch(err){
     console.error(err.message)
   }

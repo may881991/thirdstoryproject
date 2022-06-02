@@ -50,7 +50,7 @@
     width: 100%;
     text-align: center;
     padding: 15px 10px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     background: var(--global-color-white);
 }
 .carousel-control-next{

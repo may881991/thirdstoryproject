@@ -18,7 +18,6 @@ const Books = () => {
       try{
         const userdb = collection(db, "books");
         const getData =  await getDocs(userdb);
-        console.log(getData)
         getData.forEach((ele) => {
           var data = ele.data();
           setData(arr => [...arr , data]);
@@ -30,9 +29,8 @@ const Books = () => {
   const bookLists = () => {  
     navigate('/stories')
   }
-  console.log(bookdata)
   if(bookdata.length !== 0){
-
+    // console.log(bookdata)
     localStorage.setItem('bookLists' , JSON.stringify(bookdata));
     const groupBylanguage = bookdata.reduce((group, value) => {
       const { language } = value;
@@ -70,56 +68,56 @@ const Books = () => {
         <Container className='bookLists py-5'>
           <Row>
             <Col md={2} className="px-2 ml-5">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
             <Col md={2} className="px-2">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
             <Col md={2} className="px-2">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
             <Col md={2} className="px-2">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
             <Col md={2} className="px-2">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
             <Col md={2} className="px-2">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
           </Row>
         </Container>
         <Container className='bookLists py-5'>
           <Row>
             <Col md={2} className="px-2 ml-5">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
             <Col md={2} className="px-2">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
             <Col md={2} className="px-2">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
             <Col md={2} className="px-2">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
             <Col md={2} className="px-2">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
             <Col md={2} className="px-2">
-                  <div class="card__image loading"></div>
-                  <div class="card__title loading"></div>
+                  <div className="card__image loading"></div>
+                  <div className="card__title loading"></div>
             </Col>
           </Row>
         </Container>
@@ -130,7 +128,7 @@ const Books = () => {
 
 
 const BookFrame = ({bookInfo}) => {
-  console.log(bookInfo)
+  // console.log(bookInfo)
   const coverUrl = require('../../assets/images/' + bookInfo.bookCover);
 
   const navigate = useNavigate();
