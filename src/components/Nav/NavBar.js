@@ -10,26 +10,12 @@ import profileImg from "../../assets/images/person.png";
 
 function NavBar() {
   const [user] = useAuthState(auth);
-  const [userInfo] = useState({});
   let location = useLocation();
-  const userData = async ()=> {
-    try{
-      const result = await getUserData(user);
-      result.forEach((data) => {
-        // console.log(data.data())
-        return userInfo = data.data();
-      });
-    }catch(err){
-      console.error(err.message)
-    }
-  }
   const addActiveClass = (path) => {
     return location.pathname.includes(path) ? "button" : "";
   };
-
+  console.log(user)
   if(user){
-    userData()
-    console.log(userInfo);
     return (
       <Navbar expand="lg" className="fixed-top shadow-sm">
         <Container className="nav-container">
@@ -46,16 +32,16 @@ function NavBar() {
               <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link>
               <div className='d-flex justify-content-end profile'>
                   <BsCart3 /> 
-                  <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
                       <Dropdown.Toggle id="dropdown-basic">
-                      {user.email}
+                      {user.displayName}
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                           <Dropdown.Item href="#">Account Details</Dropdown.Item>
                           <Dropdown.Item href="#" onClick={logout}>Log Out</Dropdown.Item>
                       </Dropdown.Menu>
                   </Dropdown>
+                  <img alt={profileImg} src={profileImg} className="profileImg"/>
               </div>
             </Nav>
           </Navbar.Collapse>

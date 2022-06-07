@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut} from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail,updateProfile, signOut} from "firebase/auth";
 import { getFirestore, query, getDocs, collection, where, addDoc} from "firebase/firestore";
 const firebaseConfig = {
     apiKey: "AIzaSyDilgOKBP1iFC1y3rmz1K7kOQbzv_YrgE0",
@@ -34,7 +34,6 @@ const signInWithGoogle = async () => {
 };
 
 const getUserData = async (user) => {
-  console.log(user.uid)
   try{
     const userdb = query(collection(db, "users"), where("uid", "==", user.uid));
     const getData =  await getDocs(userdb);
@@ -48,7 +47,7 @@ const getBookData = async ()=>{
   try{
     const bookDb = collection(db, "books");
     const getData =  await getDocs(bookDb);
-    console.log(getData)
+    console.log(getData.data())
     return getData;
   }catch(err){
     console.error(err.message)
@@ -73,6 +72,13 @@ const registerWithEmailAndPassword = async (displayName, email, password) => {
       name: displayName,
       authProvider: "local",
       email,
+    });
+    await updateProfile(auth.currentUser, {
+      displayName: displayName
+    }).then(() => {
+      console.log("updated")
+    }).catch((error) => {
+      console.log(error)
     });
   } catch (err) {
     console.error(err.message);
