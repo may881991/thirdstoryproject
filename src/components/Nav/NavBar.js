@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { auth , logout, getUserData} from "../../firebase";
+import React from 'react';
+import { auth , logout} from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
@@ -14,7 +14,7 @@ function NavBar() {
   const addActiveClass = (path) => {
     return location.pathname.includes(path) ? "button" : "";
   };
-  console.log(user)
+
   if(user){
     return (
       <Navbar expand="lg" className="fixed-top shadow-sm">
@@ -32,6 +32,7 @@ function NavBar() {
               <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link>
               <div className='d-flex justify-content-end profile'>
                   <BsCart3 /> 
+                  <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
                       <Dropdown.Toggle id="dropdown-basic">
                       {user.displayName}
@@ -41,7 +42,6 @@ function NavBar() {
                           <Dropdown.Item href="#" onClick={logout}>Log Out</Dropdown.Item>
                       </Dropdown.Menu>
                   </Dropdown>
-                  <img alt={profileImg} src={profileImg} className="profileImg"/>
               </div>
             </Nav>
           </Navbar.Collapse>

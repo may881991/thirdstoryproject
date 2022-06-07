@@ -19,8 +19,7 @@ function Help() {
                     <Card.Body>
                         <Card.Title>Buy Our Books</Card.Title>
                         <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
+                        Our books are fantastic for your favorite little person, your neighbor's children...
                         </Card.Text>
                         <Card.Link href="#">Read More<BsArrowRight /></Card.Link>
                     </Card.Body>
@@ -32,8 +31,7 @@ function Help() {
                     <Card.Body>
                         <Card.Title>Pass it On</Card.Title>
                         <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
+                        An exclusive program at Hla Day is Pass it On where you can choose to pass it on yourself...
                         </Card.Text>
                         <Card.Link href="#">Read More <BsArrowRight /></Card.Link>
                     </Card.Body>
@@ -45,8 +43,7 @@ function Help() {
                     <Card.Body>
                         <Card.Title>Bring a Bag of Books</Card.Title>
                         <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
+                        Are you coming to Myanmar for holidays or work?  Maximize your maximum luggage limits by ...
                         </Card.Text>
                         <Card.Link href="#">Read More <BsArrowRight /></Card.Link>
                     </Card.Body>
@@ -55,7 +52,7 @@ function Help() {
             </Row>
             <div className='d-flex justify-content-center pb-5'>
               <Button className="btn btn-primary downloadBtn" href="#">
-                      Download Now!
+                      Donate Now!
                 </Button>
             </div>
 

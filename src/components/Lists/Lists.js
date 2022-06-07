@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListGroup } from "react-bootstrap";
-import { BsTrash, BsPlus, BsD, BsDash } from "react-icons/bs";
+import { BsTrash, BsPlus, BsDash } from "react-icons/bs";
 import "./Lists.css";
 
 function ListsView(props){

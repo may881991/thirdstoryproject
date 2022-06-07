@@ -16,7 +16,9 @@ function BookLists() {
   let data = localStorage.getItem('bookLists');
   let [bookdata , setData] = useState([]);
   if(data == null){
-    getBookData();
+    window.addEventListener('load', () => {
+      getBookData();
+    });
   }else{
     bookdata = JSON.parse(data)
   }
@@ -44,6 +46,13 @@ function BookLists() {
   }
   console.log(bookdata)
   if(bookdata !== null){
+    const groupBylanguage = bookdata.reduce((group, value) => {
+      const { language } = value;
+      group[language] = group[language] ?? [];
+      group[language].push(value);
+      return group;
+    }, {});
+    console.log(groupBylanguage)
     return(
         <Container fluid className='sidebarBg paddingZero'>
         <NavBar bg="light"/>
@@ -72,10 +81,9 @@ function BookLists() {
                   <h5>Categories</h5>
                   <hr/>
                   <ListGroup>
-                    <ListGroup.Item>Burmese</ListGroup.Item>
-                    <ListGroup.Item>English</ListGroup.Item>
-                    <ListGroup.Item>Other Myanmar Language</ListGroup.Item>
-                    <ListGroup.Item>Other Items</ListGroup.Item>
+                      {Object.entries(groupBylanguage).map(([item])=> (
+                        <ListGroup.Item>{item}</ListGroup.Item>
+                      ))}
                   </ListGroup>
                 </Col>
                 <Col md={10} className="row">

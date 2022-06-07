@@ -61,3 +61,7 @@
     text-align: right;
     width: 58%;
 }
+.btn-outline-light{
+    width: 100%;
+    border-radius: 10px !important;
+}

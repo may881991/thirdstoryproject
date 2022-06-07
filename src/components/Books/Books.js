@@ -41,9 +41,9 @@ const Books = () => {
 
     return (
       <Container fluid className="ourBooks paddingZero">
-         {Object.entries(groupBylanguage).map(([key,value])=> (
+         {Object.entries(groupBylanguage).map(([item,value])=> (
             <Container className='bookLists pt-5'>
-            <h4>{key}</h4>
+            <h4>{item}</h4>
             <Carousel variant="dark" className='my-5' indicators={false}>
               <Carousel.Item interval={20000}>
                 <Row>
