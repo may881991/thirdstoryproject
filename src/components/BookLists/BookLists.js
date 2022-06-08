@@ -55,7 +55,7 @@ function BookLists() {
     console.log(groupBylanguage)
     return(
         <Container fluid className='sidebarBg paddingZero'>
-        <NavBar bg="light"/>
+            <NavBar bg="light"/>
             <Container fluid className='banner'>
                 <Row>
                     <Col md={2} className="py-3">

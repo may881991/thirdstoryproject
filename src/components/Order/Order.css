@@ -1,37 +1,30 @@
-.offcanvas-header{
-    border-bottom: 1px solid #fff;
+.container-fluid.orderForm{
+    margin-top: 7rem !important;
+    background-color: #102E46;
 }
-.addToLists .list-group-item{
-    background-color: var(--global-color-main);
-    color: var(--global-color-white);
-    border: none;
-    padding: 0.5rem 0;
-    margin: 0.5rem 0;
-    display: flex;
+.orderSummary h3{
+    color: #fff;
+    padding: 1rem 0;
+    font-family: var(--global-font-family);
+}
+.infoForm{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 3rem 6rem;
+    font-family: var(--global-font-family);
+}
+.infoForm h3{
+    text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #102E46;
+    padding: 1rem 0;
+}
+.infoForm .form-label{
     font-size: 16px;
 }
-.addToLists .addTitle{
-    width: 200px;
-    font-family: var(--global-font-family-mn);
-    font-size: 18px;
-}
-.addNum{
-    border-right: 1px solid #fff;
-    padding: 0 0.5rem 1.5rem;
-    margin-right: 0.5rem;
-}
-.addToLists .price{
-    padding-right: 0.5rem;
-    width: 100px;
-}
-.price span{
-    display: flex;
-}
-.addToLists svg{
-    margin: 0.25rem;
-}
-.offcanvas-title{
-    font-size: 1rem !important;
-    padding: 1rem;
-    border-top: 1px solid #fff;
+.infoForm .form-control{
+    /* box-shadow */
+    box-shadow: 2px 4px 6px rgba(79, 79, 79, 0.15);
+    border-radius: 2px;
 }

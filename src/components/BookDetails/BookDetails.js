@@ -62,10 +62,6 @@ function OffCanvasaddTo({ name, ...props }) {
     }
   }
 
-  const orderConfirm = (data) => {
-    console.log(data)
-  }
-
   if(data != null){
     let subTotal = 0;
     for(const i in data){
@@ -97,7 +93,7 @@ function OffCanvasaddTo({ name, ...props }) {
             })}
             </ListGroup>
           <OffcanvasTitle>SubTotal : <label>{subTotal} K</label></OffcanvasTitle>
-          <Link to="/order" className="me-2 btn btn-outline-light" onClick={orderConfirm}> Confirm Order </Link>
+          <Link to="/order" className="me-2 btn btn-outline-light"> Confirm Order </Link>
           </Offcanvas.Body>
         </Offcanvas>
       </>
