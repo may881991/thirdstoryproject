@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './BookLists.css';
 import NavBar from "../Nav/NavBar";
 import Card from "../Card/Card";
-import { Container, Row, Col ,Form, ListGroup,Pagination } from "react-bootstrap";
+import { Container, Row, Col ,Form, ListGroup, Pagination, Tab, Nav } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { db } from '../../firebase.js';
 import { getDocs, collection} from "firebase/firestore";
@@ -76,44 +76,61 @@ function BookLists() {
             </Container>
             {<img src={squirrelImg} alt={squirrelImg} className="bgItem6" />}
             <Container className='bookItems'>
-              <Row>
-                <Col md={2}>
-                  <h5>Categories</h5>
+            <Tab.Container defaultActiveKey="Myanmar">
+            <Row>
+              <Col sm={3}>
+                <h5>Categories</h5>
                   <hr/>
-                  <ListGroup>
-                      {Object.entries(groupBylanguage).map(([item])=> (
-                        <ListGroup.Item>{item}</ListGroup.Item>
-                      ))}
-                  </ListGroup>
-                </Col>
-                <Col md={10} className="row">
-                  {bookdata.map((card, i) => {
-                    const coverUrl = require('../../assets/images/' + card.bookCover);
-                      return (
-                        <Card
-                          key={i}
-                          bookCover={coverUrl}
-                          title={card.title}
-                          price={card.price}
-                          author={card.author}
-                          bookUrl={card.bookUrl}
-                          illustrator={card.illustrator}
-                        />
-                      );
-                    })}
-                    <Pagination>
+                <Nav variant="pills" className="flex-column">
+                  {Object.entries(groupBylanguage).map(([item])=> (
+                    <React.Fragment>
+                    <Nav.Item>
+                        <Nav.Link eventKey={item}>{item}</Nav.Link>
+                    </Nav.Item>
+                    </React.Fragment>
+                  ))}
+                </Nav>
+              </Col>
+              <Col sm={9}>
+                <Tab.Content className='mt-5'>
+                  {Object.entries(groupBylanguage).map(([item,value])=> (
+                  <React.Fragment>
+                    <Tab.Pane eventKey={item} className="row">
+                      {value.map((card, i) => {
+                      const coverUrl = require('../../assets/images/' + card.bookCover);
+                        return (
+                          <React.Fragment>
+                          <Card
+                            key={i}
+                            bookCover={coverUrl}
+                            title={card.title}
+                            price={card.price}
+                            author={card.author}
+                            bookUrl={card.bookUrl}
+                            illustrator={card.illustrator}
+                          />
+                          </React.Fragment>
+                        );
+                      })}
+                    </Tab.Pane>
+                  </React.Fragment>
+                  ))}
+                </Tab.Content>
+              </Col>
+                  <Pagination>
                       <Pagination.Prev />
                       {items}
                       <Pagination.Next />
                     </Pagination>
-                </Col>
-              </Row>
-            </Container>
-        {<img src={rabbitImg} alt={rabbitImg} className="bgItem7" />}
+            </Row>
+          </Tab.Container>
+          </Container>
+          {<img src={rabbitImg} alt={rabbitImg} className="bgItem7" />}
         <Footer />
         </Container>
     );
   }else{
+    console.log("wait data");
     <Container fluid className='sidebarBg paddingZero'>
         <NavBar bg="light"/>
             <Container fluid className='banner'>

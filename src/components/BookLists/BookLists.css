@@ -67,6 +67,24 @@
 li.page-item {
     margin: 0 10px;
 }
+.tab-content>.active{
+    display: flex !important;
+}
+.bookItems .nav-link{
+    color: #102E46 !important;
+    cursor: pointer;
+    font-weight: 500;
+    padding-left: 0px !important;
+    width: 70%;
+    margin-top: 5px;
+}
+.nav-pills .nav-link.active{
+    color: #1A6FB5 !important;
+    background: none !important;
+}
+.nav-pills .nav-link:hover{
+    border-bottom: 2px solid #1A6FB5;
+}
 .page-link{
     width: 50px;
     height: 50px;
