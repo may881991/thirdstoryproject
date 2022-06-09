@@ -4,8 +4,6 @@ import { BsTrash, BsPlus, BsDash } from "react-icons/bs";
 import "./Lists.css";
 
 function ListsView(props){
-  
-  console.log(props)
   function removeBook(){
     console.log(props)
   }

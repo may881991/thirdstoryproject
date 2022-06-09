@@ -28,3 +28,25 @@
     box-shadow: 2px 4px 6px rgba(79, 79, 79, 0.15);
     border-radius: 2px;
 }
+.orderSummary p{
+    color: #fff;
+}
+.orderSummary .list-group-item{
+    border-bottom: 1px solid #fff;
+}
+.orderSummary .addToLists .addTitle{
+    width: 300px;
+    padding-left: 10px;
+}
+.orderSummary .price{
+    text-align: right;
+}
+.total{
+    border-top: 1px solid #fff;
+    padding-top: 1rem;
+    width: 100%;
+    margin: 0 auto !important;
+}
+.ptitle{
+    width: 80px;
+}

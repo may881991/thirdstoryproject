@@ -82,10 +82,10 @@ function BookLists() {
                 <h5>Categories</h5>
                   <hr/>
                 <Nav variant="pills" className="flex-column">
-                  {Object.entries(groupBylanguage).map(([item])=> (
+                  {Object.entries(groupBylanguage).map(([item, index])=> (
                     <React.Fragment>
                     <Nav.Item>
-                        <Nav.Link eventKey={item}>{item}</Nav.Link>
+                        <Nav.Link eventKey={item} key={index}>{item}</Nav.Link>
                     </Nav.Item>
                     </React.Fragment>
                   ))}
@@ -95,7 +95,7 @@ function BookLists() {
                 <Tab.Content className='mt-5'>
                   {Object.entries(groupBylanguage).map(([item,value])=> (
                   <React.Fragment>
-                    <Tab.Pane eventKey={item} className="row">
+                    <Tab.Pane eventKey={item} key={item} className="row">
                       {value.map((card, i) => {
                       const coverUrl = require('../../assets/images/' + card.bookCover);
                         return (

@@ -11,7 +11,7 @@ import "./BookDetails.css";
 
 
 let data = localStorage.getItem('addToCart');
-if(data == null){
+if(data === null){
   data = [];
 }else{
   data = JSON.parse(localStorage.getItem('addToCart'));
@@ -33,21 +33,22 @@ function OffCanvasaddTo({ name, ...props }) {
     let getPrice = bookInfoObj.price;
     bookInfoObj.subTotal = parseInt(getPrice);
     checkBookName = bookArr.includes(getBookName);
+    bookArr.push(getBookName)
     console.log(bookArr)
     const bookCounts = {};
     for (const num of bookArr) {
       bookCounts[num] = bookCounts[num] ? bookCounts[num] + 1 : 1;
     }
 
-    if(data != null && checkBookName == false){
+    if(data !== null && checkBookName === false){
       data.push(bookInfoObj);
       localStorage.setItem('addToCart', JSON.stringify(data));
       return data;
     }else{
       console.log(bookCounts);
       let updateData = [];
-      data.map(obj => {
-        if(obj.title == getBookName){
+      data.map((obj) => {
+        if(obj.title === getBookName){
           obj.count = bookCounts[getBookName];
           obj.subTotal += parseInt(getPrice);
           updateData.push(obj)
@@ -57,16 +58,12 @@ function OffCanvasaddTo({ name, ...props }) {
       })
       localStorage.setItem('addToCart', JSON.stringify(updateData));
       data = updateData;
-      console.log(data)
       return data;
     }
   }
 
-  if(data != null){
+  if(data !== null){
     let subTotal = 0;
-    for(const i in data){
-      bookArr.push(data[i].title);
-    }
     return (
       <>
         <Button variant="primary" onClick={addToCart} className="me-2">
