@@ -92,10 +92,7 @@ function Activities(){
                   <h5>Categories</h5>
                   <hr/>
                   <ListGroup>
-                    <ListGroup.Item>Burmese</ListGroup.Item>
-                    <ListGroup.Item>English</ListGroup.Item>
-                    <ListGroup.Item>Other Myanmar Language</ListGroup.Item>
-                    <ListGroup.Item>Other Items</ListGroup.Item>
+                    <ListGroup.Item>Our Attivities</ListGroup.Item>
                   </ListGroup>
                 </Col>
                 <Col md={10} className="row">
@@ -103,7 +100,7 @@ function Activities(){
                       return (
                         <Card
                           key={i}
-                          img={card.img}
+                          bookCover={card.img}
                           title={card.title}
                           desc={card.description}
                           date={card.releaseDate}

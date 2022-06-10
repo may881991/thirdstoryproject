@@ -34,10 +34,6 @@
 .orderSummary .list-group-item{
     border-bottom: 1px solid #fff;
 }
-.orderSummary .addToLists .addTitle{
-    width: 300px;
-    padding-left: 10px;
-}
 .orderSummary .price{
     text-align: right;
 }
@@ -46,7 +42,4 @@
     padding-top: 1rem;
     width: 100%;
     margin: 0 auto !important;
-}
-.ptitle{
-    width: 80px;
 }
