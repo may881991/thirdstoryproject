@@ -15,6 +15,8 @@ import bgYamin from "../../assets/images/yamin.png";
 function BookLists() {
   let data = localStorage.getItem('bookLists');
   let [bookdata , setData] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
   if(data == null){
     window.addEventListener('load', () => {
       getBookData();
@@ -45,6 +47,7 @@ function BookLists() {
       }
   }
   console.log(bookdata)
+
   if(bookdata !== null){
     const groupBylanguage = bookdata.reduce((group, value) => {
       const { language } = value;
@@ -53,6 +56,21 @@ function BookLists() {
       return group;
     }, {});
     console.log(groupBylanguage)
+
+    const searchItems = (searchValue) => {
+      console.log(searchValue)
+        setSearchInput(searchValue)
+        if (searchInput !== '') {
+            const filteredData = bookdata.filter((item) => {
+                return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+            })
+            setFilteredResults(filteredData)
+        }
+        else{
+            setFilteredResults(bookdata)
+        }
+    }
+    console.log(filteredResults)
     return(
         <Container fluid className='sidebarBg paddingZero'>
             <NavBar bg="light"/>
@@ -65,7 +83,7 @@ function BookLists() {
                     <h2>Our Book Lists</h2>
                     <p>Our books are written by Myanmar authors and illustrated by Myanmar creators for a Myanmar audience.  They are first and foremost entertaining and fun to read, but they also have important messages addressing peace, tolerance, diversity, girl empowerment, environment, disability rights and child rights. </p>
                     <Form id='search' className='p-1 col-md-10 mx-auto'>
-                        <Form.Control type="email" placeholder="Search book titles and keywords" className='text-center'/>
+                        <Form.Control type="email" placeholder="Search book titles and keywords" className='text-center'  onChange={(e) => searchItems(e.target.value)}/>
                         <BsSearch />
                     </Form>
                     </Col>
@@ -92,31 +110,54 @@ function BookLists() {
                 </Nav>
               </Col>
               <Col sm={9}>
-                <Tab.Content className='mt-5'>
-                  {Object.entries(groupBylanguage).map(([item,value])=> (
-                  <React.Fragment>
-                    <Tab.Pane eventKey={item} key={item} className="row">
-                      {value.map((card, i) => {
-                      const coverUrl = require('../../assets/images/' + card.bookCover);
-                        return (
-                          <React.Fragment>
-                          <Card
-                            key={i}
-                            bookCover={coverUrl}
-                            title={card.title}
-                            price={card.price}
-                            author={card.author}
-                            bookUrl={card.bookUrl}
-                            illustrator={card.illustrator}
-                          />
-                          </React.Fragment>
-                        );
-                      })}
+                {searchInput.length > 1 ? (
+                    <Tab.Content className='mt-5'> 
+                    <Tab.Pane eventKey={"Myanmar"} className="row">
+                        {filteredResults.map((item, i) => {
+                            const coverUrl = require('../../assets/images/' + item.bookCover);
+                            return (
+                              <React.Fragment>
+                              <Card
+                                key={i}
+                                bookCover={coverUrl}
+                                title={item.title}
+                                price={item.price}
+                                author={item.author}
+                                bookUrl={item.bookUrl}
+                                illustrator={item.illustrator}
+                              />
+                              </React.Fragment>
+                            )
+                        })}
                     </Tab.Pane>
-                  </React.Fragment>
-                  ))}
-                </Tab.Content>
-              </Col>
+                    </Tab.Content>
+                ) : (
+                    <Tab.Content className='mt-5'>
+                      {Object.entries(groupBylanguage).map(([item,value])=> (
+                        <React.Fragment>
+                        <Tab.Pane eventKey={item} key={item} className="row">
+                          {value.map((card, i) => {
+                          const coverUrl = require('../../assets/images/' + card.bookCover);
+                            return (
+                              <React.Fragment>
+                              <Card
+                                key={i}
+                                bookCover={coverUrl}
+                                title={card.title}
+                                price={card.price}
+                                author={card.author}
+                                bookUrl={card.bookUrl}
+                                illustrator={card.illustrator}
+                              />
+                              </React.Fragment>
+                            );
+                          })}
+                        </Tab.Pane>
+                      </React.Fragment>
+                      ))}
+                    </Tab.Content>
+                )}
+                </Col>
                   <Pagination>
                       <Pagination.Prev />
                       {items}
