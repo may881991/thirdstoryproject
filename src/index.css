@@ -85,4 +85,5 @@ h2:after {
 }
 .container-fluid{
   margin: 0 !important;
+  padding: 0 !important;
 }
