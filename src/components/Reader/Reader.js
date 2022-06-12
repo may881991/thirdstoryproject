@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import { BsChevronLeft, BsChevronRight , BsArrowDownShort} from "react-icons/bs";
 import logo from "../../assets/images/Logo.png";
-import profileImg from "../../assets/images/person.png";
+import maskLogo from "../../assets/images/maskLOGO.jpeg";
+import profileImg from "../../assets/images/user.png";
 import "./Reader.css";
 
 export default class ReaderView extends Component {
@@ -26,6 +27,8 @@ export default class ReaderView extends Component {
     
     render() {
         const { pageNumber, numPages } = this.state;
+        let userInfo = localStorage.getItem('user');
+        userInfo = JSON.parse(userInfo);
         let bookInfo = localStorage.getItem('bookData');
         bookInfo = JSON.parse(bookInfo);
         const pdfUrl = require('../../assets/books/' + bookInfo.bookUrl);
@@ -50,7 +53,7 @@ export default class ReaderView extends Component {
                                 <img alt={profileImg} src={profileImg}/>
                                 <Dropdown>
                                     <Dropdown.Toggle id="dropdown-basic">
-                                        Pwint Ni Ni
+                                    <label className='name'>{userInfo.displayName}</label>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         <Dropdown.Item href="#/action-1">Account Details</Dropdown.Item>
@@ -68,6 +71,7 @@ export default class ReaderView extends Component {
                     <Col md={10}>
                         <Document file={pdfUrl} onLoadSuccess={this.onDocumentLoadSuccess} width={500}>
                             <Page pageNumber={pageNumber+1} />
+                            <div className='overlay'> <img alt={maskLogo} src={maskLogo}/></div>
                         </Document>
                     </Col>
                     <Col md={1} className="arrow">

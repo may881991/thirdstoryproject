@@ -28,8 +28,8 @@
 .bookItems hr,.activitiesLists hr{
     color: var(--global-color-header);
     opacity: 1;
-    height: 2px;
-    width: 70%;
+    border: 1px solid;
+    width: 100%;
     margin: 1rem 0 0;
 }
 .bookItems .card{
@@ -40,9 +40,10 @@
 }
 .bookItems .card-body:hover{
     background-color: var(--global-color-lightblue);
+    box-shadow: #0000003d 0px 3px 20px;
 }
 .bookItems .card-body{
-    box-shadow: #0000003d 0px 3px 8px;
+    box-shadow: #0000003d 0px 1px 5px;
     margin-bottom: 1.5rem;
     width: 100%;
     font-family: var(--global-font-family-mn);

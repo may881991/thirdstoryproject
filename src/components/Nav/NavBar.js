@@ -6,10 +6,11 @@ import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import {BsCart3} from "react-icons/bs";
 import "./NavBar.css";
 import logo from "../../assets/images/Logo.png";
-import profileImg from "../../assets/images/person.png";
+import profileImg from "../../assets/images/user.png";
 
 function NavBar() {
   const [user] = useAuthState(auth);
+  localStorage.setItem('user' , JSON.stringify(user));
   let location = useLocation();
   const addActiveClass = (path) => {
     return location.pathname.includes(path) ? "button" : "";
@@ -35,7 +36,7 @@ function NavBar() {
                   <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
                       <Dropdown.Toggle id="dropdown-basic">
-                      {user.displayName}
+                      <label className='name'>{user.displayName}</label>
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                           <Dropdown.Item href="#">Account Details</Dropdown.Item>

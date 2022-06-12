@@ -30,6 +30,7 @@ const Books = () => {
     navigate('/stories')
   }
   if(bookdata.length !== 0){
+    console.log(bookdata)
     localStorage.setItem('bookLists' , JSON.stringify(bookdata));
     const groupBylanguage = bookdata.reduce((group, value) => {
       const { language } = value;
@@ -37,7 +38,7 @@ const Books = () => {
       group[language].push(value);
       return group;
     }, {});
-    console.log(groupBylanguage)
+
     return (
       <Container fluid className="ourBooks paddingZero">
          {Object.entries(groupBylanguage).map(([item,value])=> (
@@ -46,11 +47,19 @@ const Books = () => {
             <Carousel variant="dark" className='my-5' indicators={false}>
               <Carousel.Item interval={20000}>
                 <Row>
-                    {value.map((data) => (
+                    {value.slice(0,5).map((data) => (
                         <BookFrame key={data.ISBN} bookInfo={data}/>
                       ))
                     }
-                </Row>
+                </Row> 
+              </Carousel.Item>
+              <Carousel.Item interval={20000}>
+                <Row>
+                    {value.slice(5,8).map((data) => (
+                        <BookFrame key={data.ISBN} bookInfo={data}/>
+                      ))
+                    }
+                </Row> 
               </Carousel.Item>
             </Carousel>
           </Container>
@@ -127,7 +136,7 @@ const Books = () => {
 
 
 const BookFrame = ({bookInfo}) => {
-  console.log(bookInfo)
+  //console.log(bookInfo)
   const coverUrl = require('../../assets/images/' + bookInfo.bookCover);
 
   const navigate = useNavigate();

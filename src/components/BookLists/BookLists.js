@@ -96,7 +96,7 @@ function BookLists() {
             <Container className='bookItems'>
             <Tab.Container defaultActiveKey="Myanmar">
             <Row>
-              <Col sm={3}>
+              <Col sm={2}>
                 <h5>Categories</h5>
                   <hr/>
                 <Nav variant="pills" className="flex-column">
@@ -109,7 +109,7 @@ function BookLists() {
                   ))}
                 </Nav>
               </Col>
-              <Col sm={9}>
+              <Col sm={10}>
                 {searchInput.length > 1 ? (
                     <Tab.Content className='mt-5'> 
                     <Tab.Pane eventKey={"Myanmar"} className="row">
@@ -157,12 +157,13 @@ function BookLists() {
                       ))}
                     </Tab.Content>
                 )}
-                </Col>
+
                   <Pagination>
                       <Pagination.Prev />
                       {items}
                       <Pagination.Next />
                     </Pagination>
+                </Col>
             </Row>
           </Tab.Container>
           </Container>

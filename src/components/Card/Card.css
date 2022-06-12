@@ -1,6 +1,10 @@
 .buyBtn{
     width: 120px;
 }
+.card-link{
+    font-size: 1.2rem;
+    color: #1A6FB5;
+}
 .card-link svg{
     width: 24px;
     height: 24px;
