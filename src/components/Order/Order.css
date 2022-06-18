@@ -10,7 +10,7 @@
 .infoForm{
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
-    padding: 3rem 6rem;
+    padding: 3rem;
     font-family: var(--global-font-family);
 }
 .infoForm h3{
@@ -18,10 +18,11 @@
     font-weight: 700;
     font-size: 2rem;
     color: #102E46;
-    padding: 1rem 0;
+    padding: 0 0 2rem;
 }
 .infoForm .form-label{
     font-size: 16px;
+    padding: 0px;
 }
 .infoForm .form-control{
     /* box-shadow */
@@ -37,9 +38,29 @@
 .orderSummary .price{
     text-align: right;
 }
+.form-label strong{
+    color: red;
+}
 .total{
     border-top: 1px solid #fff;
     padding-top: 1rem;
     width: 100%;
     margin: 0 auto !important;
+}
+.infoForm .col-md-8.form-control{
+    width: 66.66666667%;
+}
+.form-check-label{
+    font-size: 16px;
+    color: var(--global-color-main);
+    font-weight: 500;
+}
+.fileInput{
+    padding: 0px !important;
+}
+.row.col-md-8{
+    padding-right: 0px !important;
+}
+.col-md-8 .col-md-6{
+    padding: 0px !important;
 }

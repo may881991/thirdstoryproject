@@ -63,31 +63,48 @@ function OrderConfirmed(){
             </ListGroup>
           </Col>
           <Col md={6}>
-            <h3>Customer Information</h3>
             <Form className="infoForm" ref={form} onSubmit={sendEmail} id="submitForm">
-              <Form.Group className="mb-4">
-                <Form.Label>Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter your name" name="user_name"/>
+            <h3>Customer Information</h3>
+              <Form.Group className="mb-4 row">
+                <Form.Label className='col-md-4'>Name <strong>*</strong></Form.Label>
+                <Form.Control className='col-md-8' type="text" placeholder="Enter your name" name="user_name"/>
               </Form.Group>
-              <Form.Group className="mb-4">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter your email" name="user_email"/>
+              <Form.Group className="mb-4 row">
+                <Form.Label className='col-md-4'>Email <strong>*</strong></Form.Label>
+                <Form.Control className='col-md-8' type="email" placeholder="Enter your email" name="user_email"/>
               </Form.Group>
-              <Form.Group className="mb-4">
-                <Form.Label>Phone Number</Form.Label>
-                <Form.Control type="text" placeholder="Enter your phone number" name="user_phone" />
+              <Form.Group className="mb-4 row">
+                <Form.Label className='col-md-4'>Phone Number <strong>*</strong></Form.Label>
+                <Form.Control className='col-md-8' type="text" placeholder="Enter your phone number" name="user_phone" />
               </Form.Group>
-              <Form.Group className="mb-4">
-                <Form.Label>Address</Form.Label>
-                <Form.Control as="textarea" rows={3} placeholder="Enter your address" name="user_address"/>
+              <Form.Group className="mb-4 row">
+                <Form.Label className='col-md-4'>Payment Options<strong>*</strong></Form.Label>
+                <div className='col-md-8 row'>
+                  <div className='col-md-6'>
+                    <Form.Check type="radio" name="options" label="Cash On Delivery" />
+                  </div>
+                  <div className='col-md-6'>
+                    <Form.Check type="radio" name="options" label="Direct Bank Transfer" />
+                  </div>
+                </div>
               </Form.Group>
-              <Form.Group className="mb-4">
-                <Form.Label>Message</Form.Label>
-                <Form.Control as="textarea" rows={3} placeholder="Enter your message to Third Sory" name="message"/>
+              <Form.Group className="mb-4 row">
+                <Form.Label className='col-md-4'>Payment Screenshoot<strong>*</strong></Form.Label>
+                <Form.Group controlId="formFileSm" className="col-md-8 fileInput">
+                  <Form.Control type="file"/>
+                </Form.Group>
+              </Form.Group>
+              <Form.Group className="mb-4 row">
+                <Form.Label className='col-md-4'>Address <strong>*</strong></Form.Label>
+                <Form.Control className='col-md-8' as="textarea" rows={3} placeholder="Enter your address" name="user_address"/>
+              </Form.Group>
+              <Form.Group className="mb-4 row">
+                <Form.Label className='col-md-4'>Message <strong>*</strong></Form.Label>
+                <Form.Control className='col-md-8' as="textarea" rows={3} placeholder="Enter your message to Third Sory" name="message"/>
               </Form.Group> 
-              <Form.Group className="mb-4 d-none">
-                <Form.Label>Order lists</Form.Label>
-                <Form.Control as="textarea" rows={3} id="htmlTemplate" name="my_html"/>
+              <Form.Group className="mb-4 row d-none">
+                <Form.Label className='col-md-4'>Order lists</Form.Label>
+                <Form.Control className='col-md-8' as="textarea" rows={3} id="htmlTemplate" name="my_html"/>
               </Form.Group>
               <div className="text-center">
                   <Button variant="primary" type="submit">

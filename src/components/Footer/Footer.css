@@ -27,3 +27,6 @@
     left: 0;
     bottom: 0;
 }
+.contactInfo svg{
+    margin: 10px;
+}

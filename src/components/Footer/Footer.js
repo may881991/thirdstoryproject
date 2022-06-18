@@ -34,7 +34,7 @@ function Footer() {
                             <li><a href='https://www.google.com/'>Kayin State</a></li>
                         </ul>
                     </Col>
-                    <Col lg={3} md={12}>
+                    <Col lg={3} md={12} className="contactInfo">
                         <h5>Contact Us</h5>
                         <label>thirdstorychildrenbooks@gmail.com</label>
                         <label>No. 86, 52 Street, Middle Block, </label>

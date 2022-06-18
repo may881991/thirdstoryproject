@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/thirdstoryproject/static/css/main.de9ac6da.css",
-    "main.js": "/thirdstoryproject/static/js/main.bd94535a.js",
+    "main.css": "/thirdstoryproject/static/css/main.1db850ed.css",
+    "main.js": "/thirdstoryproject/static/js/main.8d60e521.js",
     "static/js/787.c4e7f8f9.chunk.js": "/thirdstoryproject/static/js/787.c4e7f8f9.chunk.js",
     "static/media/Book1.pdf": "/thirdstoryproject/static/media/Book1.7b04050150cb4911cfa2.pdf",
     "static/media/Book5.pdf": "/thirdstoryproject/static/media/Book5.deb5357266607e89cf73.pdf",
@@ -78,12 +78,12 @@
     "index.html": "/thirdstoryproject/index.html",
     "static/media/leftArr.svg": "/thirdstoryproject/static/media/leftArr.b6e23dfad7482a33bcfa.svg",
     "static/media/rightArr.svg": "/thirdstoryproject/static/media/rightArr.928a66a8d2e2c5ea17f2.svg",
-    "main.de9ac6da.css.map": "/thirdstoryproject/static/css/main.de9ac6da.css.map",
-    "main.bd94535a.js.map": "/thirdstoryproject/static/js/main.bd94535a.js.map",
+    "main.1db850ed.css.map": "/thirdstoryproject/static/css/main.1db850ed.css.map",
+    "main.8d60e521.js.map": "/thirdstoryproject/static/js/main.8d60e521.js.map",
     "787.c4e7f8f9.chunk.js.map": "/thirdstoryproject/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.de9ac6da.css",
-    "static/js/main.bd94535a.js"
+    "static/css/main.1db850ed.css",
+    "static/js/main.8d60e521.js"
   ]
 }
