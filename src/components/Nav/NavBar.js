@@ -39,7 +39,7 @@ function NavBar() {
                       <label className='name'>{user.displayName}</label>
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                          <Dropdown.Item href="#">Account Details</Dropdown.Item>
+                          {/* <Dropdown.Item href="#">Account Details</Dropdown.Item> */}
                           <Dropdown.Item href="#" onClick={logout}>Log Out</Dropdown.Item>
                       </Dropdown.Menu>
                   </Dropdown>

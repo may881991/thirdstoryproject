@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Button, Dropdown} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
+import { logout } from "../../firebase";
 import { BsChevronLeft, BsChevronRight , BsArrowDownShort} from "react-icons/bs";
 import logo from "../../assets/images/Logo.png";
 import maskLogo from "../../assets/images/happyland.png";
@@ -45,21 +46,25 @@ export default class ReaderView extends Component {
                                 <Link to="/bookDetails"><button className="backBtn"><BsChevronLeft/></button></Link> <label> {bookInfo.title} </label>
                             </Col>
                             <Col className='text-center'>
-                                <Button className="btn btn-primary downloadBtn" href="#">
+                                <Button className="btn btn-primary downloadBtn d-none" href="#">
                                         Download <BsArrowDownShort/>
                                 </Button>
                             </Col>
                             <Col className='d-flex justify-content-end'>
                                 <img alt={profileImg} src={profileImg}/>
-                                <Dropdown>
-                                    <Dropdown.Toggle id="dropdown-basic">
-                                    <label className='name'>{userInfo.displayName}</label>
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Account Details</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Log Out</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
+                                    {userInfo !== null ? (
+                                        <Dropdown>
+                                            <Dropdown.Toggle id="dropdown-basic">
+                                                <label className='name'>{userInfo.displayName}</label> 
+                                            </Dropdown.Toggle>
+                                            <Dropdown.Menu>
+                                                {/* <Dropdown.Item href="#">Account Details</Dropdown.Item> */}
+                                                <Dropdown.Item href="#" onClick={logout}>Log Out</Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    ) : (
+                                        <label className='name'></label>
+                                    )}
                             </Col>
                         </Row>
                     </Col>
