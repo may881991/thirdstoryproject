@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col ,Button, Form} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './Home.css';
 import NavBar from "../Nav/NavBar";
 import Books from '../Books/Books';
+import Loading from '../Loading/Loading';
 import Customers from '../Customers/Customers';
 import Help from '../Help/Help';
 import Footer from '../Footer/Footer';
@@ -21,8 +22,14 @@ function Home() {
   const gotoAbout = () => {
     navigate('/about')
   }
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+      setTimeout(() => setLoading(false), 1000)
+  }, [])
 
   return (
+  <>
+  {loading === false ? (
     <Container fluid className='paddingZero'>
         <Container>
           <NavBar bg="light"/>
@@ -95,6 +102,10 @@ function Home() {
         <Help />
         <Footer />
     </Container>
+    ) : (
+          <Loading />
+    )}
+    </>
   );
 }
 

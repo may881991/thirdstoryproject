@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from "../Nav/NavBar";
 import Footer from '../Footer/Footer';
+import Loading from '../Loading/Loading';
 import { Container, Row, Col } from "react-bootstrap";
 import firstImg from "../../assets/images/fristprize.png";
 import WYLKImg from "../../assets/images/WYLK9.png";
@@ -10,9 +11,17 @@ import storyImg3 from "../../assets/images/image3.png";
 import storyImg4 from "../../assets/images/image4.png";
 import './About.css';
 
+
 function AboutUs(){
-    return(
-        <Container fluid className='sidebarBg'>
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 1000)
+    }, [])
+
+    return (
+    <>
+    {loading === false ? (
+        <Container fluid className='sidebarBg paddingZero'>
             <NavBar bg="light"/>
             <Container fluid className='banner'>
                 <Row>
@@ -66,9 +75,14 @@ function AboutUs(){
                     </Col>
                 </Row>
             </Container>
-            <Footer />
-        </Container>
-    );
+        <Footer />
+    </Container>
+    ) : (
+    <Loading />
+    )}
+    </>
+  );
+
 }
 
 export default AboutUs;

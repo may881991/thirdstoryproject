@@ -47,6 +47,7 @@
     margin-bottom: 1.5rem;
     width: 100%;
     font-family: var(--global-font-family-mn);
+    cursor: pointer;
 }
 .bookItems .card-title{
     display: flex;

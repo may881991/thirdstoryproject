@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './BookLists.css';
 import NavBar from "../Nav/NavBar";
 import Card from "../Card/Card";
+import Loading from '../Loading/Loading';
 import { Container, Row, Col ,Form, ListGroup, Pagination, Tab, Nav } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { getBookData } from '../../firebase.js';
@@ -12,13 +13,18 @@ import rabbitImg from "../../assets/images/Rabbit1.png";
 import bgYamin from "../../assets/images/yamin.png";
 
 function BookLists() {
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+      setTimeout(() => setLoading(false), 1000)
+  }, [])
 
   const { isLoading, bookdata } = GetBookLists();
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  let active = 2;
+  let active = 1;
   let items = [];
-  for (let number = 1; number <= bookdata.length; number++) {
+  const itemsGroup = bookdata.length / 8;
+  for (let number = 1; number <= itemsGroup; number++) {
     items.push(
       <Pagination.Item key={number} active={number === active}>
         {number}
@@ -101,6 +107,8 @@ function BookLists() {
         }
     }
     return(
+      <>
+        {loading === false ? (
         <Container fluid className='sidebarBg paddingZero'>
             <NavBar bg="light"/>
             <Container fluid className='banner'>
@@ -186,12 +194,11 @@ function BookLists() {
                       ))}
                     </Tab.Content>
                 )}
-
-                  <Pagination>
-                      <Pagination.Prev />
-                      {items}
-                      <Pagination.Next />
-                    </Pagination>
+                <Pagination>
+                  <Pagination.Prev />
+                  {items}
+                  <Pagination.Next />
+                </Pagination>
                 </Col>
             </Row>
           </Tab.Container>
@@ -199,6 +206,10 @@ function BookLists() {
           {<img src={rabbitImg} alt={rabbitImg} className="bgItem7" />}
         <Footer />
         </Container>
+        ) : (
+          <Loading />
+        )}
+      </>
     );
   }
 }
