@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './BookLists.css';
 import NavBar from "../Nav/NavBar";
 import Card from "../Card/Card";
 import { Container, Row, Col ,Form, ListGroup, Pagination, Tab, Nav } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
-import { db } from '../../firebase.js';
-import { getDocs, collection} from "firebase/firestore";
+import { getBookData } from '../../firebase.js';
 import Footer from '../Footer/Footer';
 import treeImg from "../../assets/images/tree.png";
 import squirrelImg from "../../assets/images/Squirrel1.png";
@@ -13,17 +12,10 @@ import rabbitImg from "../../assets/images/Rabbit1.png";
 import bgYamin from "../../assets/images/yamin.png";
 
 function BookLists() {
-  let data = localStorage.getItem('bookLists');
-  let [bookdata , setData] = useState([]);
+
+  const { isLoading, bookdata } = GetBookLists();
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  if(data == null){
-    window.addEventListener('load', () => {
-      getBookData();
-    });
-  }else{
-    bookdata = JSON.parse(data)
-  }
   let active = 2;
   let items = [];
   for (let number = 1; number <= bookdata.length; number++) {
@@ -33,22 +25,60 @@ function BookLists() {
       </Pagination.Item>,
     );
   }
+  if (isLoading == true) {
+    let itemLeng = [ 1, 2, 3, 4, 5, 6];
+    return(
+      <Container fluid className='sidebarBg paddingZero'>
+        <NavBar bg="light"/>
+            <Container fluid className='banner'>
+                <Row>
+                    <Col md={2} className="py-3">
+                    {<img src={treeImg} alt={treeImg} className="bannerImg1 img-fluid"/> }
+                    </Col>
+                    <Col md={8} className="text-center bannerText">
+                    <h2>Our Book Lists</h2>
+                    <p>Our books are written by Myanmar authors and illustrated by Myanmar creators for a Myanmar audience.  They are first and foremost entertaining and fun to read, but they also have important messages addressing peace, tolerance, diversity, girl empowerment, environment, disability rights and child rights. </p>
+                    <Form id='search' className='p-1 col-md-10 mx-auto'>
+                        <Form.Control type="email" placeholder="Search book titles and keywords" className='text-center'/>
+                        <BsSearch />
+                    </Form>
+                    </Col>
+                    <Col md={2} className="py-3">
+                    {<img src={bgYamin} alt={bgYamin} className="bannerImg2 img-fluid"/> }
+                    </Col>
+                </Row>
+            </Container>
+            {<img src={squirrelImg} alt={squirrelImg} className="bgItem6" />}
+            <Container className='bookItems'>
+              <Row>
+                <Col md={2}>
+                  <h5>Categories</h5>
+                  <hr/>
+                  <ListGroup>
+                    <ListGroup.Item>Burmese</ListGroup.Item>
+                    <ListGroup.Item>English</ListGroup.Item>
+                    <ListGroup.Item>Other Myanmar Language</ListGroup.Item>
+                    <ListGroup.Item>Other Items</ListGroup.Item>
+                  </ListGroup>
+                </Col>
+                <Col md={10} className="row">
 
-  const getBookData = async ()=>{
-      try{
-        const userdb = collection(db, "books");
-        const getData =  await getDocs(userdb);
-        getData.forEach((ele) => {
-          var data = ele.data();
-          setData(arr => [...arr , data]);
-        });
-      }catch(err){
-        console.error(err.message)
-      }
-  }
-  console.log(bookdata)
+                  {itemLeng.map((item) => (
+                    <Col md={4} className="px-2 ml-5"  key={item}>
+                          <div className="card__image loading"></div>
+                          <div className="card__title loading"></div>
+                    </Col>
+                      ))
+                  }
+                </Col>
+              </Row>
+            </Container>
+          {<img src={rabbitImg} alt={rabbitImg} className="bgItem7" />}
+        <Footer />
+    </Container>
+    )
+  }else{
 
-  if(bookdata !== null){
     const groupBylanguage = bookdata.reduce((group, value) => {
       const { language } = value;
       group[language] = group[language] ?? [];
@@ -70,7 +100,6 @@ function BookLists() {
             setFilteredResults(bookdata)
         }
     }
-    console.log(filteredResults)
     return(
         <Container fluid className='sidebarBg paddingZero'>
             <NavBar bg="light"/>
@@ -171,73 +200,31 @@ function BookLists() {
         <Footer />
         </Container>
     );
-  }else{
-    console.log("wait data");
-    <Container fluid className='sidebarBg paddingZero'>
-        <NavBar bg="light"/>
-            <Container fluid className='banner'>
-                <Row>
-                    <Col md={2} className="py-3">
-                    {<img src={treeImg} alt={treeImg} className="bannerImg1 img-fluid"/> }
-                    </Col>
-                    <Col md={8} className="text-center bannerText">
-                    <h2>Our Book Lists</h2>
-                    <p>Our books are written by Myanmar authors and illustrated by Myanmar creators for a Myanmar audience.  They are first and foremost entertaining and fun to read, but they also have important messages addressing peace, tolerance, diversity, girl empowerment, environment, disability rights and child rights. </p>
-                    <Form id='search' className='p-1 col-md-10 mx-auto'>
-                        <Form.Control type="email" placeholder="Search book titles and keywords" className='text-center'/>
-                        <BsSearch />
-                    </Form>
-                    </Col>
-                    <Col md={2} className="py-3">
-                    {<img src={bgYamin} alt={bgYamin} className="bannerImg2 img-fluid"/> }
-                    </Col>
-                </Row>
-            </Container>
-            {<img src={squirrelImg} alt={squirrelImg} className="bgItem6" />}
-            <Container className='bookItems'>
-              <Row>
-                <Col md={2}>
-                  <h5>Categories</h5>
-                  <hr/>
-                  <ListGroup>
-                    <ListGroup.Item>Burmese</ListGroup.Item>
-                    <ListGroup.Item>English</ListGroup.Item>
-                    <ListGroup.Item>Other Myanmar Language</ListGroup.Item>
-                    <ListGroup.Item>Other Items</ListGroup.Item>
-                  </ListGroup>
-                </Col>
-                <Col md={10} className="row">
-                    <Col md={4} className="px-2 ml-5">
-                          <div className="card__image loading"></div>
-                          <div className="card__title loading"></div>
-                    </Col>
-                    <Col md={4} className="px-2">
-                          <div className="card__image loading"></div>
-                          <div className="card__title loading"></div>
-                    </Col>
-                    <Col md={4} className="px-2">
-                          <div className="card__image loading"></div>
-                          <div className="card__title loading"></div>
-                    </Col>
-                    <Col md={4} className="px-2">
-                          <div className="card__image loading"></div>
-                          <div className="card__title loading"></div>
-                    </Col>
-                    <Col md={4} className="px-2">
-                          <div className="card__image loading"></div>
-                          <div className="card__title loading"></div>
-                    </Col>
-                    <Col md={4} className="px-2">
-                          <div className="card__image loading"></div>
-                          <div className="card__title loading"></div>
-                    </Col>
-                </Col>
-              </Row>
-            </Container>
-        {<img src={rabbitImg} alt={rabbitImg} className="bgItem7" />}
-        <Footer />
-        </Container>
   }
+}
+
+// getBookLists
+function GetBookLists() {
+  const [isLoading, setIsLoading] = useState(false);
+  let [bookdata , setData] = useState([]);
+  useEffect(() => {
+    setIsLoading(true);
+    var checkBookLists = localStorage.getItem('bookLists');
+    if(checkBookLists.length > 2){  
+      setData(JSON.parse(checkBookLists));
+      setIsLoading(false);
+    }else{
+      console.log("else")
+      getBookData().then((lists) => {
+        lists.forEach((ele) => {
+          var data = ele.data();
+          setData(arr => [...arr , data]);
+          setIsLoading(false);
+        });
+      }).catch(() => setIsLoading(false));
+    }
+  }, []);
+  return { isLoading, bookdata };
 }
 
 export default BookLists;

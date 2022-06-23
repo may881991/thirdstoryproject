@@ -16,6 +16,7 @@ function SignUp() {
     if (!displayName) alert("Please enter name");
     registerWithEmailAndPassword(displayName, email, password);
   };
+  
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/");

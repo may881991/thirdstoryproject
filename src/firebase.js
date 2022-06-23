@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail,updateProfile, signOut} from "firebase/auth";
-import { getFirestore, query, getDocs, collection, where, addDoc} from "firebase/firestore";
+import { getFirestore, query, getDocs, collection, where, addDoc, doc, setDoc, updateDoc} from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+
 const firebaseConfig = {
     apiKey: "AIzaSyDilgOKBP1iFC1y3rmz1K7kOQbzv_YrgE0",
     authDomain: "thirdstoryproject.firebaseapp.com",
@@ -13,6 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 const googleProvider = new GoogleAuthProvider();
 const signInWithGoogle = async () => {
   try {
@@ -33,6 +36,43 @@ const signInWithGoogle = async () => {
   }
 };
 
+const addBookToUser = async (user, bookLists) => {
+  const userData = JSON.parse(user)
+  try{
+    const userdb = query(collection(db, "users"), where("uid", "==", userData.uid));
+    const getData =  await getDocs(userdb);
+    console.log(getData)
+    getData.forEach((ele) => {
+      const data = ele.data();
+      const userdoc = doc(db, "users", ele.id);
+      if(data.shopLists.length == 0){
+        updateDoc(userdoc, {
+          shopLists : bookLists
+        }).then(() => {
+          console.log("add shopLists")
+        }).catch((error) => {
+          console.log(error)
+        });
+      }else if(data.shopLists.length > 0){
+        const allBooks = data.shopLists;
+        bookLists.forEach((bookArr) => {
+          allBooks.push(bookArr);
+        })
+        updateDoc(userdoc, {
+          shopLists : allBooks
+        }).then(() => {
+          console.log("updated shopLists")
+        }).catch((error) => {
+          console.log(error)
+        });
+      }
+    });
+    
+  }catch(err){
+    console.error(err.message)
+  }
+}
+
 const getUserData = async (user) => {
   try{
     const userdb = query(collection(db, "users"), where("uid", "==", user.uid));
@@ -47,7 +87,6 @@ const getBookData = async ()=>{
   try{
     const bookDb = collection(db, "books");
     const getData =  await getDocs(bookDb);
-    console.log(getData.data())
     return getData;
   }catch(err){
     console.error(err.message)
@@ -71,6 +110,7 @@ const registerWithEmailAndPassword = async (displayName, email, password) => {
       uid: user.uid,
       name: displayName,
       authProvider: "local",
+      shopLists: [],
       email,
     });
     await updateProfile(auth.currentUser, {
@@ -99,6 +139,7 @@ const logout = () => {
 export {
   auth,
   db,
+  storage,
   signInWithGoogle,
   logInWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -107,4 +148,5 @@ export {
   logout,
   getUserData,
   getBookData,
+  addBookToUser,
 };

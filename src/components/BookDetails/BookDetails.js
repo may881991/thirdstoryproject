@@ -61,7 +61,7 @@ function OffCanvasaddTo({ name, ...props }) {
       return data;
     }
   }
-
+  console.log(data)
   if(data !== null){
     let subTotal = 0;
     return (

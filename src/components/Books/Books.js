@@ -1,36 +1,48 @@
-import React, { useState } from 'react';
-import { getDocs, collection} from "firebase/firestore";
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db } from '../../firebase.js';
+import { getBookData } from '../../firebase.js';
 import './Books.css';
-import { Container, Row, Col, Button  } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { BsBook} from "react-icons/bs";
 import Carousel from 'react-bootstrap/Carousel';
 
 const Books = () => {
   const navigate = useNavigate();
-  const [bookdata , setData] = useState([]);
-  window.addEventListener('load', () => {
-    getBookData();
-  });
+  const { isLoading, bookdata } = GetBookLists();
 
-  const getBookData = async ()=>{
-      try{
-        const userdb = collection(db, "books");
-        const getData =  await getDocs(userdb);
-        getData.forEach((ele) => {
-          var data = ele.data();
-          setData(arr => [...arr , data]);
-        });
-      }catch(err){
-        console.error(err.message)
-      }
-  }
   const bookLists = () => {  
     navigate('/stories')
   }
-  if(bookdata.length !== 0){
-    console.log(bookdata)
+
+  if (isLoading == true) {
+    let itemLeng = [ 1, 2, 3, 4, 5, 6];
+    return(
+      <Container fluid className="ourBooks paddingZero">
+        <Container className='bookLists py-5'>
+          <Row>
+            {itemLeng.map((item) => (
+                <Col md={2} className="px-2 ml-5" key={item}>
+                      <div className="card__image loading"></div>
+                      <div className="card__title loading"></div>
+                </Col>
+              ))
+            }
+          </Row>
+        </Container>
+        <Container className='bookLists py-5'>
+          <Row>
+            {itemLeng.map((item) => (
+                  <Col md={2} className="px-2 ml-5" key={item}>
+                        <div className="card__image loading"></div>
+                        <div className="card__title loading"></div>
+                  </Col>
+                ))
+              }
+          </Row>
+        </Container>
+      </Container>
+    )
+  }else{
     localStorage.setItem('bookLists' , JSON.stringify(bookdata));
     const groupBylanguage = bookdata.reduce((group, value) => {
       const { language } = value;
@@ -41,99 +53,61 @@ const Books = () => {
 
     return (
       <Container fluid className="ourBooks paddingZero">
-         {Object.entries(groupBylanguage).map(([item,value])=> (
+          {Object.entries(groupBylanguage).map(([item,value])=> (
             <Container className='bookLists pt-5' key={item}>
-            <h4>{item}</h4>
-            <Carousel variant="dark" className='my-5' indicators={false}>
-              <Carousel.Item interval={20000}>
-                <Row>
-                    {value.slice(0,5).map((data) => (
-                        <BookFrame key={data.ISBN} bookInfo={data}/>
-                      ))
-                    }
-                </Row> 
-              </Carousel.Item>
-              <Carousel.Item interval={20000}>
-                <Row>
-                    {value.slice(5,8).map((data) => (
-                        <BookFrame key={data.ISBN} bookInfo={data}/>
-                      ))
-                    }
-                </Row> 
-              </Carousel.Item>
-            </Carousel>
+              <h4>{item}</h4>
+              <Carousel variant="dark" className='my-5' indicators={false}>
+                <Carousel.Item interval={20000}>
+                  <Row>
+                      {value.slice(0,5).map((data) => (
+                          <BookFrame key={data.ISBN} bookInfo={data}/>
+                        ))
+                      }
+                  </Row> 
+                </Carousel.Item>
+                <Carousel.Item interval={20000}>
+                  <Row>
+                      {value.slice(5,8).map((data) => (
+                          <BookFrame key={data.ISBN} bookInfo={data}/>
+                        ))
+                      }
+                  </Row> 
+                </Carousel.Item>
+              </Carousel>
+            </Container>
+          ))}
+          <Container className="d-flex justify-content-center pb-5">
+              <Button className='btn btn-primary' onClick={bookLists}> <BsBook /> See All Books</Button>
           </Container>
-         ))}
-         <Container className="d-flex justify-content-center pb-5">
-            <Button className='btn btn-primary' onClick={bookLists}> <BsBook /> See All Books</Button>
-         </Container>
-      </Container>
+        </Container>
     );
-  }else{
-    console.log("wait data")
-    return(
-      <Container fluid className="ourBooks paddingZero">
-        <Container className='bookLists py-5'>
-          <Row>
-            <Col md={2} className="px-2 ml-5">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-            <Col md={2} className="px-2">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-            <Col md={2} className="px-2">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-            <Col md={2} className="px-2">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-            <Col md={2} className="px-2">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-            <Col md={2} className="px-2">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-          </Row>
-        </Container>
-        <Container className='bookLists py-5'>
-          <Row>
-            <Col md={2} className="px-2 ml-5">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-            <Col md={2} className="px-2">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-            <Col md={2} className="px-2">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-            <Col md={2} className="px-2">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-            <Col md={2} className="px-2">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-            <Col md={2} className="px-2">
-                  <div className="card__image loading"></div>
-                  <div className="card__title loading"></div>
-            </Col>
-          </Row>
-        </Container>
-      </Container>
-    )
   }
 }
 
+// getBookLists
+function GetBookLists() {
+  const [isLoading, setIsLoading] = useState(false);
+  let [bookdata , setData] = useState([]);
+  useEffect(() => {
+    setIsLoading(true);
+    var checkBookLists = localStorage.getItem('bookLists');
+    if(checkBookLists.length > 2){  
+      setData(JSON.parse(checkBookLists));
+      setIsLoading(false);
+    }else{
+      console.log("else")
+      getBookData().then((lists) => {
+        lists.forEach((ele) => {
+          var data = ele.data();
+          setData(arr => [...arr , data]);
+          setIsLoading(false);
+        });
+      }).catch(() => setIsLoading(false));
+    }
+  }, []);
+
+  return { isLoading, bookdata };
+}
 
 const BookFrame = ({bookInfo}) => {
   //console.log(bookInfo)

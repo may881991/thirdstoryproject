@@ -64,3 +64,15 @@
 .col-md-8 .col-md-6{
     padding: 0px !important;
 }
+.payment-footer{
+    background: var(--global-color-lightblue);
+}
+.payment-footer h4{
+    color: var(--global-color-main);
+    font-weight: 500;
+    padding: 15px 0;
+}
+.payment-name{
+    font-weight: 500;
+    width: 200px;
+}

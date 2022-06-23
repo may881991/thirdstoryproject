@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import { BsChevronLeft, BsChevronRight , BsArrowDownShort} from "react-icons/bs";
 import logo from "../../assets/images/Logo.png";
-import maskLogo from "../../assets/images/maskLOGO.jpeg";
+import maskLogo from "../../assets/images/happyland.png";
 import profileImg from "../../assets/images/user.png";
 import "./Reader.css";
 

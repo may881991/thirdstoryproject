@@ -1,11 +1,12 @@
 import React from 'react';
+import { Container, Row, Col ,Button, Form} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import './Home.css';
 import NavBar from "../Nav/NavBar";
 import Books from '../Books/Books';
 import Customers from '../Customers/Customers';
 import Help from '../Help/Help';
 import Footer from '../Footer/Footer';
-import { Container, Row, Col ,Button, Form} from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import bannerImg from "../../assets/images/banner-img1.png";
 import bgWYLK from "../../assets/images/WYLK1.png";
@@ -16,6 +17,11 @@ import treeImg from "../../assets/images/tree.png";
 import puloneImg from "../../assets/images/pulone.png";
 
 function Home() {
+  const navigate = useNavigate();
+  const gotoAbout = () => {
+    navigate('/about')
+  }
+
   return (
     <Container fluid className='paddingZero'>
         <Container>
@@ -65,9 +71,9 @@ function Home() {
               <Col lg={6} md={12} className="textBox">
                   <h2>About Us</h2>
                   <p className="py-4">The Third Story Project, a collaborative effort between the <b>Myanmar Storytellers </b>and the <b>Benevolent Youth Association </b>(Yangon), creates and produces children’s books in <b>Burmese and other Myanmar languages </b>to distribute free of charge to children around Myanmar. The stories are written and illustrated by Myanmar artists for a Myanmar audience and address issues of <b>peace, tolerance, diversity, gender, environment and child rights.</b></p>
-                  <a className="btn btn-outline-primary" href="https://www.google.com/">
+                  <Button variant="outline-primary" onClick={gotoAbout}>
                       Read More
-                    </a>
+                  </Button>
               </Col>
             </Row>
             {<img src={bgYamin} alt={bgYamin} className="bgItem2" />}
@@ -75,9 +81,9 @@ function Home() {
               <Col lg={6} md={12}>
                   <h2>Our Trainings</h2>
                   <p className="col-lg-11 py-5">We also offer storyteller trainings to <b>community leaders, teachers, volunteers and religious leaders </b>so they can use storytelling in their work to better connect with the people they serve. Additionally, we work with young students to educate them about child rights and storytelling. We coach teens on how to create their own stories, offering them an outlet to express themselves in a constructive way.</p>
-                  <a className="btn btn-outline-primary" href="https://www.google.com/">
+                  <Button variant="outline-primary" onClick={gotoAbout}>
                       See More
-                    </a>
+                  </Button>
               </Col>
               <Col lg={6} md={12} className="textBox">
                 {<img src={trainingImg} alt={trainingImg} className="img-fluid"  /> }
