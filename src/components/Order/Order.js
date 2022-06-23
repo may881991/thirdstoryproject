@@ -1,4 +1,4 @@
-import React , { useRef, useState } from 'react';
+import React , { useRef, useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
 import { storage, addBookToUser } from '../../firebase.js';
 import {
@@ -9,11 +9,13 @@ import {
 import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../Nav/NavBar";
+import Loading from '../Loading/Loading';
 import "./Order.css";
 
 function OrderConfirmed(){
   const navigate = useNavigate();
-  const [status, setStatus] = React.useState(0)
+  const [status, setStatus] = React.useState(0);
+  const [loading, setLoading] = useState(true);
   let data = JSON.parse(localStorage.getItem('addToCart'));
   let user = localStorage.getItem('user');
   let subTotal = 0;
@@ -26,6 +28,10 @@ function OrderConfirmed(){
   const gotoLogin = () => {
     navigate('/login')
   }
+
+  useEffect(() => {
+      setTimeout(() => setLoading(false), 1000)
+  }, [])
 
   const [imageUrl, setImageUrl] = useState(null);
   const setImageUpload = (imageUpload) => {
@@ -60,6 +66,8 @@ function OrderConfirmed(){
   };
 
   return (
+    <>
+    {loading === false ? (
     <Container fluid className='paddingZero'>
       <NavBar bg="light"/>
       <Container fluid className='orderForm'>
@@ -170,6 +178,10 @@ function OrderConfirmed(){
         </Container>
       </Container>
      </Container>
+       ) : (
+        <Loading />
+    )}
+    </>
   );
 }
 

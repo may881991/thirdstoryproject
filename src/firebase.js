@@ -135,6 +135,7 @@ const sendPasswordReset = async (email) => {
 };
 const logout = () => {
   signOut(auth);
+  window.location.reload();
 };
 export {
   auth,

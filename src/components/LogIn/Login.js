@@ -3,6 +3,7 @@ import { auth, signInWithEmailAndPassword, signInWithGoogle } from "../../fireba
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Container , Form, Button, Row, Col} from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
+import Loading from '../Loading/Loading';
 import './Login.css';
 import logo from "./../../assets/images/Logo.png";
 import logInImg1 from "./../../assets/images/SweZin1.png";
@@ -11,16 +12,19 @@ import googleImg from "./../../assets/images/google-icon.png";
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [user, loading, error] = useAuthState(auth);
+    const [user, error] = useAuthState(auth);
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate();
     useEffect(() => {
-      if (loading) {
-        // maybe trigger a loading screen
-        return;
-      }
-      if (user) navigate("/dashboard");
-    }, [user, loading]);
+        setLoading(true)
+        if(loading === true){
+            setTimeout(() => setLoading(false), 1000)
+        }
+        if (user) navigate("/dashboard");
+      }, [user]);
     return (
+        <>
+        {loading === false ? (
         <Container fluid>
             <Container fluid>
                 <Row>
@@ -56,7 +60,11 @@ export default function Login() {
                     </Col>
                 </Row>
         </Container>
-    </Container>
+    </Container> 
+    ) : (
+        <Loading />
+    )}
+    </>
     );
 }
 

@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Container ,Form, Button, Row, Col} from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
 import { auth, registerWithEmailAndPassword, signInWithGoogle } from "../../firebase";
+import Loading from '../Loading/Loading';
 import logo from "./../../assets/images/Logo.png";
 import logInImg1 from "./../../assets/images/SweZin1.png";
 import googleImg from "./../../assets/images/google-icon.png";
@@ -10,18 +11,24 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setName] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user, error] = useAuthState(auth);
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate();
   const register = () => {
     if (!displayName) alert("Please enter name");
     registerWithEmailAndPassword(displayName, email, password);
   };
-  
+
   useEffect(() => {
-    if (loading) return;
-    if (user) navigate("/");
-  }, [user, loading]);
+    if(loading === true){
+        setTimeout(() => setLoading(false), 1000)
+    }
+    if (user) navigate("/dashboard");
+  }, [user]);
+
   return (
+    <>
+    {loading === false ? (
     <Container fluid>
         <Container fluid>
             <Row>
@@ -63,7 +70,11 @@ function SignUp() {
                 </Col>
             </Row>
         </Container>
-    </Container>
+    </Container> 
+    ) : (
+        <Loading />
+    )}
+    </>
   );
 }
 export default SignUp;
