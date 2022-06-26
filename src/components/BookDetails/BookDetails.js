@@ -9,22 +9,15 @@ import meesuImg from "../../assets/images/meesu.png";
 import natImg from "../../assets/images/Natpauksi.png";
 import "./BookDetails.css";
 
-
-let data = localStorage.getItem('addToCart');
-if(data === null){
-  data = [];
-}else{
-  data = JSON.parse(localStorage.getItem('addToCart'));
-}
-
-let checkBookName;
-let bookArr = [];
-function OffCanvasaddTo({ name, ...props }) {
+function OffCanvasaddTo({ name, ...props}) {
+  let bookData = props.data;
+  let bookArr  = props.array;
+  let checkBookName;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-
+  
   const addToCart= () => {
-    setShow(true);
+    setShow(true)
     let bookInfo = localStorage.getItem('bookData');
     let bookInfoObj = JSON.parse(bookInfo);
     bookInfoObj.count = 1;
@@ -40,16 +33,16 @@ function OffCanvasaddTo({ name, ...props }) {
       bookCounts[num] = bookCounts[num] ? bookCounts[num] + 1 : 1;
     }
 
-    if(data !== null && checkBookName === false){
-      data.push(bookInfoObj);
-      localStorage.setItem('addToCart', JSON.stringify(data));
-      return data;
+    if(bookData !== null && checkBookName === false){
+      bookData.push(bookInfoObj);
+      localStorage.setItem('addToCart', JSON.stringify(bookData));
+      return bookData;
     }else{
       console.log(bookCounts);
       let updateData = [];
-      data.map((obj) => {
+      bookData.map((obj) => {
         if(obj.title === getBookName){
-          obj.count = bookCounts[getBookName];
+          obj.count += 1;
           obj.subTotal += parseInt(getPrice);
           updateData.push(obj)
         }else{
@@ -57,12 +50,12 @@ function OffCanvasaddTo({ name, ...props }) {
         }
       })
       localStorage.setItem('addToCart', JSON.stringify(updateData));
-      data = updateData;
-      return data;
+      bookData = updateData;
+      return bookData;
     }
   }
-  console.log(data)
-  if(data !== null){
+  console.log(bookData)
+  if(bookData.length > 0){
     let subTotal = 0;
     return (
       <>
@@ -71,12 +64,12 @@ function OffCanvasaddTo({ name, ...props }) {
         </Button>
         <Offcanvas show={show} onHide={handleClose} {...props}>
           <Offcanvas.Header closeButton>
-            <label><BsCart3 />  <span>{data.length}</span></label>
+            <label><BsCart3 />  <span>{bookData.length}</span></label>
             <Offcanvas.Title>Your Books</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
           <ListGroup className='addToLists'>
-            {data.map((book, i) => {
+            {bookData.map((book, i) => {
               subTotal += parseInt(book.subTotal);
               return (
                 <ListsView
@@ -96,7 +89,7 @@ function OffCanvasaddTo({ name, ...props }) {
       </>
     );
   }else{
-    console.log(data)
+    console.log(bookData)
     return (
       <>
           <Button variant="primary" onClick={addToCart} className="me-2">
@@ -108,6 +101,17 @@ function OffCanvasaddTo({ name, ...props }) {
 }
 
 function BookDetails(){
+    let bookData = localStorage.getItem('addToCart');
+    let bookArr = [];
+    if(bookData === null){
+      bookData = [];
+    }else{
+      bookData = JSON.parse(localStorage.getItem('addToCart'));
+      bookData.forEach(function(book){
+        bookArr.push(book.title)
+      })
+    }
+    console.log(bookArr)
     document.body.classList.add('bookDetail');
     const navigate = useNavigate();
     let bookInfo = localStorage.getItem('bookData');
@@ -143,7 +147,7 @@ function BookDetails(){
                         <p><label>Price : </label> {price} kyats</p>
                         <Button variant="outline-primary" onClick={readBook}> <BsBook /> Read </Button>
                         {['end'].map((placement, idx) => (
-                          <OffCanvasaddTo key={idx} placement={placement} name={"Add To Card"} /> 
+                          <OffCanvasaddTo key={idx} placement={placement} name={"Add To Card"} data={bookData} array={bookArr}/> 
                         ))}
                       </Col>
                     </Row>

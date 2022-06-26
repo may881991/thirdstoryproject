@@ -135,38 +135,34 @@ function BookLists() {
             <Row>
               <Col sm={2}>
                 <h5>Categories</h5>
-                  <hr/>
+                <hr/>
                 <Nav variant="pills" className="flex-column">
                   {Object.entries(groupBylanguage).map(([item, index])=> (
-                    <React.Fragment>
-                    <Nav.Item>
-                        <Nav.Link eventKey={item} key={index}>{item}</Nav.Link>
+                    <Nav.Item key={index}>
+                        <Nav.Link eventKey={item}>{item}</Nav.Link>
                     </Nav.Item>
-                    </React.Fragment>
                   ))}
                 </Nav>
               </Col>
               <Col sm={10}>
                 {searchInput.length > 1 ? (
-                    <Tab.Content className='mt-5'> 
-                    <Tab.Pane eventKey={"Myanmar"} className="row">
-                        {filteredResults.map((item, i) => {
-                            const coverUrl = require('../../assets/images/' + item.bookCover);
-                            return (
-                              <React.Fragment>
-                              <Card
-                                key={i}
-                                bookCover={coverUrl}
-                                title={item.title}
-                                price={item.price}
-                                author={item.author}
-                                bookUrl={item.bookUrl}
-                                illustrator={item.illustrator}
-                              />
-                              </React.Fragment>
-                            )
-                        })}
-                    </Tab.Pane>
+                    <Tab.Content className='mt-5' key={"tab01"}> 
+                      <Tab.Pane eventKey={"Myanmar"} key={"Myanmar"} className="row">
+                          {filteredResults.map((item, i) => {
+                              const coverUrl = require('../../assets/images/' + item.bookCover);
+                              return (
+                                <Card
+                                  key={i}
+                                  bookCover={coverUrl}
+                                  title={item.title}
+                                  price={item.price}
+                                  author={item.author}
+                                  bookUrl={item.bookUrl}
+                                  illustrator={item.illustrator}
+                                />
+                              )
+                          })}
+                      </Tab.Pane>
                     </Tab.Content>
                 ) : (
                     <Tab.Content className='mt-5'>
@@ -176,7 +172,6 @@ function BookLists() {
                           {value.map((card, i) => {
                           const coverUrl = require('../../assets/images/' + card.bookCover);
                             return (
-                              <React.Fragment>
                               <Card
                                 key={i}
                                 bookCover={coverUrl}
@@ -186,7 +181,6 @@ function BookLists() {
                                 bookUrl={card.bookUrl}
                                 illustrator={card.illustrator}
                               />
-                              </React.Fragment>
                             );
                           })}
                         </Tab.Pane>

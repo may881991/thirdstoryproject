@@ -13,7 +13,7 @@ function NavBar() {
   localStorage.setItem('user' , JSON.stringify(user));
   let location = useLocation();
   const addActiveClass = (path) => {
-    return location.pathname.includes(path) ? "button" : "";
+    return location.pathname.includes(path) ? "active" : "";
   };
 
   if(user){
@@ -26,11 +26,11 @@ function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto nav-items align-items-center justify-content-end">
-              <Nav.Link className={`space ${addActiveClass("/home")}`} href="/"> Home </Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/home")}`} href="/home"> Home </Nav.Link>
               <Nav.Link className={`space-one ${addActiveClass("/stories")}`} href="/stories" > Stories </Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/activities")}`} href="/activities" > Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" > About Us</Nav.Link>
-              <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link>
+              {/* <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link> */}
               <div className='d-flex justify-content-end profile'>
                   <BsCart3 /> 
                   <img alt={profileImg} src={profileImg} className="profileImg"/>

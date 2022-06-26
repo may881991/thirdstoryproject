@@ -1,5 +1,5 @@
 import React , { useRef, useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, ListGroup , Modal, CloseButton} from "react-bootstrap";
 import { storage, addBookToUser } from '../../firebase.js';
 import {
   ref,
@@ -16,6 +16,7 @@ function OrderConfirmed(){
   const navigate = useNavigate();
   const [status, setStatus] = React.useState(0);
   const [loading, setLoading] = useState(true);
+  const [show, setShow] = useState(false);
   let data = JSON.parse(localStorage.getItem('addToCart'));
   let user = localStorage.getItem('user');
   let subTotal = 0;
@@ -44,10 +45,14 @@ function OrderConfirmed(){
     });
   }
 
+  const handleClose = () => {
+    setShow(false);
+    localStorage.removeItem("addToCart");
+    localStorage.removeItem("bookData");
+    navigate('/stories')
+  }
   const addbookInfo = () =>{
     addBookToUser(user, data);
-    localStorage.removeItem("bookData");
-    localStorage.removeItem("addToCart");
   }
 
   const sendEmail = (e) => {
@@ -55,13 +60,21 @@ function OrderConfirmed(){
     var gethtml = document.getElementById("orderLists").innerHTML;
     var getTemplate = document.getElementById("htmlTemplate")
     getTemplate.value += '<div style="width: 500px">' + gethtml +'</div>';
-    getTemplate.value += "Payment Screenshot : " +  imageUrl;
+    if(imageUrl != null && status == 2){
+      getTemplate.value += "<b>Payment options :</b> Direct Bank Transfer<br>";
+      getTemplate.value += "<b>Payment Screenshot :</b> " +  imageUrl;
+    }else{
+      getTemplate.value += "<b>Payment options :</b> Cash On Delivery";
+    }
     emailjs.sendForm('service_hicz56n', 'template_pohsi8l', form.current, 'LkA6BCTBIux5qO0KS')
       .then((result) => {
-          console.log(result.text);
-          navigate('/stories')
+          console.log(result)
+          if(result.status == 200){
+            setShow(true)
+          }
       }, (error) => {
           console.log(error.text);
+          alert(error.text)
       });
   };
 
@@ -91,14 +104,14 @@ function OrderConfirmed(){
               })}
               <Row>
                 <Col style={{"width": "250px","display": "inline-block"}}></Col>
-                <Col style={{"width": "180px","display": "inline-block"}}>
+                <Col style={{"width": "180px","display": "inline-block"}} className="addTitle">
                   <p><label style={{"width": "80px","display": "inline-block"}}>SubTotal </label> : <label style={{"width": "70px","display": "inline-block","textAlign": "right"}}>{subTotal} K</label></p>
                   <p><label style={{"width": "80px","display": "inline-block"}}>Delivery </label> : <label style={{"width": "70px","display": "inline-block","textAlign": "right"}}>1000 K </label></p>
                 </Col>
               </Row>
               <Row className='total'>
                 <Col style={{"width": "250px","display": "inline-block"}}></Col>
-                <Col style={{"width": "180px","display": "inline-block"}}>
+                <Col style={{"width": "180px","display": "inline-block"}} className="addTitle">
                   <p><label style={{"width": "80px","display": "inline-block"}}>Total </label> : <label style={{"width": "70px","display": "inline-block","textAlign": "right"}}> {subTotal + 1000} K </label></p>
                 </Col>
               </Row>
@@ -156,6 +169,15 @@ function OrderConfirmed(){
                     </Button>
                     <p className='py-3 signUpText'> Already have an account? <span onClick={gotoLogin}> Login Here!</span></p>
                 </div>
+
+                {show == true && (
+                   <Modal show={show} onHide={handleClose} centered className='text-center'>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Order Confimed</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Woohoo, your order successfully sent!</Modal.Body>
+                 </Modal>
+                )}
             </Form>
             </Col>
           </Row>

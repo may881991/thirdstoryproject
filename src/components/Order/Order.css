@@ -76,3 +76,9 @@
     font-weight: 500;
     width: 200px;
 }
+.addTitle label{
+    font-size: 16px;
+}
+.modal-content{
+    background-color: #b2f4ee !important;
+}
