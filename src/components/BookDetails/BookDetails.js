@@ -12,6 +12,7 @@ import "./BookDetails.css";
 function OffCanvasaddTo({ name, ...props}) {
   let bookData = props.data;
   let bookArr  = props.array;
+  let bookCount  = props.total;
   let checkBookName;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -21,6 +22,7 @@ function OffCanvasaddTo({ name, ...props}) {
     let bookInfo = localStorage.getItem('bookData');
     let bookInfoObj = JSON.parse(bookInfo);
     bookInfoObj.count = 1;
+    bookCount += 1
     console.log(bookInfoObj)
     let getBookName = bookInfoObj.title;
     let getPrice = bookInfoObj.price;
@@ -64,7 +66,7 @@ function OffCanvasaddTo({ name, ...props}) {
         </Button>
         <Offcanvas show={show} onHide={handleClose} {...props}>
           <Offcanvas.Header closeButton>
-            <label><BsCart3 />  <span>{bookData.length}</span></label>
+            <label><BsCart3 />  <span>{bookCount}</span></label>
             <Offcanvas.Title>Your Books</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
@@ -103,14 +105,17 @@ function OffCanvasaddTo({ name, ...props}) {
 function BookDetails(){
     let bookData = localStorage.getItem('addToCart');
     let bookArr = [];
+    let totalBookCount = 0;
     if(bookData === null){
       bookData = [];
     }else{
       bookData = JSON.parse(localStorage.getItem('addToCart'));
       bookData.forEach(function(book){
+        totalBookCount += book.count;
         bookArr.push(book.title)
       })
     }
+    console.log(totalBookCount);
     console.log(bookArr)
     document.body.classList.add('bookDetail');
     const navigate = useNavigate();
@@ -147,7 +152,7 @@ function BookDetails(){
                         <p><label>Price : </label> {price} kyats</p>
                         <Button variant="outline-primary" onClick={readBook}> <BsBook /> Read </Button>
                         {['end'].map((placement, idx) => (
-                          <OffCanvasaddTo key={idx} placement={placement} name={"Add To Card"} data={bookData} array={bookArr}/> 
+                          <OffCanvasaddTo key={idx} placement={placement} name={"Add To Cart"} data={bookData} array={bookArr} total={totalBookCount}/> 
                         ))}
                       </Col>
                     </Row>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { auth , logout} from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useLocation } from "react-router-dom";
-import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Navbar, Container, Nav, Dropdown, Badge } from "react-bootstrap";
 import {BsCart3} from "react-icons/bs";
 import "./NavBar.css";
 import logo from "../../assets/images/Logo.png";
@@ -12,9 +12,21 @@ function NavBar() {
   const [user] = useAuthState(auth);
   localStorage.setItem('user' , JSON.stringify(user));
   let location = useLocation();
+  let totalBookCount = 0;
+  let getBookLists = localStorage.getItem('addToCart');
+  getBookLists = JSON.parse(getBookLists);
+  getBookLists.forEach(function(book){
+    totalBookCount += book.count;
+  })
+
   const addActiveClass = (path) => {
     return location.pathname.includes(path) ? "active" : "";
   };
+  const navigate = useNavigate();
+  const gotoOrder = () => { 
+    navigate('/order')
+  }
+
 
   if(user){
     return (
@@ -32,7 +44,6 @@ function NavBar() {
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" > About Us</Nav.Link>
               {/* <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link> */}
               <div className='d-flex justify-content-end profile'>
-                  <BsCart3 /> 
                   <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
                       <Dropdown.Toggle id="dropdown-basic">
@@ -43,6 +54,7 @@ function NavBar() {
                           <Dropdown.Item href="#" onClick={logout}>Log Out</Dropdown.Item>
                       </Dropdown.Menu>
                   </Dropdown>
+                  <label onClick={gotoOrder} className="addTobasket"><BsCart3 /> <Badge bg="info" pill>{totalBookCount}</Badge></label>
               </div>
             </Nav>
           </Navbar.Collapse>
