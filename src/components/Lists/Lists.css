@@ -35,3 +35,6 @@
     padding: 1rem;
     border-top: 1px solid #fff;
 }
+.trash,.price svg{
+    cursor: pointer;
+}

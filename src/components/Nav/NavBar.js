@@ -14,11 +14,12 @@ function NavBar() {
   let location = useLocation();
   let totalBookCount = 0;
   let getBookLists = localStorage.getItem('addToCart');
-  getBookLists = JSON.parse(getBookLists);
-  getBookLists.forEach(function(book){
-    totalBookCount += book.count;
-  })
-
+  if(getBookLists !== null){
+    getBookLists = JSON.parse(getBookLists);
+    getBookLists.forEach(function(book){
+      totalBookCount += book.count;
+    })
+  }
   const addActiveClass = (path) => {
     return location.pathname.includes(path) ? "active" : "";
   };
@@ -54,7 +55,7 @@ function NavBar() {
                           <Dropdown.Item href="#" onClick={logout}>Log Out</Dropdown.Item>
                       </Dropdown.Menu>
                   </Dropdown>
-                  <label onClick={gotoOrder} className="addTobasket"><BsCart3 /> <Badge bg="info" pill>{totalBookCount}</Badge></label>
+                  <label onClick={gotoOrder} className="addTobasket"><BsCart3 /> {totalBookCount > 1 && (<Badge bg="info" pill>{totalBookCount}</Badge>)}</label>
               </div>
             </Nav>
           </Navbar.Collapse>

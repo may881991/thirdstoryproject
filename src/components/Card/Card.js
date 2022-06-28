@@ -21,7 +21,7 @@ function Cardlayout(props){
     addIcon =  null;
     buyNow =  null;
     return (
-      <Card className="col-md-4" onClick={bookView}>
+      <Card className="col-md-4">
         <Card.Body className="">
           <Card.Img variant="top" src={props.bookCover} />
           <Card.Title className="">

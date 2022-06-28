@@ -84,7 +84,7 @@ function OffCanvasaddTo({ name, ...props}) {
               );
             })}
             </ListGroup>
-          <OffcanvasTitle>SubTotal : <label>{subTotal} K</label></OffcanvasTitle>
+          <OffcanvasTitle>SubTotal : <label id="totalVal">{subTotal} K</label></OffcanvasTitle>
           <Link to="/order" className="me-2 btn btn-outline-light"> Confirm Order </Link>
           </Offcanvas.Body>
         </Offcanvas>

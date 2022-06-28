@@ -1,5 +1,5 @@
 import React , { useRef, useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button, ListGroup , Modal, CloseButton} from "react-bootstrap";
+import { Container, Row, Col, Form, Button, ListGroup , Modal} from "react-bootstrap";
 import { storage, addBookToUser } from '../../firebase.js';
 import {
   ref,
@@ -7,7 +7,7 @@ import {
   getDownloadURL
 } from "firebase/storage";
 import emailjs from "emailjs-com";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from 'react-router-dom'
 import NavBar from "../Nav/NavBar";
 import Loading from '../Loading/Loading';
 import "./Order.css";
@@ -26,17 +26,13 @@ function OrderConfirmed(){
     setStatus(status);
   };
 
-  const gotoLogin = () => {
-    navigate('/login')
-  }
-
   useEffect(() => {
       setTimeout(() => setLoading(false), 1000)
   }, [])
 
   const [imageUrl, setImageUrl] = useState(null);
   const setImageUpload = (imageUpload) => {
-    if (imageUpload == null) return;
+    if (imageUpload === null) return;
     const imageRef = ref(storage, `images/${imageUpload.name}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
@@ -60,7 +56,7 @@ function OrderConfirmed(){
     var gethtml = document.getElementById("orderLists").innerHTML;
     var getTemplate = document.getElementById("htmlTemplate")
     getTemplate.value += '<div style="width: 500px">' + gethtml +'</div>';
-    if(imageUrl != null && status == 2){
+    if(imageUrl !== null && status === 2){
       getTemplate.value += "<b>Payment options :</b> Direct Bank Transfer<br>";
       getTemplate.value += "<b>Payment Screenshot :</b> " +  imageUrl;
     }else{
@@ -69,7 +65,7 @@ function OrderConfirmed(){
     emailjs.sendForm('service_hicz56n', 'template_pohsi8l', form.current, 'LkA6BCTBIux5qO0KS')
       .then((result) => {
           console.log(result)
-          if(result.status == 200){
+          if(result.status === 200){
             setShow(true)
           }
       }, (error) => {
@@ -167,10 +163,10 @@ function OrderConfirmed(){
                     <Button variant="primary" type="submit" onClick={addbookInfo}>
                       Complete Your Order
                     </Button>
-                    <p className='py-3 signUpText'> Already have an account? <span onClick={gotoLogin}> Login Here!</span></p>
+                    <p className='py-3 signUpText'> Already have an account? <Link to="/login"> Login Here!</Link></p>
                 </div>
 
-                {show == true && (
+                {show === true && (
                    <Modal show={show} onHide={handleClose} centered className='text-center'>
                     <Modal.Header closeButton>
                       <Modal.Title>Order Confimed</Modal.Title>
