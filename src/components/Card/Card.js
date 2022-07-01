@@ -12,6 +12,9 @@ function Cardlayout(props){
 
   let addIcon,buyNow;
 
+  function addToCart(){
+    
+  }
   function bookView(){
     localStorage.setItem("bookData",JSON.stringify(props));
     navigate('/bookDetails')
@@ -49,7 +52,7 @@ function Cardlayout(props){
             <span className="age-group">{props.price}</span>
           </Card.Title>
           <Card.Link href="#">{props.author}</Card.Link>
-          {/* <Card.Link href="#" className='float-end'>{addIcon}</Card.Link> */}
+          <Card.Link href="#" onClick={addToCart} className='float-end'>{addIcon}</Card.Link>
         </Card.Body>
         {buyNow}
       </Card>

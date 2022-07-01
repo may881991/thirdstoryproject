@@ -1,11 +1,7 @@
 import React , { useRef, useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, ListGroup , Modal} from "react-bootstrap";
 import { storage, addBookToUser } from '../../firebase.js';
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import emailjs from "emailjs-com";
 import { useNavigate, Link } from 'react-router-dom'
 import NavBar from "../Nav/NavBar";

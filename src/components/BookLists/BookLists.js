@@ -149,11 +149,10 @@ function BookLists() {
                     <Tab.Content className='mt-5' key={"tab01"}> 
                       <Tab.Pane eventKey={"Myanmar"} key={"Myanmar"} className="row">
                           {filteredResults.map((item, i) => {
-                              const coverUrl = require('../../assets/images/' + item.bookCover);
                               return (
                                 <Card
                                   key={i}
-                                  bookCover={coverUrl}
+                                  bookCover={item.bookCover}
                                   title={item.title}
                                   price={item.price}
                                   author={item.author}
@@ -170,11 +169,10 @@ function BookLists() {
                         <React.Fragment>
                         <Tab.Pane eventKey={item} key={item} className="row">
                           {value.map((card, i) => {
-                          const coverUrl = require('../../assets/images/' + card.bookCover);
                             return (
                               <Card
                                 key={i}
-                                bookCover={coverUrl}
+                                bookCover={card.bookCover}
                                 title={card.title}
                                 price={card.price}
                                 author={card.author}

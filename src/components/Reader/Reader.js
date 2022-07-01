@@ -32,8 +32,8 @@ export default class ReaderView extends Component {
         userInfo = JSON.parse(userInfo);
         let bookInfo = localStorage.getItem('bookData');
         bookInfo = JSON.parse(bookInfo);
-        const pdfUrl = require('../../assets/books/' + bookInfo.bookUrl);
-        console.log(pdfUrl)
+        // const pdfUrl = require('../../assets/books/' + bookInfo.bookUrl);
+        console.log(bookInfo.bookUrl)
         return(
             <Container fluid className='Reader'>
                 <nav className='d-flex justify-content-center pt-3'>
@@ -74,7 +74,7 @@ export default class ReaderView extends Component {
                         <BsChevronLeft onClick={this.goToPrevPage}/>
                     </Col>
                     <Col md={10}>
-                        <Document file={pdfUrl} onLoadSuccess={this.onDocumentLoadSuccess} width={500}>
+                        <Document file={bookInfo.bookUrl} onLoadSuccess={this.onDocumentLoadSuccess} width={500}>
                             <Page pageNumber={pageNumber+1} />
                             <div className='overlay'> <img alt={maskLogo} src={maskLogo}/></div>
                         </Document>

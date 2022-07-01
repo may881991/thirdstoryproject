@@ -1,6 +1,5 @@
 .Reader{
     background-color: var(--global-color-lightblue);
-    height: 100vh
 }
 .arrow{
     text-align: center;
@@ -73,15 +72,19 @@
 .pageNum{
     text-align: center;
     padding: 1rem 0;
+    margin-bottom: 13% 0;
 }
 .overlay{
     position: absolute;
     width: 81%;
-    height: auto;
     z-index: 2;
     background: #fffefeeb;
     top: 288px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.overlay img{
+    width: 90%;
+    padding: 8rem 0;
 }

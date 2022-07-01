@@ -4,7 +4,9 @@ import { getBookData } from '../../firebase.js';
 import './Books.css';
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { BsBook} from "react-icons/bs";
-import Carousel from 'react-bootstrap/Carousel';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 const Books = () => {
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ const Books = () => {
     navigate('/stories')
   }
 
-  if (isLoading == true) {
+  if (isLoading === true) {
     let itemLeng = [ 1, 2, 3, 4, 5, 6];
     return(
       <Container fluid className="ourBooks paddingZero">
@@ -56,24 +58,12 @@ const Books = () => {
           {Object.entries(groupBylanguage).map(([item,value])=> (
             <Container className='bookLists pt-5' key={item}>
               <h4>{item}</h4>
-              <Carousel variant="dark" className='my-5' indicators={false}>
-                <Carousel.Item interval={20000}>
-                  <Row>
-                      {value.slice(0,5).map((data) => (
-                          <BookFrame key={data.ISBN} bookInfo={data}/>
-                        ))
-                      }
-                  </Row> 
-                </Carousel.Item>
-                <Carousel.Item interval={20000}>
-                  <Row>
-                      {value.slice(5,8).map((data) => (
-                          <BookFrame key={data.ISBN} bookInfo={data}/>
-                        ))
-                      }
-                  </Row> 
-                </Carousel.Item>
-              </Carousel>
+                <OwlCarousel className='owl-theme' items={5} loop margin={10} nav>
+                  {value.map((data) => (
+                        <BookFrame key={data.ISBN} bookInfo={data}/>
+                      ))
+                    }
+                </OwlCarousel>
             </Container>
           ))}
           <Container className="d-flex justify-content-center pb-5">
@@ -111,20 +101,20 @@ function GetBookLists() {
 
 const BookFrame = ({bookInfo}) => {
   //console.log(bookInfo)
-  const coverUrl = require('../../assets/images/' + bookInfo.bookCover);
+  // const coverUrl = require('../../assets/images/' + bookInfo.bookCover);
 
   const navigate = useNavigate();
   const bookView = () => {  
-    bookInfo.bookCover = require('../../assets/images/' + bookInfo.bookCover);
+    // bookInfo.bookCover = require('../../assets/images/' + bookInfo.bookCover);
     localStorage.setItem("bookData",JSON.stringify(bookInfo));
     navigate('/bookDetails')
   }
 
   return (
-      <Col md={2} className="px-2" onClick={bookView}>
-        <img className="d-block w-100" src={coverUrl} alt={coverUrl}/>
+      <div className="item" onClick={bookView}>
+        <img className="d-block" src={bookInfo.bookCover} alt={bookInfo.bookCover}/>
         <label>{bookInfo.title}</label>
-      </Col>
+      </div>
   );
 }
 

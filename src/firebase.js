@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail,updateProfile, signOut} from "firebase/auth";
-import { getFirestore, query, getDocs, collection, where, addDoc, doc, setDoc, updateDoc} from "firebase/firestore";
+import { getFirestore, query, getDocs, collection, where, addDoc, doc, updateDoc} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
@@ -45,7 +45,7 @@ const addBookToUser = async (user, bookLists) => {
     getData.forEach((ele) => {
       const data = ele.data();
       const userdoc = doc(db, "users", ele.id);
-      if(data.shopLists.length == 0){
+      if(data.shopLists.length === 0){
         updateDoc(userdoc, {
           shopLists : bookLists
         }).then(() => {
