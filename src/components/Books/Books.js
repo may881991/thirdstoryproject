@@ -101,11 +101,9 @@ function GetBookLists() {
 
 const BookFrame = ({bookInfo}) => {
   //console.log(bookInfo)
-  // const coverUrl = require('../../assets/images/' + bookInfo.bookCover);
 
   const navigate = useNavigate();
   const bookView = () => {  
-    // bookInfo.bookCover = require('../../assets/images/' + bookInfo.bookCover);
     localStorage.setItem("bookData",JSON.stringify(bookInfo));
     navigate('/bookDetails')
   }

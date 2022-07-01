@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Container ,Form, Button, Row, Col} from 'react-bootstrap';
+import { Container ,Form, Button, Row, Col, Toast, Alert, ToastContainer} from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
 import { auth, registerWithEmailAndPassword, signInWithGoogle } from "../../firebase";
 import Loading from '../Loading/Loading';
@@ -11,21 +11,36 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setName] = useState("");
+  const [errorMsg, setErrmsg] = useState();
+  const [successMsg, setSucmsg] = useState();
   const [user, error] = useAuthState(auth);
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate();
   const register = () => {
     if (!displayName) alert("Please enter name");
-    registerWithEmailAndPassword(displayName, email, password);
+    registerWithEmailAndPassword(displayName, email, password).then((res) => {
+        console.log(res)
+        setErrmsg(res)
+        setTimeout(() => setErrmsg(), 3000);
+    });
   };
 
   useEffect(() => {
     if(loading === true){
         setTimeout(() => setLoading(false), 1000)
     }
-    if (user) navigate("/dashboard");
-  }, [user]);
-
+    if (user){
+        setSucmsg("Your account has been created!")
+        setTimeout(() => {
+            navigate("/dashboard");
+            setSucmsg()
+        }, 3000);
+    }
+    if (error){
+        console.log(error)
+    }
+  }, [user,error]);
+  console.log(errorMsg)
   return (
     <>
     {loading === false ? (
@@ -63,7 +78,23 @@ function SignUp() {
                             </Form.Group>
                             <div className="text-center">
                                 <Button variant="primary" className='loginBtn'  onClick={register}>Register</Button>
-                                <p className='py-5 signUpText'> Already have an account? <Link to="/login"> Login </Link> now.</p>
+                                {errorMsg !== undefined ? ( 
+                                    <ToastContainer position="top-end" className="p-3">
+                                        <Toast>
+                                            <Toast.Body className="bg-danger text-white rounded"> {errorMsg}</Toast.Body>
+                                        </Toast>
+                                  </ToastContainer>) : (
+                                    <label></label>
+                                )}
+                                {successMsg !== undefined ? ( 
+                                    <ToastContainer position="top-end" className="p-3">
+                                        <Toast>
+                                            <Toast.Body className="bg-success text-white rounded"> {successMsg}</Toast.Body>
+                                        </Toast>
+                                  </ToastContainer>) : (
+                                    <label></label>
+                                )}
+                                <p className='py-3 signUpText'> Already have an account? <Link to="/login"> Login </Link> now.</p>
                             </div>
                         </div>
                     </div>

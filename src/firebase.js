@@ -120,8 +120,10 @@ const registerWithEmailAndPassword = async (displayName, email, password) => {
     }).catch((error) => {
       console.log(error)
     });
+    return "Successfully created User!"
   } catch (err) {
     console.error(err.message);
+    return "Your email already exist!";
   }
 };
 
