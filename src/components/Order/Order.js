@@ -1,17 +1,22 @@
 import React , { useRef, useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button, ListGroup , Modal} from "react-bootstrap";
+import { Container, Row, Col, Form, Button, ListGroup , Modal, Offcanvas, Image} from "react-bootstrap";
 import { storage, addBookToUser } from '../../firebase.js';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import emailjs from "emailjs-com";
 import { useNavigate, Link } from 'react-router-dom'
 import NavBar from "../Nav/NavBar";
 import Loading from '../Loading/Loading';
+import delImg1 from "../../assets/images/deliveryInfo1.jpg";
+import delImg2 from "../../assets/images/deliveryInfo2.jpg";
 import "./Order.css";
 
 function OrderConfirmed(){
   const navigate = useNavigate();
   const [status, setStatus] = React.useState(0);
   const [loading, setLoading] = useState(true);
+  const [showInfo, setShowInfo] = useState(false); 
+  const handleInfoClose = () => setShowInfo(false);
+  const handleShow = () => setShowInfo(true);
   const [show, setShow] = useState(false);
   let data = JSON.parse(localStorage.getItem('addToCart'));
   let user = localStorage.getItem('user');
@@ -46,6 +51,11 @@ function OrderConfirmed(){
   const addbookInfo = () =>{
     addBookToUser(user, data);
   }
+
+  const goTologin = () =>{
+    navigate('/login')
+  }
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -94,13 +104,13 @@ function OrderConfirmed(){
                   </ListGroup.Item>
                 );
               })}
-              <Row>
+              {/* <Row>
                 <Col style={{"width": "250px","display": "inline-block"}}></Col>
                 <Col style={{"width": "180px","display": "inline-block"}} className="addTitle">
                   <p><label style={{"width": "80px","display": "inline-block"}}>SubTotal </label> : <label style={{"width": "70px","display": "inline-block","textAlign": "right"}}>{subTotal} K</label></p>
                   <p><label style={{"width": "80px","display": "inline-block"}}>Delivery </label> : <label style={{"width": "70px","display": "inline-block","textAlign": "right"}}>1000 K </label></p>
                 </Col>
-              </Row>
+              </Row> */}
               <Row className='total'>
                 <Col style={{"width": "250px","display": "inline-block"}}></Col>
                 <Col style={{"width": "180px","display": "inline-block"}} className="addTitle">
@@ -159,7 +169,7 @@ function OrderConfirmed(){
                     <Button variant="primary" type="submit" onClick={addbookInfo}>
                       Complete Your Order
                     </Button>
-                    <p className='py-3 signUpText'> Already have an account? <Link to="/login"> Login Here!</Link></p>
+                    <p className='py-3 signUpText'> Already have an account? <Link to="/login" onClick={goTologin}> Login Here!</Link></p>
                 </div>
 
                 {show === true && (
@@ -187,6 +197,19 @@ function OrderConfirmed(){
             <Col md={6} className="py-4">
               <h4>Review & Place Order </h4>
               <p>Please review the order details and payment details before proceeding to confirm your order </p>
+
+              <Button variant="primary" type="submit"  onClick={handleShow}>
+                Show Delivery Information
+              </Button> 
+              <Offcanvas show={showInfo} onHide={handleInfoClose}>
+                <Offcanvas.Header closeButton>
+                  <Offcanvas.Title>Delivery Information</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                  {<img src={delImg1} alt="delivery image 1" className='img-fluid'/>}
+                  {<img src={delImg2} alt="delivery image 2" className='img-fluid'/>}
+                </Offcanvas.Body>
+              </Offcanvas>
             </Col>
           </Row>
         </Container>

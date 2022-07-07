@@ -58,12 +58,20 @@ const Books = () => {
           {Object.entries(groupBylanguage).map(([item,value])=> (
             <Container className='bookLists pt-5' key={item}>
               <h4>{item}</h4>
+              {value.length <= 5 ? (
+                  <Row className='bookItem'> 
+                      {value.map((data) => ( 
+                          <BookFrame key={data.ISBN} bookInfo={data}/> 
+                       )) }
+                  </Row>
+                ) : (
                 <OwlCarousel className='owl-theme' items={5} loop margin={10} nav>
                   {value.map((data) => (
                         <BookFrame key={data.ISBN} bookInfo={data}/>
                       ))
-                    }
+                   }
                 </OwlCarousel>
+              )}
             </Container>
           ))}
           <Container className="d-flex justify-content-center pb-5">

@@ -42,7 +42,6 @@
     color: red;
 }
 .total{
-    border-top: 1px solid #fff;
     padding-top: 1rem;
     width: 100%;
     margin: 0 auto !important;
@@ -67,7 +66,7 @@
 .payment-footer{
     background: var(--global-color-lightblue);
 }
-.payment-footer h4{
+.payment-footer h4,.offcanvas-title{
     color: var(--global-color-main);
     font-weight: 500;
     padding: 15px 0;
@@ -81,4 +80,8 @@
 }
 .modal-content{
     background-color: #b2f4ee !important;
+}
+.offcanvas-title{
+    font-weight: 700;
+    padding-left: 1rem;
 }
