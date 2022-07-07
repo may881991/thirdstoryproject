@@ -20,14 +20,19 @@ export default class ReaderView extends Component {
     componentDidMount(){ 
         let userData = localStorage.getItem('user');
         userData = JSON.parse(userData); 
-        this.setState({ userInfo: userData}) 
-        getUserData(userData).then((user) => {
-            user.forEach((ele) => {
-              var userData = ele.data(); 
-              this.setState({ userBookLists: userData});
-              this.setState({ loading: false});
-            });
-        }).catch((err) => console.log(err));  
+        console.log(userData)
+        if(userData !== null){
+            this.setState({ userInfo: userData}) 
+            getUserData(userData).then((user) => {
+                user.forEach((ele) => {
+                  var userData = ele.data(); 
+                  this.setState({ userBookLists: userData});
+                  this.setState({ loading: false});
+                });
+            }).catch((err) => console.log(err));   
+        }else{
+            setTimeout(() => this.setState({ loading: false}), 500);
+        }
     };
 
 	goToPrevPage = () =>
