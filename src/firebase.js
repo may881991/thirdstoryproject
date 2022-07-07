@@ -80,6 +80,7 @@ const getUserData = async (user) => {
     return getData;
   }catch(err){
     console.error(err.message)
+    return err;
   }
 }
 

@@ -1,8 +1,8 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component  } from 'react';
 import { Container, Row, Col, Button, Dropdown} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-import { logout } from "../../firebase";
+import { logout, getUserData } from "../../firebase";
 import { BsChevronLeft, BsChevronRight , BsArrowDownShort} from "react-icons/bs";
 import logo from "../../assets/images/Logo.png";
 import maskLogo from "../../assets/images/happyland.png";
@@ -11,15 +11,23 @@ import "./Reader.css";
 import Loading from '../Loading/Loading';
 
 export default class ReaderView extends Component {
-    state = { numPages: null, pageNumber: 0 , loading : true};
+    state = { numPages: null, pageNumber: 0 , loading : true, userBookLists : [], userInfo : null};
 
 	onDocumentLoadSuccess = ({ numPages }) => {
 		this.setState({ numPages });
 	};
 
-    componentDidMount(){
-        setTimeout(() => this.setState({ loading: false}), 500)
-        console.log(this.state.loading)
+    componentDidMount(){ 
+        let userData = localStorage.getItem('user');
+        userData = JSON.parse(userData); 
+        this.setState({ userInfo: userData}) 
+        getUserData(userData).then((user) => {
+            user.forEach((ele) => {
+              var userData = ele.data(); 
+              this.setState({ userBookLists: userData});
+              this.setState({ loading: false});
+            });
+        }).catch((err) => console.log(err));  
     };
 
 	goToPrevPage = () =>
@@ -33,15 +41,23 @@ export default class ReaderView extends Component {
     }
     
     render() {
-        const { pageNumber, numPages } = this.state;
-        let userInfo = localStorage.getItem('user');
-        userInfo = JSON.parse(userInfo);
+        const { pageNumber, numPages, loading, userBookLists, userInfo } = this.state; 
         let bookInfo = localStorage.getItem('bookData');
-        bookInfo = JSON.parse(bookInfo);
-        console.log(bookInfo.bookUrl)
+        bookInfo = JSON.parse(bookInfo); 
+        let correctBook = false;
+        let userbookData = userBookLists.shopLists;
+        // console.log(bookInfo.title)
+        console.log(userBookLists.shopLists)
+        if(userbookData !== undefined){ 
+             userBookLists.shopLists.map((book) => { 
+                if(bookInfo.title === book.title){
+                    correctBook = true;
+                } 
+            }); 
+        }
         return(
             <>
-            {this.state.loading === false ? (
+            {loading === false ? (
                 <Container fluid className='Reader'>
                     <nav className='d-flex justify-content-center pt-3'>
                         <img alt={logo} src={logo} className="logo"/>
@@ -53,9 +69,11 @@ export default class ReaderView extends Component {
                                     <Link to="/bookDetails"><button className="backBtn"><BsChevronLeft/></button></Link> <label> {bookInfo.title} </label>
                                 </Col>
                                 <Col className='text-center'>
-                                    <Button className="btn btn-primary downloadBtn d-none" href="#">
+                                {correctBook === true && (
+                                    <Button className="btn btn-primary downloadBtn" href={bookInfo.bookUrl} download target='_blank'>
                                             Download <BsArrowDownShort/>
-                                    </Button>
+                                    </Button> 
+                                 )}
                                 </Col>
                                 <Col className='d-flex justify-content-end'>
                                     <img alt={profileImg} src={profileImg}/>
