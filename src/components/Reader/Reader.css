@@ -74,6 +74,9 @@
     padding: 1rem 0;
     margin-bottom: 13% 0;
 }
+.booktitle{
+    font-family: var(--global-font-family-mn);
+}
 .overlay{
     position: absolute;
     width: 82%;

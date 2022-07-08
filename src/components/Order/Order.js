@@ -114,7 +114,7 @@ function OrderConfirmed(){
               <Row className='total'>
                 <Col style={{"width": "250px","display": "inline-block"}}></Col>
                 <Col style={{"width": "180px","display": "inline-block"}} className="addTitle">
-                  <p><label style={{"width": "80px","display": "inline-block"}}>Total </label> : <label style={{"width": "70px","display": "inline-block","textAlign": "right"}}> {subTotal + 1000} K </label></p>
+                  <p><label style={{"width": "80px","display": "inline-block"}}>Total </label> : <label style={{"width": "70px","display": "inline-block","textAlign": "right"}}> {subTotal} K </label></p>
                 </Col>
               </Row>
               </ListGroup>

@@ -1,16 +1,26 @@
-import React from 'react';
+import React , { useEffect, useState } from 'react';
 import { auth , logout} from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown, Badge } from "react-bootstrap";
 import {BsCart3} from "react-icons/bs";
+import { getUserData } from "../../firebase";
 import "./NavBar.css";
 import logo from "../../assets/images/Logo.png";
 import profileImg from "../../assets/images/user.png";
 
 function NavBar() {
   const [user] = useAuthState(auth);
-  localStorage.setItem('user' , JSON.stringify(user));
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    getUserData(user).then((user) => {
+      user.forEach((ele) => {
+        var userData = ele.data();  
+        setUserData(userData)
+      });
+  }).catch((err) => console.log(err)); 
+  }, []);
+
   let location = useLocation();
   let totalBookCount = 0;
   let getBookLists = localStorage.getItem('addToCart');
@@ -29,7 +39,8 @@ function NavBar() {
   }
 
 
-  if(user){
+  if(userData !== null){
+    localStorage.setItem('user' , JSON.stringify(userData));
     return (
       <Navbar expand="lg" className="fixed-top shadow-sm">
         <Container className="nav-container">
@@ -48,7 +59,7 @@ function NavBar() {
                   <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
                       <Dropdown.Toggle id="dropdown-basic">
-                      <label className='name'>{user.displayName}</label>
+                      <label className='name'>{userData.name}</label>
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                           {/* <Dropdown.Item href="#">Account Details</Dropdown.Item> */}

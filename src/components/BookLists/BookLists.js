@@ -109,9 +109,9 @@ function BookLists() {
     return(
       <>
         {loading === false ? (
-        <Container fluid className='sidebarBg paddingZero'>
+        <Container fluid className='sidebarBg'>
             <NavBar bg="light"/>
-            <Container fluid className='banner'>
+            <Container fluid className='banner paddingZero'>
                 <Row>
                     <Col md={2} className="py-3">
                     {<img src={treeImg} alt={treeImg} className="bannerImg1 img-fluid"/> }

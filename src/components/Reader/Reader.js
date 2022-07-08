@@ -11,7 +11,7 @@ import "./Reader.css";
 import Loading from '../Loading/Loading';
 
 export default class ReaderView extends Component {
-    state = { numPages: null, pageNumber: 0 , loading : true, userBookLists : [], userInfo : null};
+    state = { numPages: null, pageNumber: 0 , loading : true, userBookLists : [], userInfo : null, bookstatus : false, bookInfo: null};
 
 	onDocumentLoadSuccess = ({ numPages }) => {
 		this.setState({ numPages });
@@ -20,6 +20,9 @@ export default class ReaderView extends Component {
     componentDidMount(){ 
         let userData = localStorage.getItem('user');
         userData = JSON.parse(userData); 
+        let bookInfolocal = localStorage.getItem('bookData');
+        bookInfolocal = JSON.parse(bookInfolocal);  
+        this.setState({ bookInfo: bookInfolocal});
         console.log(userData)
         if(userData !== null){
             this.setState({ userInfo: userData}) 
@@ -27,12 +30,22 @@ export default class ReaderView extends Component {
                 user.forEach((ele) => {
                   var userData = ele.data(); 
                   this.setState({ userBookLists: userData});
+                  let userbookData = userData.shopLists;
+                  console.log(userData.shopLists)
+                  if(userbookData !== undefined){ 
+                      userbookData.map((book) => { 
+                          if(bookInfolocal.title === book.title){
+                              this.setState({ bookstatus: true});
+                          } 
+                      }); 
+                  }  
                   this.setState({ loading: false});
                 });
             }).catch((err) => console.log(err));   
         }else{
             setTimeout(() => this.setState({ loading: false}), 500);
         }
+        console.log(this.state.bookstatus)
     };
 
 	goToPrevPage = () =>
@@ -46,24 +59,14 @@ export default class ReaderView extends Component {
     }
     
     render() {
-        const { pageNumber, numPages, loading, userBookLists, userInfo } = this.state; 
-        let bookInfo = localStorage.getItem('bookData');
-        bookInfo = JSON.parse(bookInfo); 
-        let correctBook = false;
-        let userbookData = userBookLists.shopLists;
-        // console.log(bookInfo.title)
-        console.log(userBookLists.shopLists)
-        if(userbookData !== undefined){ 
-             userBookLists.shopLists.map((book) => { 
-                if(bookInfo.title === book.title){
-                    correctBook = true;
-                } 
-            }); 
-        }
+        const { pageNumber, numPages, loading, userBookLists, userInfo, bookstatus, bookInfo } = this.state; 
+        
+        console.log(bookstatus)
+        console.log(bookInfo)
         return(
             <>
             {loading === false ? (
-                <Container fluid className='Reader'>
+                <Container fluid className='Reader paddingZero'>
                     <nav className='d-flex justify-content-center pt-3'>
                         <img alt={logo} src={logo} className="logo"/>
                     </nav>
@@ -71,10 +74,10 @@ export default class ReaderView extends Component {
                         <Col md={10} className="offset-md-1">
                             <Row>
                                 <Col>
-                                    <Link to="/bookDetails"><button className="backBtn"><BsChevronLeft/></button></Link> <label> {bookInfo.title} </label>
+                                    <Link to="/bookDetails"><button className="backBtn"><BsChevronLeft/></button></Link> <label className='booktitle'> {bookInfo.title} </label>
                                 </Col>
                                 <Col className='text-center'>
-                                {correctBook === true && (
+                                {bookstatus === true && (
                                     <Button className="btn btn-primary downloadBtn" href={bookInfo.bookUrl} download target='_blank'>
                                             Download <BsArrowDownShort/>
                                     </Button> 
@@ -85,7 +88,7 @@ export default class ReaderView extends Component {
                                         {userInfo !== null ? (
                                             <Dropdown>
                                                 <Dropdown.Toggle id="dropdown-basic">
-                                                    <label className='name'>{userInfo.displayName}</label> 
+                                                    <label className='name'>{this.state.userBookLists.name}</label> 
                                                 </Dropdown.Toggle>
                                                 <Dropdown.Menu>
                                                     {/* <Dropdown.Item href="#">Account Details</Dropdown.Item> */}

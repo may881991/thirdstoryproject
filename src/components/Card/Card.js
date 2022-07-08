@@ -44,7 +44,7 @@ function Cardlayout(props){
     addIcon =  <BsCart3 />;
     buyNow = <Button className="buyBtn" variant="outline-primary"> Buy Now! </Button>;
     return (
-      <Card className="col-md-3" onClick={bookView}>
+      <Card className="col-md-4" onClick={bookView}>
         <Card.Body className="">
           <Card.Img variant="top" src={props.bookCover} />
           <Card.Title className="">
