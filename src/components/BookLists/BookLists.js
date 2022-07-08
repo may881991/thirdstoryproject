@@ -31,7 +31,7 @@ function BookLists() {
       </Pagination.Item>,
     );
   }
-  if (isLoading == true) {
+  if (isLoading === true) {
     let itemLeng = [ 1, 2, 3, 4, 5, 6];
     return(
       <Container fluid className='sidebarBg paddingZero'>

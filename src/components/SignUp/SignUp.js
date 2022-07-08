@@ -44,8 +44,7 @@ function SignUp() {
   return (
     <>
     {loading === false ? (
-    <Container fluid>
-        <Container fluid>
+    <Container fluid className="paddingZero"> 
             <Row>
                 <Col className="loginBg">
                     <img alt={logo} src={logo} className="logo"/>
@@ -100,8 +99,7 @@ function SignUp() {
                     </div>
                 </Col>
             </Row>
-        </Container>
-    </Container> 
+        </Container> 
     ) : (
         <Loading />
     )}

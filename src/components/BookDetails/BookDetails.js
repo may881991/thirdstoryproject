@@ -1,9 +1,10 @@
-import React , { useState }from 'react';
+import React , { useState , useEffect}from 'react';
 import NavBar from "../Nav/NavBar";
 import Footer from '../Footer/Footer';
 import ListsView from "../Lists/Lists";
 import { Container, Row, Col, Button , Offcanvas, ListGroup, OffcanvasTitle} from "react-bootstrap";
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 import { BsArrowLeft, BsBook, BsCartPlusFill , BsCart3} from "react-icons/bs";
 import meesuImg from "../../assets/images/meesu.png";
 import natImg from "../../assets/images/Natpauksi.png";
@@ -64,7 +65,7 @@ function OffCanvasaddTo({ name, ...props}) {
         <Button variant="primary" onClick={addToCart} className="me-2">
           {name} <BsCartPlusFill />
         </Button>
-        <Offcanvas show={show} onHide={handleClose} {...props}>
+        <Offcanvas show={show} onHide={handleClose} {...props} className="addTocartOff" >
           <Offcanvas.Header closeButton>
             <label><BsCart3 />  <span>{bookCount}</span></label>
             <Offcanvas.Title>Your Books</Offcanvas.Title>
@@ -102,7 +103,8 @@ function OffCanvasaddTo({ name, ...props}) {
   }
 }
 
-function BookDetails(){
+function BookDetails(){ 
+    const [loading, setLoading] = useState(true)
     let bookData = localStorage.getItem('addToCart');
     let bookArr = [];
     let totalBookCount = 0;
@@ -115,6 +117,9 @@ function BookDetails(){
         bookArr.push(book.title)
       })
     }
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 1000)
+    }, [])
     console.log(totalBookCount);
     console.log(bookArr)
     document.body.classList.add('bookDetail');
@@ -132,6 +137,8 @@ function BookDetails(){
     }
 
     return(
+      <>
+      {loading === false ? (
         <Container fluid className='paddingZero'>
             <NavBar bg="light"/>
             <Container fluid className='banner'>
@@ -164,6 +171,10 @@ function BookDetails(){
             </Container>
             <Footer />
         </Container>
+        ) : (
+        <Loading />
+      )}
+      </>
     )
 }
 export default BookDetails;

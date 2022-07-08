@@ -87,7 +87,7 @@ function NavBar() {
               <Nav.Link className={`space-one ${addActiveClass("/stories")}`} href="/stories" > Stories </Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/activities")}`} href="/activities" > Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" > About Us</Nav.Link>
-              <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link>
+              {/* <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link> */}
               <Nav.Link className="btn btn-outline-primary" href="/signup"> Sign Up </Nav.Link>
               <Nav.Link className="btn btn-primary" href="/login"> Log In </Nav.Link>
             </Nav>

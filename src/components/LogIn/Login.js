@@ -16,17 +16,14 @@ export default function Login() {
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate();
     useEffect(() => {
-        setLoading(true)
-        if(loading === true){
-            setTimeout(() => setLoading(false), 1000)
-        }
+        setTimeout(() => setLoading(false), 1000)
         if (user) navigate("/dashboard");
       }, [user]);
     return (
         <>
         {loading === false ? (
         <Container fluid>
-            <Container fluid>
+            <Container fluid className="paddingZero">
                 <Row>
                     <Col className="loginBg">
                         <img alt={logo} src={logo} className="logo"/>

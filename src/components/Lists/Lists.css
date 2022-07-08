@@ -10,6 +10,10 @@
     display: flex;
     font-size: 16px;
 }
+.addToLists{ 
+    border-bottom: 1px solid #fff;
+    border-radius: 0px !important;
+}
 .addToLists .addTitle{
     width: 200px;
     font-family: var(--global-font-family-mn);
@@ -30,10 +34,10 @@
 .addToLists svg{
     margin: 0.25rem;
 }
-.offcanvas-title{
+.addTocartOff .offcanvas-title{
     font-size: 1rem !important;
     padding: 1rem;
-    border-top: 1px solid #fff;
+    color: #fff ;
 }
 .trash,.price svg{
     cursor: pointer;

@@ -14,9 +14,12 @@ function ListsView(props){
   let [subTotal, setTotal] = useState(props.price);
   const removeBook = (e) => {
     let parentId = e.target.parentNode.getAttribute("id");
+    console.log(e.target.parentNode)
+    console.log(parentId)
     document.getElementById(parentId).style.display = "none";
     const newList = getBookLists.filter((item) => item.title !== props.title);
     localStorage.setItem('addToCart', JSON.stringify(newList));
+    reduceBookCount();
   }
 
   const addBookCount = () => {
