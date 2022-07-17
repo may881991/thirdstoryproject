@@ -9,6 +9,7 @@ import AboutUs from './components/About/About';
 import ReadBook from './components/Reader/Reader';
 import Order from './components/Order/Order';
 import LogIn from './components/LogIn/Login';
+import Gallery from './components/Gallery/Gallery';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './assets/fonts/MyanmarSansPro-Regular.ttf';
@@ -24,6 +25,7 @@ ReactDOM.render(
           <Route path="/activities" element={<Activities />} />
           <Route path="/bookDetails" element={<BookDetails />} />
           <Route path="/read" element={<ReadBook />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/order" element={<Order />} />
           <Route path="/login" element={<LogIn />} />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import './Footer.css';
 import { Container, Row, Col } from "react-bootstrap";
 import { BsInstagram , BsYoutube, BsFacebook } from "react-icons/bs";
@@ -6,6 +7,19 @@ import footerLogo from "../../assets/images/f-logo.png";
 import boxItem from "../../assets/images/bgBox.png";
 
 function Footer() {
+    const navigate = useNavigate();
+    
+    const gotoActivities = () => { 
+        navigate('/activities')
+    }
+
+    const gotoGallery = () => { 
+        navigate('/gallery')
+    } 
+
+    const gotoAbout = () => { 
+        navigate('/about')
+    }
     return(
         <Container fluid className="footer">
             {<img src={boxItem} alt={boxItem}  className="bgItem5" />}
@@ -19,24 +33,24 @@ function Footer() {
                     <Col lg={3} md={12} className="px-5">
                         <h5 className='secTitle'>Our Stories</h5>
                         <ul>
-                            <li><a href='https://www.google.com/'>About Us</a></li>
-                            <li><a href='https://www.google.com/'>Happy Customer</a></li>
-                            <li><a href='https://www.google.com/'>Our Activities</a></li>
-                            <li><a href='https://www.google.com/'>Apps</a></li>
+                            <li><a href='/about' onClick={gotoAbout}>About Us</a></li>
+                            <li><a href='/gallery' onClick={gotoGallery}>Happy Customer</a></li>
+                            <li><a href='/activities' onClick={gotoActivities}>Our Activities</a></li>
+                            {/* <li><a href='https://www.google.com/'>Apps</a></li> */}
                         </ul>
                     </Col>
                     <Col lg={3} md={12}>
                         <h5 className='secTitle'>Shops</h5>
                         <ul>
-                            <li><a href='https://www.google.com/'>Yangon</a></li>
-                            <li><a href='https://www.google.com/'>Mandalay</a></li>
-                            <li><a href='https://www.google.com/'>Shan State</a></li>
-                            <li><a href='https://www.google.com/'>Kayin State</a></li>
+                            <li><a href='https://sites.google.com/view/thirdstoryproject/where-to-buy?authuser=0'>Yangon</a></li>
+                            <li><a href='https://sites.google.com/view/thirdstoryproject/where-to-buy?authuser=0'>Mandalay</a></li>
+                            <li><a href='https://sites.google.com/view/thirdstoryproject/where-to-buy?authuser=0'>Shan State</a></li>
+                            <li><a href='https://sites.google.com/view/thirdstoryproject/where-to-buy?authuser=0'>Kayin State</a></li>
                         </ul>
                     </Col>
                     <Col lg={3} md={12} className="contactInfo">
                         <h5>Contact Us</h5>
-                        <label>thirdstorychildrenbooks@gmail.com</label>
+                        <label>admin@thirdstoryproject.org</label>
                         <label>No. 86, 52 Street, Middle Block, </label>
                         <label>Yangon, Myanmar (Burma)</label>
                         <div>

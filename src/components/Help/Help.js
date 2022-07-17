@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import './Help.css';
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { BsArrowRight } from "react-icons/bs";
@@ -8,6 +9,10 @@ import helpImg2 from "../../assets/images/help2.png";
 import helpImg3 from "../../assets/images/help3.png";
 
 function Help() {
+    const navigate = useNavigate();
+    const gotoActivities = () => { 
+      navigate('/activities')
+    }
     return(
         <Container fluid className="helpSection">
             <Container>
@@ -21,7 +26,7 @@ function Help() {
                         <Card.Text>
                         Our books are fantastic for your favorite little person, your neighbor's children...
                         </Card.Text>
-                        <Card.Link href="#">Read More<BsArrowRight /></Card.Link>
+                        <Card.Link onClick={gotoActivities}>Read More<BsArrowRight /></Card.Link>
                     </Card.Body>
                     </Card>
                 </Col>
@@ -33,7 +38,7 @@ function Help() {
                         <Card.Text>
                         An exclusive program at Hla Day is Pass it On where you can choose to pass it on yourself...
                         </Card.Text>
-                        <Card.Link href="#">Read More <BsArrowRight /></Card.Link>
+                        <Card.Link onClick={gotoActivities}>Read More <BsArrowRight /></Card.Link>
                     </Card.Body>
                     </Card>
                 </Col>
@@ -45,16 +50,16 @@ function Help() {
                         <Card.Text>
                         Are you coming to Myanmar for holidays or work?  Maximize your maximum luggage limits by ...
                         </Card.Text>
-                        <Card.Link href="#">Read More <BsArrowRight /></Card.Link>
+                        <Card.Link onClick={gotoActivities}>Read More <BsArrowRight /></Card.Link>
                     </Card.Body>
                     </Card>
                 </Col>
             </Row>
-            <div className='d-flex justify-content-center pb-5'>
+            {/* <div className='d-flex justify-content-center pb-5'>
               <Button className="btn btn-primary downloadBtn" href="#">
                       Donate Now!
                 </Button>
-            </div>
+            </div> */}
 
             {<img src={jayImg} alt={jayImg} className="bgItem4" />}
             </Container>

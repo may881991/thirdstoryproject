@@ -109,7 +109,7 @@ export default class ReaderView extends Component {
                         <Col md={10}>
                             <Document file={bookInfo.bookUrl} onLoadSuccess={this.onDocumentLoadSuccess} width={500}>
                                 <Page pageNumber={pageNumber+1} />
-                                {pageNumber > 5 ? (
+                                {pageNumber > 4 ? (
                                     <div className='overlay'> <img alt={maskLogo} src={maskLogo}/></div> ) : (
                                     <div className='overlay d-none'> <img alt={maskLogo} src={maskLogo}/></div> 
                                 )}

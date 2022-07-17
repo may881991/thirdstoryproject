@@ -46,6 +46,10 @@ function NavBar() {
     navigate('/activities')
   }
 
+  const gotoGallery = () => { 
+    navigate('/gallery')
+  } 
+
   const gotoAbout = () => { 
     navigate('/about')
   }
@@ -73,7 +77,7 @@ function NavBar() {
               <Nav.Link className={`space-one ${addActiveClass("/stories")}`} onClick={gotoBookLists}> Stories </Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
-              {/* <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link> */}
+              <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
               <div className='d-flex justify-content-end profile'>
                   <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
@@ -106,7 +110,7 @@ function NavBar() {
               <Nav.Link className={`space-one ${addActiveClass("/stories")}`} onClick={gotoBookLists}> Stories </Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
-              {/* <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link> */}
+              <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
               <Nav.Link className="btn btn-outline-primary" onClick={gotoSignUp}> Sign Up </Nav.Link>
               <Nav.Link className="btn btn-primary" onClick={gotoLogin}> Log In </Nav.Link>
             </Nav>

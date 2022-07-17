@@ -20,14 +20,6 @@ const data = [
       img: activities1Img
     },
     {
-      title: "Stories of Change",
-      description : "Stories for Change is a partnership between the Myanmar Storytellers, Myanmar Art Social Project (MASc), Thukhuma Travelers and the Third Story Project.  By using laughter, creativity and awareness of emotions and needs, we enable participants to experience the power of being heard and understand the positive psycho-social impact of creating those kind of opportunities for communities. In the 4-day training, we explore how to create stories and performances that come from the participants and encourage the participation of the community.",
-      releaseDate: "Mar 31th 2022",
-      url: "",
-      enroll: false,
-      img: activities2Img
-    },
-    {
       title: "Child Rights Training",
       description : "Child rights training is targeted at adolescents as participants.  We work with youth and discuss child rights through game and story. We then work with the participants to create their own stories. Eight of the most recent Third Story books were written by participants from those trainings. ",
       releaseDate: "Mar 31th 2022",
@@ -42,22 +34,6 @@ const data = [
       url: "",
       enroll: false,
       img: activities2Img
-    },
-    {
-      title: "Child Rights Training",
-      description : "Child rights training is targeted at adolescents as participants.  We work with youth and discuss child rights through game and story. We then work with the participants to create their own stories. Eight of the most recent Third Story books were written by participants from those trainings. ",
-      releaseDate: "Mar 31th 2022",
-      url: "https://forms.gle/R2mK4MCMasyXPHR19",
-      enroll: true,
-      img: activities3Img
-    },
-    {
-      title: "Stories of Friendship",
-      description : "Stories of Friendship is a collaboration with Swe Tha Har Organization for peace and tolerance storytelling trainings in four places for three years. It started in 2017 and will go until 2019. Targeted places are Pathein, Htilin, Loikaw and Taunggyi. We provide three-day trainings for peace education and building and another three days is for storytelling training which includes story writing and rehearsal for storytelling event. We will encourage the participants to engage with the community and let them find existing peace stories from their community. We will choose a story from each area to produce. At the end of the year, we will have a storytelling event where all participants from four places will meet together.",
-      releaseDate: "May 20th 2020",
-      url: "",
-      enroll: false,
-      img: activities1Img
     }
 ];
 
