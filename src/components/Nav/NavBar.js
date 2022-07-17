@@ -38,6 +38,25 @@ function NavBar() {
     navigate('/order')
   }
 
+  const gotoBookLists = () => { 
+    navigate('/stories')
+  }
+
+  const gotoActivities = () => { 
+    navigate('/activities')
+  }
+
+  const gotoAbout = () => { 
+    navigate('/about')
+  }
+
+  const gotoLogin = () => { 
+    navigate('/login')
+  }
+
+  const gotoSignUp = () => { 
+    navigate('/signup')
+  }
 
   if(userData !== null){
     localStorage.setItem('user' , JSON.stringify(userData));
@@ -50,10 +69,10 @@ function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto nav-items align-items-center justify-content-end">
-              <Nav.Link className={`space ${addActiveClass("/home")}`} href="/home"> Home </Nav.Link>
-              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} href="/stories" > Stories </Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} href="/activities" > Activities</Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" > About Us</Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/")}`} href="/"> Home </Nav.Link>
+              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} onClick={gotoBookLists}> Stories </Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
               {/* <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link> */}
               <div className='d-flex justify-content-end profile'>
                   <img alt={profileImg} src={profileImg} className="profileImg"/>
@@ -84,12 +103,12 @@ function NavBar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto nav-items align-items-center justify-content-end">
               <Nav.Link className={`space ${addActiveClass("/home")}`} href="/"> Home </Nav.Link>
-              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} href="/stories" > Stories </Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} href="/activities" > Activities</Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" > About Us</Nav.Link>
+              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} onClick={gotoBookLists}> Stories </Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
               {/* <Nav.Link className={`space ${addActiveClass("/contact")}`} href="/contact" > Contact </Nav.Link> */}
-              <Nav.Link className="btn btn-outline-primary" href="/signup"> Sign Up </Nav.Link>
-              <Nav.Link className="btn btn-primary" href="/login"> Log In </Nav.Link>
+              <Nav.Link className="btn btn-outline-primary" onClick={gotoSignUp}> Sign Up </Nav.Link>
+              <Nav.Link className="btn btn-primary" onClick={gotoLogin}> Log In </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

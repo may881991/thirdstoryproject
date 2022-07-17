@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+.container-fluid.paddingZero{
+  padding: 0 !important;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.home{
+  background: url("./assets/images/floor.png") no-repeat right 123%;
+  padding-top: 12rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.home p{
+  font-size: 20px;
+}
+.ourBooks{
+  background-color: var(--global-color-lightblue);
+}
+.aboutUs{
+  position: relative;
+}
+.bgItem1{
+  position: absolute;
+  width: 270px;
+  height: auto;
+  left: 0px;
+  top: -100px;
+}
+.bgItem2{
+  position: absolute;
+  right: 0;
+  top: 350px;
+}
+.aboutUs .row{
+  padding: 3rem 0;
+}
+.aboutUs h2{
+  color: var(--global-color-header);
+  padding-top: 10px;
+}
+.aboutUs p{
+  padding-right: 20px;
+  line-height: 30px;
+}
+.aboutUs h2:after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  bottom: 0;
+  width: 100px;
+  border-bottom: 3px solid var(--global-color-header);
+}
+.row .textBox{
+  padding-left: 4rem;
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  .bookLists h4{
+      margin-left: 4rem;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .carousel-item .col-md-2{
+      margin-right: 0px;
+      height: 160px;
   }
-  to {
-    transform: rotate(360deg);
+  .carousel-item .col-md-2:first-child {
+      margin-left: 2rem !important;
+  }
+  .carousel-item .col-md-2 label{
+      font-size: 0.75rem;
+  }
+  .bgItem1,.bgItem2{
+      width: 150px;
+      height: auto;
+  }
+  .row .col-md-12{
+      padding: 2rem;
+  }
+  .aboutUs .row{
+      padding: 0;
   }
 }
