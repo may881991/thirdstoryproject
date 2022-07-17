@@ -18,13 +18,12 @@ import customer11Img from "../../assets/images/customer14.png";
 import customer12Img from "../../assets/images/customer15.png"; 
 function Customers() {
     return(
-        <Container fluid className="ourCustomers text-center paddingZero">
+        <Container fluid className="ourGallery text-center paddingZero">
             <NavBar bg="light"/>
             {<img src={boxItem} alt={boxItem} className="bgItem3" />}
             <Container className='mt-5'>
-                <h2>Happy Customers</h2>
-
-                    <Row>
+                <h2>Happy Customers</h2> 
+                    <Row className='galleryItem'>
                         <Col xs={10} md={4}>
                             <img src={customer1Img} alt={customer1Img} className="img-fluid" />
                         </Col>
