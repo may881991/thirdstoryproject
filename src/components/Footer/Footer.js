@@ -54,9 +54,9 @@ function Footer() {
                         <label>No. 86, 52 Street, Middle Block, </label>
                         <label>Yangon, Myanmar (Burma)</label>
                         <div>
-                            <a href=''> <BsYoutube /></a>
-                            <a href=''> <BsInstagram /></a>
-                            <a href=''> <BsFacebook /></a>
+                            <a href='https://www.youtube.com/channel/UCROK29V6rKZWO8LZbUFWglw/featured'> <BsYoutube /></a>
+                            <a href='https://www.instagram.com/thirdstoryproject/?hl=en'> <BsInstagram /></a>
+                            <a href='https://www.facebook.com/thirdstorychildrenbooks'> <BsFacebook /></a>
                         </div>
                     </Col>
                 </Row>

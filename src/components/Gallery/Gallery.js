@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from "../Nav/NavBar";
 import Footer from '../Footer/Footer';
+import Loading from '../Loading/Loading';
 import './Gallery.css'; 
 import { Container, Row, Col } from "react-bootstrap";
 import boxItem from "../../assets/images/bgBox.png";
@@ -17,7 +18,13 @@ import customer10Img from "../../assets/images/customer13.png";
 import customer11Img from "../../assets/images/customer14.png";
 import customer12Img from "../../assets/images/customer15.png"; 
 function Customers() {
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 1000)
+    }, [])
     return(
+        <>
+        {loading === false ? (
         <Container fluid className="ourGallery text-center paddingZero">
             <NavBar bg="light"/>
             {<img src={boxItem} alt={boxItem} className="bgItem3" />}
@@ -64,6 +71,10 @@ function Customers() {
             </Container>
             <Footer />
         </Container>
+        ) : (
+        <Loading />
+      )}
+      </>
     );
 }
 
