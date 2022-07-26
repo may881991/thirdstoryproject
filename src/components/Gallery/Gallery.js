@@ -23,7 +23,7 @@ function Customers() {
         setTimeout(() => setLoading(false), 1000)
     }, [])
     return(
-    <>
+        <>
         {loading === false ? (
         <Container fluid className="ourGallery text-center paddingZero">
             <NavBar bg="light"/>
@@ -72,9 +72,9 @@ function Customers() {
             <Footer />
         </Container>
         ) : (
-            <Loading />
-        )}
-        </>
+        <Loading />
+      )}
+      </>
     );
 }
 
