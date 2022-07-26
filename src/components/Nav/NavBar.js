@@ -10,16 +10,18 @@ import logo from "../../assets/images/Logo.png";
 import profileImg from "../../assets/images/user.png";
 
 function NavBar() {
-  const [user] = useAuthState(auth);
-  const [userData, setUserData] = useState(null);
-  useEffect(() => {
-     getUserData(user).then((user) => {
+  const [user] = useAuthState(auth); 
+  const [userData, setUserData] = useState(null); 
+  useEffect(() => {  
+    getUserData(user).then((user) => {
+      if(user !== null){ 
         user.forEach((ele) => {
           var userData = ele.data();  
           setUserData(userData)
         });
-    }).catch((err) => console.log(err)); 
-  }, []);
+      }
+   }).catch((err) => console.log(err)); 
+ }, []);
 
   let location = useLocation();
   let totalBookCount = 0;
@@ -74,10 +76,10 @@ function NavBar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto nav-items align-items-center justify-content-end">
               <Nav.Link className={`space ${addActiveClass("/")}`} href="/"> Home </Nav.Link>
-              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} onClick={gotoBookLists}> Stories </Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
-              <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
+              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} href="/stories" onClick={gotoBookLists}> Stories </Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} href="/activities" onClick={gotoActivities}> Activities</Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" onClick={gotoAbout}> About Us</Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/gallery")}`} href="/gallery" onClick={gotoGallery}> Happy Customers </Nav.Link>
               <div className='d-flex justify-content-end profile'>
                   <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
@@ -107,12 +109,12 @@ function NavBar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto nav-items align-items-center justify-content-end">
               <Nav.Link className={`space ${addActiveClass("/home")}`} href="/"> Home </Nav.Link>
-              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} onClick={gotoBookLists}> Stories </Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
-              <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
-              <Nav.Link className="btn btn-outline-primary" onClick={gotoSignUp}> Sign Up </Nav.Link>
-              <Nav.Link className="btn btn-primary" onClick={gotoLogin}> Log In </Nav.Link>
+              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} href="/stories" onClick={gotoBookLists}> Stories </Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} href="/activities" onClick={gotoActivities}> Activities</Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" onClick={gotoAbout}> About Us</Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/gallery")}`} href="/gallery" onClick={gotoGallery}> Happy Customers </Nav.Link>
+              <Nav.Link className="btn btn-outline-primary" href="/signup" onClick={gotoSignUp}> Sign Up </Nav.Link>
+              <Nav.Link className="btn btn-primary" href="/login" onClick={gotoLogin}> Log In </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

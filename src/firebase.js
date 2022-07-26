@@ -75,14 +75,17 @@ const addBookToUser = async (user, bookLists) => {
 }
 
 const getUserData = async (user) => {
-  try{
-    const userdb = query(collection(db, "users"), where("uid", "==", user.uid));
-    // const getData =  await getDocs(userdb);
-    const getData = await fetch(getDocs(userdb), { mode: 'cors' });
-    return getData;
-  }catch(err){
-    console.error(err.message)
-    return err;
+  if(user !== null){ 
+    try{
+      const userdb = query(collection(db, "users"), where("uid", "==", user.uid));
+      const getData =  await getDocs(userdb); 
+      return getData;
+    }catch(err){
+      console.error(err.message)
+      return err;
+    }
+  }else{
+    return null;
   }
 }
 
@@ -140,7 +143,8 @@ const sendPasswordReset = async (email) => {
 };
 const logout = () => {
   signOut(auth);
-  window.location.reload("/dashboard");
+  localStorage.removeItem("user")
+  window.location.reload("/");
 };
 export {
   auth,

@@ -32,7 +32,7 @@ function SignUp() {
     if (user){
         setSucmsg("Your account has been created!")
         setTimeout(() => {
-            navigate("/dashboard");
+            navigate("/");
             setSucmsg()
         }, 3000);
     }
