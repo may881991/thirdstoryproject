@@ -16,6 +16,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
+
 const googleProvider = new GoogleAuthProvider();
 const signInWithGoogle = async () => {
   try {
@@ -76,7 +77,8 @@ const addBookToUser = async (user, bookLists) => {
 const getUserData = async (user) => {
   try{
     const userdb = query(collection(db, "users"), where("uid", "==", user.uid));
-    const getData =  await getDocs(userdb);
+    // const getData =  await getDocs(userdb);
+    const getData = await fetch(getDocs(userdb), { mode: 'cors' });
     return getData;
   }catch(err){
     console.error(err.message)

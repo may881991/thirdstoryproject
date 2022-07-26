@@ -13,12 +13,12 @@ function NavBar() {
   const [user] = useAuthState(auth);
   const [userData, setUserData] = useState(null);
   useEffect(() => {
-    getUserData(user).then((user) => {
-      user.forEach((ele) => {
-        var userData = ele.data();  
-        setUserData(userData)
-      });
-  }).catch((err) => console.log(err)); 
+     getUserData(user).then((user) => {
+        user.forEach((ele) => {
+          var userData = ele.data();  
+          setUserData(userData)
+        });
+    }).catch((err) => console.log(err)); 
   }, []);
 
   let location = useLocation();
