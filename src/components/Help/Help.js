@@ -55,11 +55,11 @@ function Help() {
                     </Card>
                 </Col>
             </Row>
-            {/* <div className='d-flex justify-content-center pb-5'>
-              <Button className="btn btn-primary downloadBtn" href="#">
-                      Donate Now!
+            <div className='d-flex justify-content-center pb-5'>
+              <Button className="btn btn-primary downloadBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSeBygpoiLCSevcgoE5kZN-LpHu-Nq3RR6mzDUgrjTAyyP7nbw/viewform" target='_blank'>
+                     Book Donation Request!
                 </Button>
-            </div> */}
+            </div>
 
             {<img src={jayImg} alt={jayImg} className="bgItem4" />}
             </Container>
