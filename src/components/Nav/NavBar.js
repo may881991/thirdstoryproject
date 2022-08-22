@@ -36,6 +36,10 @@ function NavBar() {
     return location.pathname.includes(path) ? "active" : "";
   };
   const navigate = useNavigate();
+  const gotoHome = () => { 
+    navigate('/')
+  }
+
   const gotoOrder = () => { 
     navigate('/order')
   }
@@ -75,11 +79,11 @@ function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto nav-items align-items-center justify-content-end">
-              <Nav.Link className={`space ${addActiveClass("/")}`} href="/"> Home </Nav.Link>
-              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} href="/stories" onClick={gotoBookLists}> Stories </Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} href="/activities" onClick={gotoActivities}> Activities</Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" onClick={gotoAbout}> About Us</Nav.Link>
-              <Nav.Link className={`space ${addActiveClass("/gallery")}`} href="/gallery" onClick={gotoGallery}> Happy Customers </Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/")}`} onClick={gotoHome}> Home </Nav.Link>
+              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} onClick={gotoBookLists}> Stories </Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
               <div className='d-flex justify-content-end profile'>
                   <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
@@ -88,7 +92,7 @@ function NavBar() {
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                           {/* <Dropdown.Item href="#">Account Details</Dropdown.Item> */}
-                          <Dropdown.Item href="#" onClick={logout}>Log Out</Dropdown.Item>
+                          <Dropdown.Item  onClick={logout}>Log Out</Dropdown.Item>
                       </Dropdown.Menu>
                   </Dropdown>
                   <label onClick={gotoOrder} className="addTobasket"><BsCart3 /> {totalBookCount > 1 && (<Badge bg="info" pill>{totalBookCount}</Badge>)}</label>
@@ -108,13 +112,13 @@ function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto nav-items align-items-center justify-content-end">
-              <Nav.Link className={`space ${addActiveClass("/home")}`} href="/"> Home </Nav.Link>
-              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} href="/stories" onClick={gotoBookLists}> Stories </Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} href="/activities" onClick={gotoActivities}> Activities</Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/about")}`} href="/about" onClick={gotoAbout}> About Us</Nav.Link>
-              <Nav.Link className={`space ${addActiveClass("/gallery")}`} href="/gallery" onClick={gotoGallery}> Happy Customers </Nav.Link>
-              <Nav.Link className="btn btn-outline-primary" href="/signup" onClick={gotoSignUp}> Sign Up </Nav.Link>
-              <Nav.Link className="btn btn-primary" href="/login" onClick={gotoLogin}> Log In </Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/")}`} onClick={gotoHome}> Home </Nav.Link>
+              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} onClick={gotoBookLists}> Stories </Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
+              <Nav.Link className="btn btn-outline-primary" onClick={gotoSignUp}> Sign Up </Nav.Link>
+              <Nav.Link className="btn btn-primary" onClick={gotoLogin}> Log In </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
