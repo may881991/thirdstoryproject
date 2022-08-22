@@ -69,8 +69,8 @@ function BookLists() {
                 </Col>
                 <Col md={10} className="row">
 
-                  {itemLeng.map((item) => (
-                    <Col md={4} className="px-2 ml-5"  key={item}>
+                  {itemLeng.map((item, i) => (
+                    <Col md={4} className="px-2 ml-5"  key={i}>
                           <div className="card__image loading"></div>
                           <div className="card__title loading"></div>
                     </Col>
@@ -146,8 +146,8 @@ function BookLists() {
               </Col>
               <Col sm={10}>
                 {searchInput.length > 1 ? (
-                    <Tab.Content className='mt-5' key={"tab01"}> 
-                      <Tab.Pane eventKey={"Myanmar"} key={"Myanmar"} className="row">
+                    <Tab.Content className='mt-5' key={searchInput.length}> 
+                      <Tab.Pane eventKey={"Myanmar"} className="row">
                           {filteredResults.map((item, i) => {
                               return (
                                 <Card
