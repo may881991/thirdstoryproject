@@ -206,8 +206,8 @@ function OrderConfirmed(){
                   <Offcanvas.Title>Delivery Information</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                  {<img src={delImg1} alt="delivery image 1" className='img-fluid'/>}
-                  {<img src={delImg2} alt="delivery image 2" className='img-fluid'/>}
+                  {<Image src={delImg1} alt="delivery image 1" className='img-fluid'/>}
+                  {<Image src={delImg2} alt="delivery image 2" className='img-fluid'/>}
                 </Offcanvas.Body>
               </Offcanvas>
             </Col>

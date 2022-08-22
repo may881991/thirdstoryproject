@@ -18,7 +18,7 @@ export default function Login() {
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000)
         if (user) navigate("/dashboard");
-      }, [user]);
+      }, [user, error]);
     return (
         <>
         {loading === false ? (

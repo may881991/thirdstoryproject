@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Container ,Form, Button, Row, Col, Toast, Alert, ToastContainer} from 'react-bootstrap';
+import { Container ,Form, Button, Row, Col, Toast,  ToastContainer} from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
 import { auth, registerWithEmailAndPassword, signInWithGoogle } from "../../firebase";
 import Loading from '../Loading/Loading';
@@ -39,8 +39,7 @@ function SignUp() {
     if (error){
         console.log(error)
     }
-  }, [user,error]);
-  console.log(errorMsg)
+  }, [user,error]); 
   return (
     <>
     {loading === false ? (

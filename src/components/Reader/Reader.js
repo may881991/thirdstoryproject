@@ -59,8 +59,7 @@ export default class ReaderView extends Component {
     }
     
     render() {
-        const { pageNumber, numPages, loading, userBookLists, userInfo, bookstatus, bookInfo } = this.state; 
-        
+        const { pageNumber, numPages, loading, userBookLists, userInfo, bookstatus, bookInfo } = this.state;  
         console.log(bookstatus)
         console.log(bookInfo)
         return(
@@ -88,7 +87,7 @@ export default class ReaderView extends Component {
                                         {userInfo !== null ? (
                                             <Dropdown>
                                                 <Dropdown.Toggle id="dropdown-basic">
-                                                    <label className='name'>{this.state.userBookLists.name}</label> 
+                                                    <label className='name'>{userBookLists.name}</label> 
                                                 </Dropdown.Toggle>
                                                 <Dropdown.Menu>
                                                     {/* <Dropdown.Item href="#">Account Details</Dropdown.Item> */}

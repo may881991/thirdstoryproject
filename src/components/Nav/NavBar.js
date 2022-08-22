@@ -21,7 +21,7 @@ function NavBar() {
         });
       }
    }).catch((err) => console.log(err)); 
- }, []);
+ }, [user]);
 
   let location = useLocation();
   let totalBookCount = 0;

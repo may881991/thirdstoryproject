@@ -1,12 +1,7 @@
 {
   "files": {
-<<<<<<< HEAD
-    "main.css": "/static/css/main.dac5d69d.css",
-    "main.js": "/static/js/main.798b679a.js",
-=======
-    "main.css": "/static/css/main.d9c66b5d.css",
-    "main.js": "/static/js/main.8fa13bd6.js",
->>>>>>> 46ac97c2d1ed34dec3effd540288591520ecefb9
+    "main.css": "/static/css/main.0d512d81.css",
+    "main.js": "/static/js/main.bc15f5a4.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
     "static/media/customer15.png": "/static/media/customer15.7fde79eb9727ee08bf2a.png",
     "static/media/customer11.png": "/static/media/customer11.955fabab436fde678f38.png",
@@ -61,26 +56,15 @@
     "static/media/Logo.png": "/static/media/Logo.9c628d78d4968306ef9f.png",
     "static/media/floor.png": "/static/media/floor.bc3e1064ec21336904cd.png",
     "static/media/Floor2.png": "/static/media/Floor2.c940b6b50c73ec770413.png",
-    "static/media/leftArr.svg": "/static/media/leftArr.82c5ffd5e88bf4ff0fa0.svg",
+    "static/media/leftArr.svg": "/static/media/leftArr.b6e23dfad7482a33bcfa.svg",
     "index.html": "/index.html",
-<<<<<<< HEAD
     "static/media/rightArr.svg": "/static/media/rightArr.928a66a8d2e2c5ea17f2.svg",
-    "main.dac5d69d.css.map": "/static/css/main.dac5d69d.css.map",
-    "main.798b679a.js.map": "/static/js/main.798b679a.js.map",
+    "main.0d512d81.css.map": "/static/css/main.0d512d81.css.map",
+    "main.bc15f5a4.js.map": "/static/js/main.bc15f5a4.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dac5d69d.css",
-    "static/js/main.798b679a.js"
-=======
-    "static/media/rightArr.svg": "/static/media/rightArr.9d4c64be4f2afb746e6b.svg",
-    "main.d9c66b5d.css.map": "/static/css/main.d9c66b5d.css.map",
-    "main.8fa13bd6.js.map": "/static/js/main.8fa13bd6.js.map",
-    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.d9c66b5d.css",
-    "static/js/main.8fa13bd6.js"
->>>>>>> 46ac97c2d1ed34dec3effd540288591520ecefb9
+    "static/css/main.0d512d81.css",
+    "static/js/main.bc15f5a4.js"
   ]
 }
