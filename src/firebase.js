@@ -99,6 +99,16 @@ const getBookData = async ()=>{
   }
 }
 
+const getActivityData = async ()=>{
+  try{
+    const bookDb = collection(db, "activities");
+    const getData =  await getDocs(bookDb);
+    return getData;
+  }catch(err){
+    console.error(err.message)
+  }
+}
+
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
@@ -159,4 +169,5 @@ export {
   getUserData,
   getBookData,
   addBookToUser,
+  getActivityData
 };
