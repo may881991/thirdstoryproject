@@ -21,16 +21,76 @@ function BookLists() {
   const { isLoading, bookdata } = GetBookLists();
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  let active = 1;
+  const [active, setActive] = useState(0);
+  const [activeName, setActiveName] = useState('Myanmar');
+
+  const groupBylanguage = bookdata.reduce((group, value) => {
+    const { language } = value;
+    group[language] = group[language] ?? [];
+    group[language].push(value); 
+    return group;
+  }, {}); 
+
   let items = [];
-  const itemsGroup = bookdata.length / 8;
-  for (let number = 1; number <= itemsGroup; number++) {
+  for (let number = 1; number <= 3; number++) {
     items.push(
       <Pagination.Item key={number} active={number === active}>
         {number}
       </Pagination.Item>,
     );
   }
+
+  const NewPagination = (props) => {
+    const chunkSize = 9;
+    const res = [];
+    const navClass = document.querySelectorAll('[aria-selected="true"]'); 
+    if(navClass.length > 0){
+      setActiveName(navClass[0].innerHTML);
+    }
+    console.log(activeName)
+    const arr = props.data;
+    for (let i = 0; i < arr.length; i += chunkSize) {
+        const chunk = arr.slice(i, i + chunkSize);
+        res.push(chunk);
+    }
+    if(activeName === props.name){ 
+    }
+
+    const goToNext = (props) => {
+      const getKey = parseInt(props.target.innerHTML) - 1;
+      setActive(getKey)
+    }
+
+    return ( 
+      <> 
+      { res[active] !== undefined && (
+        <>
+          {res[active].map((card, i) => {
+            return (
+              <Card
+                key={i}
+                bookCover={card.bookCover}
+                title={card.title}
+                price={card.price}
+                author={card.author}
+                bookUrl={card.bookUrl}
+                illustrator={card.illustrator}
+              />
+            );
+          })}
+        </>
+      )}
+        <Pagination> 
+          {res.map((item, i) => (
+            <Pagination.Item key={i} active={i === active} onClick={goToNext}>
+              {i + 1}
+            </Pagination.Item> 
+          ))} 
+        </Pagination>
+      </>
+    )
+  }
+
   if (isLoading === true) {
     let itemLeng = [ 1, 2, 3, 4, 5, 6];
     return(
@@ -67,8 +127,7 @@ function BookLists() {
                     <ListGroup.Item>Other Items</ListGroup.Item>
                   </ListGroup>
                 </Col>
-                <Col md={10} className="row">
-
+                <Col md={10} className="row"> 
                   {itemLeng.map((item, i) => (
                     <Col md={4} className="px-2 ml-5"  key={i}>
                           <div className="card__image loading"></div>
@@ -83,16 +142,7 @@ function BookLists() {
         <Footer />
     </Container>
     )
-  }else{
-
-    const groupBylanguage = bookdata.reduce((group, value) => {
-      const { language } = value;
-      group[language] = group[language] ?? [];
-      group[language].push(value);
-      return group;
-    }, {});
-    console.log(groupBylanguage)
-
+  }else{   
     const searchItems = (searchValue) => {
       console.log(searchValue)
         setSearchInput(searchValue)
@@ -146,8 +196,8 @@ function BookLists() {
               </Col>
               <Col sm={10}>
                 {searchInput.length > 1 ? (
-                    <Tab.Content className='mt-5' key={searchInput.length}> 
-                      <Tab.Pane eventKey={"Myanmar"} className="row">
+                    <Tab.Content className='mt-5'> 
+                      <Tab.Pane eventKey={activeName} className="row">
                           {filteredResults.map((item, i) => {
                               return (
                                 <Card
@@ -165,32 +215,15 @@ function BookLists() {
                     </Tab.Content>
                 ) : (
                     <Tab.Content className='mt-5'>
-                      {Object.entries(groupBylanguage).map(([item,value])=> (
+                      {Object.entries(groupBylanguage).map(([item,value,index])=> (
                         <React.Fragment>
-                        <Tab.Pane eventKey={item} key={item} className="row">
-                          {value.map((card, i) => {
-                            return (
-                              <Card
-                                key={i}
-                                bookCover={card.bookCover}
-                                title={card.title}
-                                price={card.price}
-                                author={card.author}
-                                bookUrl={card.bookUrl}
-                                illustrator={card.illustrator}
-                              />
-                            );
-                          })}
+                        <Tab.Pane eventKey={item} key={index} className="row">
+                          <NewPagination name={item} count={value.length} data={value}/> 
                         </Tab.Pane>
                       </React.Fragment>
                       ))}
                     </Tab.Content>
                 )}
-                <Pagination>
-                  <Pagination.Prev />
-                  {items}
-                  <Pagination.Next />
-                </Pagination>
                 </Col>
             </Row>
           </Tab.Container>
