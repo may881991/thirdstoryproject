@@ -13,7 +13,7 @@ import "./BookDetails.css";
 function OffCanvasaddTo({ name, ...props}) {
   let bookData = props.data;
   let bookArr  = props.array;
-  let bookCount  = props.total;
+  const [totalbookCount, setTotalBookCount] = useState(props.total);
   let checkBookName;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -23,18 +23,18 @@ function OffCanvasaddTo({ name, ...props}) {
     let bookInfo = localStorage.getItem('bookData');
     let bookInfoObj = JSON.parse(bookInfo);
     bookInfoObj.count = 1;
-    bookCount += 1
+    setTotalBookCount(totalbookCount + 1)
     console.log(bookInfoObj)
     let getBookName = bookInfoObj.title;
     let getPrice = bookInfoObj.price;
     bookInfoObj.subTotal = parseInt(getPrice);
     checkBookName = bookArr.includes(getBookName);
     bookArr.push(getBookName)
-    console.log(bookArr)
     const bookCounts = {};
     for (const num of bookArr) {
       bookCounts[num] = bookCounts[num] ? bookCounts[num] + 1 : 1;
     }
+    console.log(bookCounts)
 
     if(bookData !== null && checkBookName === false){
       bookData.push(bookInfoObj);
@@ -67,7 +67,7 @@ function OffCanvasaddTo({ name, ...props}) {
         </Button>
         <Offcanvas show={show} onHide={handleClose} {...props} className="addTocartOff" >
           <Offcanvas.Header closeButton>
-            <label><BsCart3 />  <span>{bookCount}</span></label>
+            <label><BsCart3 />  <span>{totalbookCount}</span></label>
             <Offcanvas.Title>Your Books</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>

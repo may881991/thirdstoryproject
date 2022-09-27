@@ -99,7 +99,7 @@ function OrderConfirmed(){
                     <label className='addTitle' style={{"width": "300px","paddingLeft": "10px","display": "inline-block"}}>{book.title} </label>
                     <label  style={{"width": "50px"}}> x {book.count} </label>
                     <label style={{"width": "80px","paddingLeft": "10px","display": "inline-block"}}>
-                      <span>{book.price} K</span>
+                      <span>{book.subTotal} K</span>
                     </label>
                   </ListGroup.Item>
                 );
