@@ -25,12 +25,12 @@ function Footer() {
             {<img src={boxItem} alt={boxItem}  className="bgItem5" />}
             <Container className="py-5">
                 <Row>
-                    <Col lg={3} md={12}>
+                    <Col lg={4} md={12}>
                         <h5>{<img src={footerLogo} alt={footerLogo}/>} Third Story Project</h5>
                         <p>We are a non-profit social enterprise, registered as a business and publisher in Myanmar.</p>
                         <label>©thirdstory 2022. All rights reserved</label>
                     </Col>
-                    <Col lg={3} md={12} className="px-5">
+                    <Col lg={4} md={12} className="px-5">
                         <h5 className='secTitle'>Our Stories</h5>
                         <ul>
                             <li><a href='/about' onClick={gotoAbout}>About Us</a></li>
@@ -39,7 +39,7 @@ function Footer() {
                             {/* <li><a href='https://www.google.com/'>Apps</a></li> */}
                         </ul>
                     </Col>
-                    <Col lg={3} md={12}>
+                    {/* <Col lg={3} md={12}>
                         <h5 className='secTitle'>Shops</h5>
                         <ul>
                             <li><a href='https://sites.google.com/view/thirdstoryproject/where-to-buy?authuser=0'>Yangon</a></li>
@@ -47,11 +47,11 @@ function Footer() {
                             <li><a href='https://sites.google.com/view/thirdstoryproject/where-to-buy?authuser=0'>Shan State</a></li>
                             <li><a href='https://sites.google.com/view/thirdstoryproject/where-to-buy?authuser=0'>Kayin State</a></li>
                         </ul>
-                    </Col>
-                    <Col lg={3} md={12} className="contactInfo">
+                    </Col> */}
+                    <Col lg={4} md={12} className="contactInfo">
                         <h5>Contact Us</h5>
                         <label>admin@thirdstoryproject.org</label>
-                        <label>No. 86, 52 Street, Middle Block, </label>
+                        {/* <label>No. 86, 52 Street, Middle Block, </label> */}
                         <label>Yangon, Myanmar (Burma)</label>
                         <div>
                             <a href='https://www.youtube.com/channel/UCROK29V6rKZWO8LZbUFWglw/featured'> <BsYoutube /></a>
