@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { auth, signInWithEmailAndPassword, signInWithGoogle } from "../../firebase.js";
+import { auth, signInWithEmailAndPassword, signInWithGoogle, getUserData} from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Container , Form, Button, Row, Col} from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
@@ -14,11 +14,21 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [user, error] = useAuthState(auth);
     const [loading, setLoading] = useState(true)
+    const [userData, setUserData] = useState(null); 
     const navigate = useNavigate();
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000)
-        if (user) navigate("/dashboard");
+        getUserData(user).then((user) => {
+          if(user !== null){ 
+            user.forEach((ele) => {
+              var userData = ele.data();  
+              setUserData(userData)
+              navigate("/dashboard");
+            });
+          }
+       }).catch((err) => console.log(err)); 
       }, [user, error]);
+
     return (
         <>
         {loading === false ? (
