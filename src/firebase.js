@@ -153,7 +153,8 @@ const sendPasswordReset = async (email) => {
 };
 const logout = () => {
   signOut(auth);
-  localStorage.removeItem("user")
+  localStorage.removeItem("user");
+  localStorage.removeItem("addToCart");
   window.location.reload("/");
 };
 export {

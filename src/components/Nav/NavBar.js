@@ -34,7 +34,7 @@ function NavBar() {
   }
   console.log(totalBookCount)
   const addActiveClass = (path) => {
-    return location.pathname.includes(path) ? "active" : "";
+    return location.pathname === path ? "active" : "";
   };
   const navigate = useNavigate();
   const gotoHome = () => { 
@@ -46,7 +46,7 @@ function NavBar() {
   }
 
   const gotoBookLists = () => { 
-    navigate('/stories')
+    navigate('/books')
   }
 
   const gotoActivities = () => { 
@@ -67,7 +67,12 @@ function NavBar() {
 
   const gotoSignUp = () => { 
     navigate('/signup')
+  } 
+
+  const gotoStoires = () => { 
+    navigate('/stories')
   }
+
 
   if(userData !== null){
     localStorage.setItem('user' , JSON.stringify(userData));
@@ -81,10 +86,11 @@ function NavBar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto nav-items align-items-center justify-content-end">
               <Nav.Link className={`space ${addActiveClass("/")}`} onClick={gotoHome}> Home </Nav.Link>
-              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} onClick={gotoBookLists}> Stories </Nav.Link>
+              <Nav.Link className={`space-one ${addActiveClass("/books")}`} onClick={gotoBookLists}> Stories </Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
               <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/stories")}`} onClick={gotoStoires}> Hear Our Stories </Nav.Link>
               <div className='d-flex justify-content-end profile'>
                   <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
@@ -114,10 +120,11 @@ function NavBar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto nav-items align-items-center justify-content-end">
               <Nav.Link className={`space ${addActiveClass("/")}`} onClick={gotoHome}> Home </Nav.Link>
-              <Nav.Link className={`space-one ${addActiveClass("/stories")}`} onClick={gotoBookLists}> Stories </Nav.Link>
+              <Nav.Link className={`space-one ${addActiveClass("/books")}`} onClick={gotoBookLists}> Stories </Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
               <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/stories")}`} onClick={gotoStoires}> Hear Our Stories </Nav.Link>
               <Nav.Link className="btn btn-outline-primary" onClick={gotoSignUp}> Sign Up </Nav.Link>
               <Nav.Link className="btn btn-primary" onClick={gotoLogin}> Log In </Nav.Link>
             </Nav>

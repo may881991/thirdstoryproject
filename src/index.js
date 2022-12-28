@@ -10,6 +10,7 @@ import ReadBook from './components/Reader/Reader';
 import Order from './components/Order/Order';
 import LogIn from './components/LogIn/Login';
 import Gallery from './components/Gallery/Gallery';
+import Stories from './components/Stories/Stories';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './assets/fonts/MyanmarSansPro-Regular.ttf';
@@ -21,7 +22,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
           <Route path="*" element={<Home />} />
-          <Route path="/stories" element={<BookLists />} />
+          <Route path="/books" element={<BookLists />} />
           <Route path="/activities" element={<Activities />} />
           <Route path="/bookDetails" element={<BookDetails />} />
           <Route path="/read" element={<ReadBook />} />
@@ -30,6 +31,7 @@ ReactDOM.render(
           <Route path="/order" element={<Order />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/stories" element={<Stories />} />
         </Routes>
     </BrowserRouter>
   </React.StrictMode>,

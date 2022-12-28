@@ -8,7 +8,9 @@
     width: 100%;
 }
 .nav-link{
-    margin-right: 20px;
+    margin-right: 20px;    
+    padding-right: 0.4rem !important;
+    padding-left: 0.4rem !important;
     font-family: var(--global-font-family);
 }
 .btn.nav-link{
@@ -30,4 +32,7 @@
 }
 .addTobasket{
     cursor: pointer;
+}
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link{
+    border-bottom: 2px solid;
 }
