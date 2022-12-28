@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0d512d81.css",
-    "main.js": "/static/js/main.23e190ee.js",
+    "main.css": "/static/css/main.ecb26d10.css",
+    "main.js": "/static/js/main.852c432a.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
     "static/media/customer15.png": "/static/media/customer15.7fde79eb9727ee08bf2a.png",
     "static/media/customer11.png": "/static/media/customer11.955fabab436fde678f38.png",
@@ -12,6 +12,7 @@
     "static/media/customer10.png": "/static/media/customer10.37d9f1d635ff2528e815.png",
     "static/media/customer6.png": "/static/media/customer6.921b13837f99bfd8538b.png",
     "static/media/customer7.png": "/static/media/customer7.1ae81ebf9f6a570c5115.png",
+    "static/media/video-thumbnail1.png": "/static/media/video-thumbnail1.5c47e3b73c44bda8e79d.png",
     "static/media/customer14.png": "/static/media/customer14.029c2c78ebad974fb020.png",
     "static/media/customer8.png": "/static/media/customer8.0c686c548258eb4c0891.png",
     "static/media/customer13.png": "/static/media/customer13.b6166da2095420b0c77d.png",
@@ -35,17 +36,16 @@
     "static/media/customer1.png": "/static/media/customer1.1a3021e13d0f3110cf01.png",
     "static/media/customer3.png": "/static/media/customer3.b65bd186e609bea682cc.png",
     "static/media/help3.png": "/static/media/help3.01d2d91bdabd47230c2b.png",
-    "static/media/activities3.png": "/static/media/activities3.6fd106d4252dd15ed42e.png",
-    "static/media/activities2.png": "/static/media/activities2.624360b5b93a5963a046.png",
     "static/media/deliveryInfo2.jpg": "/static/media/deliveryInfo2.10d4be234547dee7b40f.jpg",
-    "static/media/activities1.png": "/static/media/activities1.d8801e81e5b49c71e050.png",
     "static/media/WYLK1.png": "/static/media/WYLK1.0540c0f77427e6cc2659.png",
+    "static/media/dee-ku.png": "/static/media/dee-ku.4ffaf9cb38552a3ea04f.png",
     "static/media/deliveryInfo1.jpg": "/static/media/deliveryInfo1.a505c82886ce7f9af7c2.jpg",
     "static/media/yamin.png": "/static/media/yamin.3de61c13345583c7aa0c.png",
     "static/media/pulone.png": "/static/media/pulone.a5a216d4a5c664aa1db8.png",
     "static/media/WYLK9.png": "/static/media/WYLK9.d26285993aacd26fba01.png",
     "static/media/py1.png": "/static/media/py1.faf8e9b70bea438bdc60.png",
     "static/media/fristprize.png": "/static/media/fristprize.6cdf111c641a23c5907d.png",
+    "static/media/Peace-from-heart.png": "/static/media/Peace-from-heart.1d9953a11848eec56162.png",
     "static/media/jayjay.png": "/static/media/jayjay.7835fa222034c41a37d9.png",
     "static/media/Squirrel1.png": "/static/media/Squirrel1.d4b30c57aa22d22da789.png",
     "static/media/Rabbit1.png": "/static/media/Rabbit1.42463dcdb5aaca97ec36.png",
@@ -59,12 +59,12 @@
     "static/media/leftArr.svg": "/static/media/leftArr.b6e23dfad7482a33bcfa.svg",
     "index.html": "/index.html",
     "static/media/rightArr.svg": "/static/media/rightArr.928a66a8d2e2c5ea17f2.svg",
-    "main.0d512d81.css.map": "/static/css/main.0d512d81.css.map",
-    "main.23e190ee.js.map": "/static/js/main.23e190ee.js.map",
+    "main.ecb26d10.css.map": "/static/css/main.ecb26d10.css.map",
+    "main.852c432a.js.map": "/static/js/main.852c432a.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d512d81.css",
-    "static/js/main.23e190ee.js"
+    "static/css/main.ecb26d10.css",
+    "static/js/main.852c432a.js"
   ]
 }
