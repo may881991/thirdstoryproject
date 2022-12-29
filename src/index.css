@@ -66,23 +66,34 @@ h2:after {
   width: 100px;
   border-bottom: 3px solid var(--global-color-main);
 }
+
 .btn{
   min-width: 120px;
   height: 40px;
   border-radius: 25px !important;
 }
+
 .btn-primary,.offcanvas-end{
   background-color: var(--global-color-main) !important;
   color: var(--global-color-white) !important;
 }
+
 .btn-outline-primary{
   border-color: var(--global-color-header) !important;
   color: var(--global-color-header) !important;
 }
+
 .btn-outline-primary:hover {
   background-color: var(--global-color-main) !important;
   color: var(--global-color-white) !important;
 }
+
 .container-fluid{
   margin: 0 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  h2:after {
+    left: 35%;
+  }
 }

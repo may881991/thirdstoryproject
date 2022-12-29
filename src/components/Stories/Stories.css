@@ -18,3 +18,9 @@
     font-family: var(--global-font-family);
     color: #718096;
 }
+
+@media only screen and (max-width: 600px) {
+    .storyBox{
+        padding: 0.5rem;
+    }
+  }

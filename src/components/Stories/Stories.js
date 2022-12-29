@@ -14,8 +14,11 @@ import './Stories.css';
 
 function Stories(){
     const [loading, setLoading] = useState(true)
+    const [isMobile, setMobile] = useState(true)
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000)
+        const getMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+        setMobile(getMobile)
     }, [])
 
     return (
@@ -25,16 +28,20 @@ function Stories(){
             <NavBar bg="light"/>
             <Container fluid className='banner'>
                 <Row>
-                    <Col md={2} className="py-3">
-                    {<img src={deeKu} alt={deeKu} className="bannerImg1 img-fluid"/> }
-                    </Col>
+                    {isMobile !== true && ( 
+                        <Col md={2} className="py-3">
+                            {<img src={deeKu} alt={deeKu} className="bannerImg1 img-fluid"/> }
+                        </Col>
+                    )}
                     <Col md={8} className="text-center bannerText">
                     <h2>Hear our Stories</h2>
                     <p className='storyText'>We work with many other amazing organizations who also believe in bringing wonderful stories to children. Many have used our books for videos and other interactive learning tools. Below are videos of our stories done by our partners and volunteers. Happy listening! </p>
                     </Col>
-                    <Col md={2}>
-                    {<img src={paceofHeart} alt={paceofHeart} className="bannerImg4 img-fluid"/> }
-                    </Col>
+                    {isMobile !== true && ( 
+                        <Col md={2}>
+                            {<img src={paceofHeart} alt={paceofHeart} className="bannerImg4 img-fluid"/> }
+                        </Col>
+                    )}
                 </Row>
             </Container>
             <Container>
