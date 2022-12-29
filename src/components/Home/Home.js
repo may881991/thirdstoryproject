@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col ,Button, Form} from "react-bootstrap";
+import { Container, Row, Col ,Button} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './Home.css';
 import NavBar from "../Nav/NavBar";
@@ -8,7 +8,6 @@ import Loading from '../Loading/Loading';
 import Customers from '../Customers/Customers';
 import Help from '../Help/Help';
 import Footer from '../Footer/Footer';
-import { BsSearch } from "react-icons/bs";
 import bannerImg from "../../assets/images/banner-img1.png";
 import bgWYLK from "../../assets/images/WYLK1.png";
 import bgYamin from "../../assets/images/yamin.png";

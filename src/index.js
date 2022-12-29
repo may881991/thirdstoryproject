@@ -1,39 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './App';
-import BookLists from './components/BookLists/BookLists';
-import Activities from './components/Activities/Activities';
-import BookDetails from './components/BookDetails/BookDetails';
-import AboutUs from './components/About/About';
-import ReadBook from './components/Reader/Reader';
-import Order from './components/Order/Order';
-import LogIn from './components/LogIn/Login';
-import Gallery from './components/Gallery/Gallery';
-import Stories from './components/Stories/Stories';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './assets/fonts/MyanmarSansPro-Regular.ttf';
 import './index.css';
-import SignUp from './components/SignUp/SignUp';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-          <Route path="*" element={<Home />} />
-          <Route path="/books" element={<BookLists />} />
-          <Route path="/activities" element={<Activities />} />
-          <Route path="/bookDetails" element={<BookDetails />} />
-          <Route path="/read" element={<ReadBook />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/order" element={<Order />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/stories" element={<Stories />} />
-        </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
