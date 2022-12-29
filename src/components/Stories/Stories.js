@@ -6,6 +6,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import deeKu from "../../assets/images/dee-ku.png";
 import paceofHeart from "../../assets/images/Peace-from-heart.png";
 import { Player, BigPlayButton } from 'video-react';
+import video1 from "../../assets/videos/video1.mp4";
 import thumbnail1 from "../../assets/images/video-thumbnail1.png";
 import '../../../node_modules/video-react/dist/video-react.css';
 import './Stories.css';
@@ -43,7 +44,7 @@ function Stories(){
                             <Col>
                                 <h4>What are Child Rights?</h4>
                                 {/* <label>Phoe Sa Lone</label> */}
-                                <Player src="https://firebasestorage.googleapis.com/v0/b/thirdstoryproject.appspot.com/o/videos%2Fvideo1.mp4?alt=media&token=fa02ac57-724a-45f7-ac03-b67de03c2b55" poster={thumbnail1}> 
+                                <Player src={video1} poster={thumbnail1}> 
                                     <BigPlayButton position="center" />
                                 </Player>
                             </Col> 
