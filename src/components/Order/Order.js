@@ -46,7 +46,7 @@ function OrderConfirmed(){
     setShow(false);
     localStorage.removeItem("addToCart");
     localStorage.removeItem("bookData");
-    navigate('/stories')
+    navigate('/books')
   }
   const addbookInfo = () =>{
     addBookToUser(user, data);
@@ -68,7 +68,7 @@ function OrderConfirmed(){
     }else{
       getTemplate.value += "<b>Payment options :</b> Cash On Delivery";
     }
-    emailjs.sendForm('service_hicz56n', 'template_pohsi8l', form.current, 'LkA6BCTBIux5qO0KS')
+    emailjs.sendForm('service_npstiyg', 'template_sx2z2h3', form.current, 'M9oNhLb1MSDsrQmdT')
       .then((result) => {
           console.log(result)
           if(result.status === 200){
@@ -147,7 +147,7 @@ function OrderConfirmed(){
                 </Form.Group>
                 {status === 2 && (
                   <Form.Group className="mb-4 row">
-                    <Form.Label className='col-md-4'>Payment Screenshoot<strong>*</strong></Form.Label>
+                    <Form.Label className='col-md-4'>Payment Receipt<strong>*</strong></Form.Label>
                     <Form.Group controlId="formFileSm" className="col-md-8 fileInput">
                       <Form.Control type="file" onChange={(event) => {setImageUpload(event.target.files[0]);}}/>
                     </Form.Group>
