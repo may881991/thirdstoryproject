@@ -46,7 +46,7 @@ function Activities(){
                   <h5>Categories</h5>
                   <hr/>
                   <ListGroup>
-                    <ListGroup.Item>Our Attivities</ListGroup.Item>
+                    <ListGroup.Item>Our Activities</ListGroup.Item>
                   </ListGroup>
                 </Col>
                 <Col md={10} className="row">
