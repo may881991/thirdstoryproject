@@ -90,7 +90,7 @@ function NavBar() {
               <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
               <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
-              <Nav.Link className={`space ${addActiveClass("/stories")}`} onClick={gotoStoires}> Hear Our Stories </Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/stories")}`} onClick={gotoStoires}> Listen our stories </Nav.Link>
               <div className='d-flex justify-content-end profile'>
                   <img alt={profileImg} src={profileImg} className="profileImg"/>
                   <Dropdown>
@@ -124,7 +124,7 @@ function NavBar() {
               <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
               <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
-              <Nav.Link className={`space ${addActiveClass("/stories")}`} onClick={gotoStoires}> Hear Our Stories </Nav.Link>
+              <Nav.Link className={`space ${addActiveClass("/stories")}`} onClick={gotoStoires}> Listen our stories </Nav.Link>
               <Nav.Link className="btn btn-outline-primary" onClick={gotoSignUp}> Sign Up </Nav.Link>
               <Nav.Link className="btn btn-primary" onClick={gotoLogin}> Log In </Nav.Link>
             </Nav>
