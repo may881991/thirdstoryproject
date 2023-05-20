@@ -21,6 +21,21 @@ function Stories(){
         setMobile(getMobile)
     }, [])
 
+    const videoLists = [
+        {
+            title: "ပုရွက်ဆိတ်မလေး မြူးမြူး - Myue Myue The Ant",
+            url : "https://www.youtube.com/embed/bP33zcRQhMM"
+        },
+        {
+            title: "The Good Post - အဘိုးပြောပြတဲ့ပုံပြင်ထဲက အိမ်နောက်ဖေး စိုက်ခင်းများ",
+            url : "https://www.youtube.com/embed/kj6wQofwzMA"
+        },
+        {
+            title: "Pinocchio and Yamin",
+            url : "https://www.youtube.com/embed/dqznM35iTIM"
+        }
+    ]
+
     return (
     <>
     {loading === false ? (
@@ -46,17 +61,19 @@ function Stories(){
             </Container>
             <Container>
                 <Row>
-                    <Col md={10} className='offset-md-1'>
-                        <Row className='storyBox'>
-                            <Col>
-                                <h4>What are Child Rights?</h4>
-                                {/* <label>Phoe Sa Lone</label> */}
-                                <Player src={video1} poster={thumbnail1}> 
-                                    <BigPlayButton position="center" />
-                                </Player>
-                            </Col> 
-                        </Row>
-                    </Col>
+                    <Col md={6} className='storyFrameBox'> 
+                        <h5 className='py-3'>What are Child Rights?</h5>
+                        {/* <label>Phoe Sa Lone</label> */}
+                        <Player src={video1} poster={thumbnail1}> 
+                            <BigPlayButton position="center" />
+                        </Player>
+                    </Col> 
+                    {videoLists.map((data, i) => ( 
+                        <Col md={6} className='storyFrameBox'> 
+                            <h5 className='py-3'>{data.title}</h5>
+                            <iframe width="100%" height="80%" src={data.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </Col> 
+                    ))} 
                 </Row>
             </Container>
         <Footer />
