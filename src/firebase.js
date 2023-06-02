@@ -151,12 +151,23 @@ const sendPasswordReset = async (email) => {
     console.error(err.message);
   }
 };
+
 const logout = () => {
   signOut(auth);
   localStorage.removeItem("user");
   localStorage.removeItem("addToCart");
   window.location.reload("/");
 };
+
+const getStoriesData = async ()=>{
+  try{
+    const storyDb = collection(db, "stories");
+    const getStoryData =  await getDocs(storyDb);
+    return getStoryData;
+  }catch(err){
+    console.error(err.message)
+  }
+}
 export {
   auth,
   db,
@@ -170,5 +181,6 @@ export {
   getUserData,
   getBookData,
   addBookToUser,
-  getActivityData
+  getActivityData,
+  getStoriesData
 };

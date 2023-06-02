@@ -10,31 +10,27 @@ import video1 from "../../assets/videos/video1.mp4";
 import thumbnail1 from "../../assets/images/video-thumbnail1.png";
 import '../../../node_modules/video-react/dist/video-react.css';
 import './Stories.css';
-
+import { getStoriesData } from '../../firebase';
+import { BsFlower1 } from "react-icons/bs";
 
 function Stories(){
     const [loading, setLoading] = useState(true)
     const [isMobile, setMobile] = useState(true)
+    const [storyData , setData] = useState([]);
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000)
         const getMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
-        setMobile(getMobile)
+        setMobile(getMobile) 
+        getStoriesData().then((lists) => {
+            let storyArr = []
+            lists.forEach((ele) => {
+              var data = ele.data();
+              storyArr.push(data);
+            });
+            setData(storyArr)
+            setTimeout(() => setLoading(false), 500)
+          }).catch(() => setLoading(false));
     }, [])
-
-    const videoLists = [
-        {
-            title: "ပုရွက်ဆိတ်မလေး မြူးမြူး - Myue Myue The Ant",
-            url : "https://www.youtube.com/embed/bP33zcRQhMM"
-        },
-        {
-            title: "The Good Post - အဘိုးပြောပြတဲ့ပုံပြင်ထဲက အိမ်နောက်ဖေး စိုက်ခင်းများ",
-            url : "https://www.youtube.com/embed/kj6wQofwzMA"
-        },
-        {
-            title: "Pinocchio and Yamin",
-            url : "https://www.youtube.com/embed/dqznM35iTIM"
-        }
-    ]
 
     return (
     <>
@@ -60,17 +56,16 @@ function Stories(){
                 </Row>
             </Container>
             <Container>
-                <Row>
+                <Row className='mb-5'>
                     <Col md={6} className='storyFrameBox'> 
-                        <h5 className='py-3'>What are Child Rights?</h5>
-                        {/* <label>Phoe Sa Lone</label> */}
+                        <h5 className='py-3'> <BsFlower1 fill='#102E46' className='me-2'/> What are Child Rights?</h5>
                         <Player src={video1} poster={thumbnail1}> 
                             <BigPlayButton position="center" />
                         </Player>
                     </Col> 
-                    {videoLists.map((data, i) => ( 
+                    {storyData.map((data, i) => ( 
                         <Col md={6} className='storyFrameBox'> 
-                            <h5 className='py-3'>{data.title}</h5>
+                            <h5 className='py-3'><BsFlower1 fill='#102E46' className='me-2'/>{data.title}</h5>
                             <iframe width="100%" height="80%" src={data.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </Col> 
                     ))} 
