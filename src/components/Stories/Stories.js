@@ -45,7 +45,7 @@ function Stories(){
                         </Col>
                     )}
                     <Col md={8} className="text-center bannerText">
-                    <h2>Hear our Stories</h2>
+                    <h2>Listen our Stories</h2>
                     <p className='storyText'>We work with many other amazing organizations who also believe in bringing wonderful stories to children. Many have used our books for videos and other interactive learning tools. Below are videos of our stories done by our partners and volunteers. Happy listening! </p>
                     </Col>
                     {isMobile !== true && ( 

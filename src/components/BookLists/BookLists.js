@@ -26,10 +26,15 @@ function BookLists() {
 
   const groupBylanguage = bookdata.reduce((group, value) => {
     const { language } = value;
-    group[language] = group[language] ?? [];
-    group[language].push(value); 
+    if(language == "Bilingual"){ 
+      group["Bilingual (M/E)"].push(value); 
+    }else{ 
+      group[language] = group[language] ?? [];
+      group[language].push(value); 
+    }
     return group;
   }, {}); 
+  console.log(groupBylanguage)
 
   let items = [];
   for (let number = 1; number <= 3; number++) {
@@ -182,50 +187,50 @@ function BookLists() {
             {<img src={squirrelImg} alt={squirrelImg} className="bgItem6" />}
             <Container className='bookItems'>
             <Tab.Container defaultActiveKey="Myanmar">
-            <Row>
-              <Col sm={2}>
-                <h5>Categories</h5>
-                <hr/>
-                <Nav variant="pills" className="flex-column">
-                  {Object.entries(groupBylanguage).map(([item, index])=> (
-                    <Nav.Item key={index}>
-                        <Nav.Link eventKey={item}>{item}</Nav.Link>
-                    </Nav.Item>
-                  ))}
-                </Nav>
-              </Col>
-              <Col sm={10}>
-                {searchInput.length > 1 ? (
-                    <Tab.Content className='mt-5'> 
-                      <Tab.Pane eventKey={activeName} className="row">
-                          {filteredResults.map((item, i) => {
-                              return (
-                                <Card
-                                  key={i}
-                                  bookCover={item.bookCover}
-                                  title={item.title}
-                                  price={item.price}
-                                  author={item.author}
-                                  bookUrl={item.bookUrl}
-                                  illustrator={item.illustrator}
-                                />
-                              )
-                          })}
-                      </Tab.Pane>
-                    </Tab.Content>
-                ) : (
-                    <Tab.Content className='mt-5'>
-                      {Object.entries(groupBylanguage).map(([item,value,index])=> (
-                        <React.Fragment>
-                        <Tab.Pane eventKey={item} key={index} className="row">
-                          <NewPagination name={item} count={value.length} data={value}/> 
-                        </Tab.Pane>
-                      </React.Fragment>
-                      ))}
-                    </Tab.Content>
-                )}
+              <Row>
+                <Col sm={2}>
+                  <h5>Categories</h5>
+                  <hr/>
+                  <Nav variant="pills" className="flex-column">
+                    {Object.entries(groupBylanguage).map(([item, index])=> (
+                      <Nav.Item key={index}>
+                          <Nav.Link eventKey={item}>{item}</Nav.Link>
+                      </Nav.Item>
+                    ))}
+                  </Nav>
                 </Col>
-            </Row>
+                <Col sm={10}>
+                  {searchInput.length > 1 ? (
+                      <Tab.Content className='mt-5'> 
+                        <Tab.Pane eventKey={activeName} className="row">
+                            {filteredResults.map((item, i) => {
+                                return (
+                                  <Card
+                                    key={i}
+                                    bookCover={item.bookCover}
+                                    title={item.title}
+                                    price={item.price}
+                                    author={item.author}
+                                    bookUrl={item.bookUrl}
+                                    illustrator={item.illustrator}
+                                  />
+                                )
+                            })}
+                        </Tab.Pane>
+                      </Tab.Content>
+                  ) : (
+                      <Tab.Content className='mt-5'>
+                        {Object.entries(groupBylanguage).map(([item,value,index])=> (
+                          <React.Fragment>
+                          <Tab.Pane eventKey={item} key={index} className="row">
+                            <NewPagination name={item} count={value.length} data={value}/> 
+                          </Tab.Pane>
+                        </React.Fragment>
+                        ))}
+                      </Tab.Content>
+                  )}
+                  </Col>
+              </Row>
           </Tab.Container>
           </Container>
           {<img src={rabbitImg} alt={rabbitImg} className="bgItem7" />}

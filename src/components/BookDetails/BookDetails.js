@@ -129,7 +129,7 @@ function BookDetails(){
     let price = parseInt(bookInfo.price);
     function goBack(){
       localStorage.removeItem("bookData");
-      navigate('/stories')
+      navigate('/books')
     }
 
     function readBook(){
