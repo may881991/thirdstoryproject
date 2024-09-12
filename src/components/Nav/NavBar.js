@@ -87,7 +87,7 @@ function NavBar() {
             <Nav className="me-auto nav-items align-items-center justify-content-end">
               <Nav.Link className={`space ${addActiveClass("/")}`} onClick={gotoHome}> Home </Nav.Link>
               <Nav.Link className={`space-one ${addActiveClass("/books")}`} onClick={gotoBookLists}> Stories </Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}>Articles & Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
               <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
               <Nav.Link className={`space ${addActiveClass("/stories")}`} onClick={gotoStoires}> Listen our stories </Nav.Link>
@@ -121,7 +121,7 @@ function NavBar() {
             <Nav className="me-auto nav-items align-items-center justify-content-end">
               <Nav.Link className={`space ${addActiveClass("/")}`} onClick={gotoHome}> Home </Nav.Link>
               <Nav.Link className={`space-one ${addActiveClass("/books")}`} onClick={gotoBookLists}> Stories </Nav.Link>
-              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}> Activities</Nav.Link>
+              <Nav.Link className={`space-two ${addActiveClass("/activities")}`} onClick={gotoActivities}>Articles & Activities</Nav.Link>
               <Nav.Link className={`space-two ${addActiveClass("/about")}`} onClick={gotoAbout}> About Us</Nav.Link>
               <Nav.Link className={`space ${addActiveClass("/gallery")}`} onClick={gotoGallery}> Happy Customers </Nav.Link>
               <Nav.Link className={`space ${addActiveClass("/stories")}`} onClick={gotoStoires}> Listen our stories </Nav.Link>
