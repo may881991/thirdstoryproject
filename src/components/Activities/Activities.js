@@ -52,17 +52,32 @@ function Activities(){
                   {data.map((card, i) => {
                     console.log(card)
                       return (
-                        <Card className="col-md-12">
-                          <Card.Body className="">
-                            <Card.Title className="">
-                              {card.title}
-                            </Card.Title>
-                            <Card.Text>
-                              {card.description}
-                              <label className='dateText'>{card.date}</label>
-                            </Card.Text>
-                          </Card.Body>
-                        </Card>
+                        i % 2 == 0 ?  
+                          <Row className='storyBox'>
+                              <Col md={8}>
+                                <h4>{card.title}</h4>
+                                 {card.description.split("\n").map((para,index) => ( 
+                                    <p className="article-para" key={index}>{para}</p>
+                                 ))}
+                              </Col>
+                              <Col md={4}>
+                                {<img src={card.image} alt={card.image} className="img-fluid"/> }
+                                <label className="p-3">{card.date}</label>
+                              </Col>
+                          </Row>
+                        :
+                          <Row className='storyBox'>
+                              <Col md={4}>
+                                {<img src={card.image} alt={card.image} className="img-fluid"/> }
+                                <label className="p-3">{card.date}</label>
+                              </Col>
+                              <Col md={8}>
+                                <h4>{card.title}</h4>
+                                {card.description.split("\n").map((para,index) => ( 
+                                    <p className="article-para" key={index}>{para}</p>
+                                 ))}
+                              </Col>
+                          </Row>
                       );
                     })}
                 </Col>

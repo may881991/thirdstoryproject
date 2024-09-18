@@ -23,3 +23,10 @@
     font-size: 1rem;
     margin-bottom: 0 !important;
 }
+.storyBox h4{
+    color: #666;
+    margin-bottom: 1rem;
+}
+.article-para{
+    font-family: var(--global-font-family-mn);
+}
