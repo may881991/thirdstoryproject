@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './Activities.css';
 import { getActivityData } from '../../firebase.js';
 import NavBar from "../Nav/NavBar";
-import Card from "../Card/Card";
 import Loading from '../Loading/Loading';
-import { Container, Row, Col , ListGroup } from "react-bootstrap";
+import { Container, Row, Col , ListGroup, Card } from "react-bootstrap";
 import Footer from '../Footer/Footer';
 import treeImg from "../../assets/images/tree.png";
 import py1 from "../../assets/images/py1.png";
@@ -24,7 +23,7 @@ function Activities(){
     return(
       <>
       {loading === false ? (
-        <Container fluid className='sidebarBg'>
+        <Container fluid className='sidebarBg paddingZero'>
             <NavBar bg="light"/>
             <Container fluid className='banner'>
                 <Row>
@@ -51,20 +50,25 @@ function Activities(){
                 </Col>
                 <Col md={10} className="row">
                   {data.map((card, i) => {
+                    console.log(card)
                       return (
-                        <Card
-                          key={i}
-                          bookCover={card.image}
-                          title={card.title}
-                          desc={card.description}
-                          date={card.date}
-                        />
+                        <Card className="col-md-12">
+                          <Card.Body className="">
+                            <Card.Title className="">
+                              {card.title}
+                            </Card.Title>
+                            <Card.Text>
+                              {card.description}
+                              <label className='dateText'>{card.date}</label>
+                            </Card.Text>
+                          </Card.Body>
+                        </Card>
                       );
                     })}
                 </Col>
               </Row>
-            </Container>
-            <Footer />
+            </Container> 
+         <Footer />
         </Container>
       ) : (
         <Loading />

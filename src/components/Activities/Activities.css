@@ -15,9 +15,9 @@
 }
 .activitiesLists .card-body{
     box-shadow: 0px 4px 4px rgba(192, 189, 189, 0.5);
-    margin-bottom: 1.5rem;
     border-radius: 5px; 
     width: 100%;
+    background: var(--global-color-lightblue);
 }
 .activitiesLists .card-text{
     font-size: 1rem;
