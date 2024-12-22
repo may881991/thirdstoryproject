@@ -15,6 +15,7 @@ import aboutImg from "../../assets/images/aboutus.png";
 import trainingImg from "../../assets/images/ourtraining.png";
 import treeImg from "../../assets/images/tree.png";
 import puloneImg from "../../assets/images/pulone.png";
+import backgroundImage from '../../assets/images/pass-it-on.png';
 
 function Home() {
   const navigate = useNavigate();
@@ -48,6 +49,22 @@ function Home() {
             </Row>
         </section> 
 
+        <section className="ourBooks position-relative overflow-hidden" style={{ height: '600px' }}>
+          <img
+            src={backgroundImage}
+            alt="Our Books Background"
+            className="w-100 h-100 object-cover"
+            style={{ 
+              objectPosition: 'center top',
+              transform: 'scale(1)',
+              transformOrigin: 'center top'
+            }}
+          />
+          <div className="position-absolute start-50 translate-middle-x text-center p-4" style={{ bottom: '15%' }}>
+            <Button variant="primary" href="/passItOn">Explore</Button>
+          </div>
+        </section>
+
         <Container fluid className="ourBooks paddingZero">
           <Row className='mx-auto container'>
               <Col md={2} className="py-3">
@@ -65,7 +82,9 @@ function Home() {
                 {<img src={puloneImg} alt={puloneImg} className="img-fluid"/> }
               </Col>
           </Row>
+         
         </Container>
+       
         <Books />
         <Container fluid className="aboutUs">
           {<img src={bgWYLK} alt={bgWYLK} className="bgItem1" />}

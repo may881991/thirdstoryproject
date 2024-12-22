@@ -11,6 +11,9 @@
 .ourBooks{
     background-color: var(--global-color-lightblue);
 }
+.ourBooks.h-64 {
+    height: 28rem; 
+}
 .aboutUs{
     position: relative;
 }
