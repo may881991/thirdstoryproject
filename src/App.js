@@ -10,7 +10,8 @@ import LogIn from './components/LogIn/Login';
 import Gallery from './components/Gallery/Gallery';
 import Stories from './components/Stories/Stories';
 import SignUp from './components/SignUp/SignUp'; 
-import Home from './components/Home/Home'
+import Home from './components/Home/Home';
+import PassItOn from './components/PassItOn/PassItOn'
 function App() {
   return (
     <div className="app">
@@ -27,6 +28,7 @@ function App() {
             <Route path="/login" element={<LogIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/stories" element={<Stories />} />
+            <Route path="/passItOn" element={<PassItOn />} />
           </Routes>
       </Router>
     </div>
