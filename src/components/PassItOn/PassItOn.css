@@ -20,11 +20,12 @@
 }
 
 /* /////////////////////////// */
-.education-crisis, .third-story-project, .how-to-help, .make-difference {
-    /* background-color: #f8f9fa; */
+.education-crisis, .third-story-project, .how-to-help{ 
     padding: 2rem;
-    border-radius: 0.5rem;
-    /* box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); */
+    border-radius: 0.5rem; 
+  }
+  .make-difference {
+    padding: 3rem 2rem 0rem;
   }
   
   .help-option {
@@ -34,12 +35,14 @@
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   }
   
-  h3 {
+ .passIton_title{
     color: var(--global-color-header);
   }
   
   h5, h4 {
-    color: #28a745;
+    color: var(--global-color-header);
+    font-family: var(--global-font-family);
+    font-weight: 700;
   }
   
   .cta {
@@ -78,16 +81,21 @@
     margin-bottom: 1.5rem;
     color: #DAF9FF;
   }
+
+  .together-title:after {
+    border-bottom: 3px solid #DAF9FF;
+}
+
   
   .together-text {
     padding: 1rem 0;
     font-weight: 500;
   }
 
-  h2:after{
+  .passIton_title:after{
     content: "";
     position: absolute;
-    left: 47%;
+    left: 0%;
     bottom: 0;
     width: 100px;
     border-bottom: 3px solid #DAF9FF;

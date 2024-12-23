@@ -37,7 +37,7 @@ function PassItOn() {
           </Row>
         </Container>
        
-        <Container fluid className="">
+        <Container fluid className="paddingZero">
           <Container className=''>
             <Row className='py-5'>
             <Col lg={6} md={12}>
@@ -45,7 +45,7 @@ function PassItOn() {
               </Col>
               <Col lg={6} md={12} className="textBox">
                 <div className='pt-5'>
-                    <h2>Myanmar's Education Crisis</h2>
+                    <h2 className='passIton_title'>Myanmar's Education Crisis</h2>
                     <p className="py-4">Myanmar's children face an unprecedented education crisis. With over <b>7.8 million</b> children out of school, access to books has become one of the few ways to inspire hope and learning.</p>
                 </div>
                 
@@ -92,19 +92,17 @@ function PassItOn() {
            {<img src={bgWYLK} alt="Background Yamin" className="bgItem2" />}
         </Container>
           <section className="pb-5 bg-light text-center">
-             <div className="make-difference">
-                <h3 className="mb-5">Make a Difference Today</h3>
-                <p>Your contribution will help children in Myanmar enjoy books filled with fun, learning, and hope while promoting literacy and critical thinking.</p>
-              </div>
               <Container>
               <Row>
-                <Col lg={2}>
+                <Col lg={2} className="pt-5">
                     {<img src={jayImg} alt={jayImg} className="img-fluid" />}
                 </Col>
                 <Col lg={8} className="pt-5">
+                    <h3 className="pb-3">Make a Difference Today</h3>
+                    <p className="xs">Your contribution will help children in Myanmar enjoy books filled with fun, learning, and hope while promoting literacy and critical thinking.</p>
                     <h4 className="p-3" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.15)' }}>Together, let's Pass It On and ensure every child has the opportunity to dream and learn!</h4>
                 </Col>
-                <Col lg={2} className="">
+                <Col lg={2} className="pt-5">
                     {<img src={puloneImg} alt={puloneImg} className="img-fluid"/> }
                 </Col>
                </Row>
