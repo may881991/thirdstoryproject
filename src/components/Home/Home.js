@@ -49,18 +49,17 @@ function Home() {
             </Row>
         </section> 
 
-        <section className="ourBooks position-relative overflow-hidden" style={{ height: '600px' }}>
+        <section className="ourBooks position-relative overflow-hidden">
           <img
             src={backgroundImage}
             alt="Our Books Background"
-            className="w-100 h-100 object-cover"
+            className="w-100 h-100 object-cover pb-5"
             style={{ 
               objectPosition: 'center top',
-              transform: 'scale(1)',
               transformOrigin: 'center top'
             }}
           />
-          <div className="position-absolute start-50 translate-middle-x text-center p-4" style={{ bottom: '15%' }}>
+          <div className="position-absolute start-50 translate-middle-x text-center mt-5" style={{ bottom: '15%' }}>
             <Button variant="primary" href="/passItOn">Explore</Button>
           </div>
         </section>
