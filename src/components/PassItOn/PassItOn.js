@@ -36,8 +36,7 @@ function PassItOn() {
             </Col>
           </Row>
         </Container>
-       
-        <Container fluid className="">
+        <Container fluid className="paddingZero">
           <Container className=''>
             <Row className='py-5'>
             <Col lg={6} md={12}>
@@ -45,7 +44,7 @@ function PassItOn() {
               </Col>
               <Col lg={6} md={12} className="textBox">
                 <div className='pt-5'>
-                    <h2>Myanmar's Education Crisis</h2>
+                    <h2 className='passIton_title'>Myanmar's Education Crisis</h2>
                     <p className="py-4">Myanmar's children face an unprecedented education crisis. With over <b>7.8 million</b> children out of school, access to books has become one of the few ways to inspire hope and learning.</p>
                 </div>
                 
@@ -56,15 +55,19 @@ function PassItOn() {
           <section className='py-5 together-section text-center'>
             <div className="together-overlay"></div>
             <Container className="together-content PassItOn">
-                <Row className='py-5 text-center'>
-                <Col>
-                    <h2 className="together-title">The Third Story Project</h2>
+                <Row className='text-center'>
+                <Col lg={11} md={11} className='mx-auto'>
+                    <h2 className="together-title">The Third Story Project: Our Solution</h2>
                     <p className="together-text text-light">
-                    We also offer storyteller trainings to community leaders, teachers, volunteers and religious leaders
-                    so they can use storytelling in their work to better connect with the people they serve. Additionally, 
-                    we work with young students to educate them about child rights and storytelling. We coach teens on how 
-                    to create their own stories, offering them an outlet to express themselves in a constructive way.
-                    </p>
+                    Since 2014, the Third Story Project (TSP) has been creating and distributing storybooks that teach peace, diversity, and life skills.</p>
+                    <div className="together-text text-light">
+                      <h3  className="mb-5"> We Empower:</h3> 
+                      <ul className="text-start ms-5 ps-5">
+                        <li>Teachers and Leaders: Through storytelling workshops to improve connections with communities. </li>
+                        <li>Teens and Students: By coaching them to write and share their own stories, fostering self-expression and learning about their rights.</li>
+                        <li>Together, we’ve distributed over 1.06 million books, and with your support, we can do even more.</li> 
+                      </ul>
+                    </div>
                 </Col>
                 </Row>
             </Container>
@@ -76,11 +79,11 @@ function PassItOn() {
                 <h3 className="mb-3 text-center">How You Can Help</h3>
                 <div className="help-option mb-4">
                   <h5>We Pass It On for You</h5>
-                  <p>Donate, and we'll ensure your books reach the children who need them most. You can even add a personal message to inspire the young readers!</p>
+                  <p>Donate, and we’ll ensure your books reach the children who need them most.</p>
                 </div>
                 <div className="help-option mb-4">
                   <h5>Pass On a Library</h5>
-                  <p>Empower an entire community by providing a Library in a Box to a school or village.</p>
+                  <p>Empower an entire community by providing a Library in a Box with 60 books.</p>
                 </div>
               </div>
              
@@ -92,25 +95,21 @@ function PassItOn() {
            {<img src={bgWYLK} alt="Background Yamin" className="bgItem2" />}
         </Container>
           <section className="pb-5 bg-light text-center">
-             <div className="make-difference">
-                <h3 className="mb-5">Make a Difference Today</h3>
-                <p>Your contribution will help children in Myanmar enjoy books filled with fun, learning, and hope while promoting literacy and critical thinking.</p>
-              </div>
               <Container>
               <Row>
-                <Col lg={2}>
+                <Col lg={2} className="pt-5">
                     {<img src={jayImg} alt={jayImg} className="img-fluid" />}
                 </Col>
                 <Col lg={8} className="pt-5">
-                    <h4 className="p-3" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.15)' }}>Together, let's Pass It On and ensure every child has the opportunity to dream and learn!</h4>
+                    <h3 className="pb-3">Make a Difference Today</h3>
+                    <p className="xs">Your contribution will directly help children in Myanmar enjoy books filled with fun, learning, and hope.</p>
+                    <h4 className="p-3" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.15)' }}> Let’s pass it on and ensure every child has the chance to dream, learn, and grow!</h4>
                 </Col>
-                <Col lg={2} className="">
+                <Col lg={2} className="pt-5"> 
                     {<img src={puloneImg} alt={puloneImg} className="img-fluid"/> }
                 </Col>
                </Row>
               </Container>
-           
-            
           </section>
         </Container>
         <Footer />
