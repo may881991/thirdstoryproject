@@ -110,9 +110,10 @@
   .bgItem2{
     position: absolute;
     right: 0;
-    top: 78%;
+    top: 0%;
     -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+    transform: scaleX(-1);
+    z-index: -1;
 }
 .bgItem4{
     position: absolute;
@@ -126,5 +127,22 @@
         width: 150px;
         height: auto;
     }
+
+    .bgItem2 {
+      display: none; /* This will hide bgItem2 */
+  }
     
+}
+
+
+/* For smaller phones, you might want to add another breakpoint */
+@media only screen and (max-width: 480px) {
+  .bgItem1 {
+      width: 100px; /* Further reduce size for smaller screens if needed */
+      height: auto;
+  }
+
+  .bgItem2 {
+      display: none; /* This ensures bgItem2 is also hidden on smaller phones */
+  }
 }

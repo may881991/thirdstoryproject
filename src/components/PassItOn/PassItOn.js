@@ -33,6 +33,7 @@ function PassItOn() {
               <p className='storyText'>Every child deserves the chance to dream, learn, and grow – and you can make that happen!</p>
             </Col>
             <Col md={2}>
+            {<img src={bgWYLK} alt="Background Yamin" className="bgItem2" />}
             </Col>
           </Row>
         </Container>
@@ -92,7 +93,7 @@ function PassItOn() {
                 <img src={PIO1} alt="About" className="img-fluid pio-image" />
             </Col>
           </Row>
-           {<img src={bgWYLK} alt="Background Yamin" className="bgItem2" />}
+           
         </Container>
           <section className="pb-5 bg-light text-center">
               <Container>
